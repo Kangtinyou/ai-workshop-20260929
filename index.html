@@ -426,6 +426,9 @@ figure.slide img { cursor: zoom-in; }
 
 .stepbox { padding: 10px 14px; }
 .stepbox + .stepbox { margin-top: -4px; }
+
+.stage.has-note figure.slide img { max-height: calc(100vh - 56px - 72px - 172px); }
+.slide-note { padding: 6px 14px; font-size: 15px; }
 </style>
 </head>
 <body>
@@ -1014,6 +1017,7 @@ window.CONTENT = {
         if (a.file) return fileBtn(a.file, '⬇ ' + a.label, 'btn ghost');
       });
       st.append(el('div', { class: 'slide-bar' }, el('span', { class: 'seg-code' }, seg.code), el('span', { class: 'slide-t' }, seg.title), el('div', { class: 'btns' }, acts)));
+      st.classList.toggle('has-note', !!seg.note);
       if (seg.note) st.append(el('div', { class: 'pnote slide-note' }, '👉 ' + seg.note));
       const src = `slides/${String(seg.slide).padStart(2, '0')}.jpg`;
       st.append(el('figure', { class: 'slide' }, el('img', { src, alt: `投影片 ${seg.slide}：${seg.title}`, title: '點一下放大', onclick: () => { const z = el('div', { class: 'zoom', onclick: () => z.remove() }, el('img', { src, alt: '' }), el('span', {}, '點任何地方關閉')); document.body.append(z); } })));
