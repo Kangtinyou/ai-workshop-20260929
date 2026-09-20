@@ -44,6 +44,10 @@ h1 { font-size: 30px; line-height: 1.35; margin: 0 0 6px; }
 .callout { background: var(--mint); color: var(--tealDark); font-weight: 700; border-radius: var(--radius); padding: 16px 20px; }
 .callout.dark { background: var(--navy); color: var(--white); }
 .source { color: var(--grey2); font-size: 16px; }
+.resource { display: grid; grid-template-columns: 58px 1fr; gap: 14px; align-items: start; background: var(--mint); border-radius: var(--radius); padding: 16px 18px; border: 1px solid var(--mint2); }
+.res-ico { width: 46px; height: 46px; border-radius: 14px; background: var(--teal); color: var(--white); display: grid; place-items: center; font-size: 28px; font-weight: 700; }
+.res-body b { color: var(--tealDark); font-size: 20px; display: block; margin-bottom: 2px; }
+.res-body p { margin: 0 0 10px; color: var(--grey); }
 .two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .two > div, .rows > div, .steps > div { background: var(--off); border-radius: var(--radius); padding: 16px 20px; }
 .two h3 { margin: 0 0 4px; font-size: 20px; color: var(--tealDark); }
@@ -172,6 +176,9 @@ h1 { font-size: 30px; line-height: 1.35; margin: 0 0 6px; }
 .meter i { display: block; height: 100%; background: var(--teal); transition: width .3s; }
 .scen .row { display: grid; grid-template-columns: 1fr 1.4fr; gap: 10px; margin-bottom: 10px; }
 .scen .row label { font-size: 15px; color: var(--grey); display: block; }
+.taskpair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.taskpair label { font-size: 15px; color: var(--grey); display: block; margin-bottom: 4px; }
+.taskpair .hint, .taskpair .saved { grid-column: 1 / -1; margin: 0; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
 .chips button { border: 1.5px solid var(--teal); background: var(--white); color: var(--tealDark); border-radius: 999px; padding: 4px 14px; min-height: 40px; font-size: 16px; }
 .saved { color: var(--grey); font-size: 15px; }
@@ -249,6 +256,8 @@ body.present .rows > div { grid-template-columns: 56px 320px 1fr; }
   .stage { padding: 20px 16px 40px; }
   h1 { font-size: 24px; }
   .two, .builder, .unlock-hero { grid-template-columns: 1fr; }
+  .resource, .taskpair { grid-template-columns: 1fr; }
+  .resource { gap: 10px; }
   .rows > div { grid-template-columns: 40px 1fr; }
   .rows > div span { grid-column: 2; }
   .steps { grid-template-columns: 1fr 1fr; }
@@ -290,10 +299,10 @@ body { padding-bottom: 72px; }
 .side-h { font-size: 15px; font-weight: 700; color: var(--grey); padding: 4px 10px 10px; }
 .side-i { width: 100%; display: flex; align-items: center; gap: 10px; border: 0; background: none; text-align: left; padding: 7px 10px; border-radius: 10px; font-size: 15px; line-height: 1.35; color: var(--ink); min-height: 40px; }
 .side-i:hover { background: var(--mint); }
-.side-i .no { flex: none; width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--grey2); display: grid; place-items: center; font-size: 13px; font-weight: 700; color: var(--grey); }
 .side-i.seen .no { border-color: var(--teal); color: var(--tealDark); }
 .side-i.on { background: var(--navy); color: var(--white); }
 .side-i.on .no { background: var(--teal); border-color: var(--teal); color: var(--white); }
+.side-i .no { flex: none; width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--grey2); display: grid; place-items: center; font-size: 13px; font-weight: 700; color: var(--grey); }
 .side-i .tt { flex: 1; }
 .side-i .tag { flex: none; font-size: 12px; font-weight: 700; background: var(--amber); color: var(--ink); border-radius: 999px; padding: 0 8px; }
 .main { min-width: 0; }
@@ -307,8 +316,8 @@ body { padding-bottom: 72px; }
 h1 { font-size: 26px; }
 .block { margin: 14px 0; }
 .stage.is-slide { padding-top: 10px; }
-.slide-bar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
 .slide-bar .seg-code { margin: 0; }
+.slide-bar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
 .slide-t { font-weight: 700; font-size: 17px; margin-right: auto; }
 .slide-bar .btn { min-height: 40px; padding: 6px 14px; }
 figure.slide { margin: 0; display: flex; justify-content: center; }
@@ -375,6 +384,7 @@ body.present figure.slide img { max-height: calc(100vh - 56px - 72px - 70px); }
 
 .legend { display: flex; flex-wrap: wrap; gap: 4px 10px; font-size: 12.5px; color: var(--grey); padding: 0 10px 10px; border-bottom: 1px solid var(--line); margin-bottom: 8px; }
 .side-i { padding: 6px 10px; min-height: 36px; }
+.side-i .no { flex: none; width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--grey2); display: grid; place-items: center; font-size: 13px; font-weight: 700; color: var(--grey); }
 .side-i .tt { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .side-i .ic { flex: none; font-size: 16px; }
 .side-i .tag { display: none; }
@@ -480,6 +490,121 @@ button.link { border: 0; background: none; color: var(--tealDark); text-decorati
 .sty-top h3 { margin: 0; }
 .sty-hd { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
 .cm-go .stepbox h3 { margin-bottom: 4px; }
+
+
+/* ── 單元三新元件 ── */
+/* 三選一課程主題 */
+.choose { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.ch-card { display: flex; flex-direction: column; gap: 8px; }
+.ch-pick { flex: 1; text-align: left; display: grid; gap: 4px; background: var(--white); border: 2px solid var(--mint2); border-radius: var(--radius); padding: 14px 16px; cursor: pointer; }
+.ch-pick:hover { border-color: var(--teal); }
+.ch-pick.on { border-color: var(--teal); background: var(--mint); box-shadow: inset 0 0 0 1px var(--teal); }
+.ch-pick.on .ch-tag::after { content: '　已選 ✓'; color: var(--tealDark); }
+.ch-pick.demo { background: var(--off); border-style: dashed; }
+.ch-tag { font-size: 14px; font-weight: 700; color: var(--teal); letter-spacing: .04em; }
+.ch-pick b { font-size: 19px; color: var(--tealDark); line-height: 1.4; }
+.ch-who, .ch-src { font-size: 15px; color: var(--grey); }
+.ch-card .btns { gap: 8px; }
+.ch-card .btn { min-height: 40px; padding: 6px 12px; font-size: 15px; }
+
+/* 一組可單獨複製的參考網址 */
+.urls { display: grid; gap: 10px; }
+.url-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; background: var(--off); border-radius: var(--radius); padding: 14px 18px; }
+.url-row b { display: block; font-size: 18px; color: var(--tealDark); }
+.url-row .hint { display: block; }
+.url-row code { font-size: 14px; color: var(--grey2); word-break: break-all; }
+.url-row .btn { min-height: 40px; padding: 6px 14px; }
+
+/* 保底素材：預設收起，跟不上的人才點開 */
+.standby { border: 2px dashed var(--mint2); border-radius: var(--radius); padding: 12px 18px; background: var(--white); }
+.standby[open] { background: var(--off); }
+.standby > summary { cursor: pointer; font-weight: 700; font-size: 18px; color: var(--tealDark); list-style: none; }
+.standby > summary::-webkit-details-marker { display: none; }
+.standby > summary::after { content: '（點開）'; color: var(--grey2); font-weight: 500; font-size: 15px; }
+.standby[open] > summary::after { content: '（收起）'; }
+.standby .pbox-ui { margin-top: 10px; }
+
+@media (max-width: 760px) {
+  .choose { grid-template-columns: 1fr; }
+  .url-row { flex-direction: column; align-items: flex-start; }
+}
+body.present .ch-pick b { font-size: 22px; }
+body.present .ch-who, body.present .ch-src, body.present .url-row .hint { font-size: 18px; }
+
+
+/* ── PTCF 填空器：句子固定，學員只填底線 ── */
+.bl { display: grid; gap: 14px; }
+.bl-row { display: grid; grid-template-columns: 42px 1fr; gap: 12px; align-items: start; background: var(--off); border-radius: var(--radius); padding: 14px 18px; }
+.bl-row > div > b { display: block; color: var(--tealDark); font-size: 16px; margin-bottom: 6px; }
+.bl-sent { font-size: 19px; line-height: 2.2; color: var(--ink); }
+.bl-fix { color: var(--grey); }
+.bl-in { border: none; border-bottom: 2px solid var(--teal); background: var(--white); border-radius: 6px 6px 0 0; padding: 2px 8px; font: inherit; font-size: 19px; color: var(--tealDark); font-weight: 700; min-width: 90px; }
+.bl-in::placeholder { color: var(--grey2); font-weight: 400; font-size: 17px; }
+.bl-in:focus { outline: 2px solid var(--teal); outline-offset: 2px; }
+.bl-chips { display: inline-flex; gap: 6px; vertical-align: middle; }
+.bl-chips .chip { padding: 2px 12px; min-height: 34px; font-size: 17px; }
+.bl-chips .chip.on { background: var(--teal); color: var(--white); border-color: var(--teal); }
+.builder .preview pre mark { background: var(--mint2); color: var(--ink); font-weight: 700; border-radius: 4px; padding: 0 3px; }
+
+/* 測驗：應用題也是一題 */
+.qextra > h3 { margin: 0 0 12px; font-size: 21px; color: var(--tealDark); }
+
+/* ── 單元三：四個課程主題（直接看、直接連出去）── */
+.topics { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.tp { display: flex; flex-direction: column; gap: 8px; background: var(--white); border: 2px solid var(--mint2); border-radius: var(--radius); padding: 14px 16px; }
+.tp.demo { background: var(--mint); border-color: var(--teal); }
+.tp-hd { display: flex; align-items: center; gap: 10px; }
+.tp-tag { flex: none; display: grid; place-items: center; min-width: 30px; height: 30px; padding: 0 10px; border-radius: 999px; background: var(--teal); color: var(--white); font-weight: 700; font-size: 16px; }
+.tp.demo .tp-tag { background: var(--navy); font-size: 14px; }
+.tp-hd b { font-size: 20px; color: var(--tealDark); line-height: 1.4; }
+.tp-who { font-size: 15px; color: var(--grey); }
+.tp-src { font-size: 15px; color: var(--ink); background: var(--off); border-radius: 10px; padding: 8px 12px; }
+.tp.demo .tp-src { background: var(--white); }
+.tp-src b { display: block; font-size: 14px; color: var(--grey); font-weight: 700; margin-bottom: 2px; }
+.tp .btns { margin-top: auto; gap: 6px; padding-top: 2px; }
+.tp .btn { min-height: 38px; padding: 6px 12px; font-size: 15px; }
+@media (max-width: 760px) { .topics { grid-template-columns: 1fr; } .bl-row { grid-template-columns: 1fr; } .bl-sent { font-size: 17px; } }
+body.present .bl-sent { font-size: 23px; }
+body.present .tp-hd b { font-size: 23px; }
+body.present .tp-who, body.present .tp-src { font-size: 19px; }
+
+/* ── v0.10 版面切齊 ──
+   簡報頁和互動頁用同一個內容欄寬（1000px，扣掉左右 24px 內距＝952px），
+   投影片圖直接撐滿欄寬，左右邊界就會和互動頁的標題、卡片完全對齊。 */
+.progress, .stage { max-width: 1000px; }
+figure.slide { display: block; margin: 0; }
+figure.slide img,
+body.present figure.slide img,
+.stage.has-note figure.slide img { width: 100%; height: auto; max-width: 100%; max-height: none; }
+
+/* 視窗太矮時才讓圖縮小置中（此時寬度會小於欄寬，屬於降級情況） */
+@media (max-height: 700px) {
+  figure.slide { display: flex; justify-content: center; }
+  figure.slide img { width: auto; max-height: calc(100vh - 56px - 72px - 70px); }
+}
+/* 投影模式：沒有側欄與進度條，讓投影片吃滿整個畫面 */
+body.present .stage { max-width: 100%; padding-left: 16px; padding-right: 16px; }
+body.present figure.slide { display: flex; justify-content: center; }
+body.present figure.slide img { width: auto; max-height: calc(100vh - 56px - 72px - 56px); }
+
+/* ── 翻頁按鈕移到畫面中間，夾著頁數 ── */
+.pager { justify-content: center; gap: 18px; }
+.pager .pos { min-width: 190px; text-align: center; }
+@media (max-width: 760px) { .pager { gap: 10px; } .pager .pos { min-width: 0; } }
+/* 捲軸一律佔位，翻到會捲動的頁時欄位不會左右跳動 */
+html { scrollbar-gutter: stable; }
+
+/* ── 投影片可選取文字層 ──
+   透明文字疊在投影片圖上：畫面看起來完全一樣，但可以反白、複製、Ctrl+F 搜尋。
+   位置與字級都是百分比／cqw，所以圖放大縮小時文字會跟著貼合。 */
+figure.slide { position: relative; container-type: inline-size; }
+.slide-txt { position: absolute; inset: 0; pointer-events: none; }
+.slide-txt span {
+  position: absolute; white-space: pre; line-height: 1.25;
+  color: transparent; pointer-events: auto; cursor: text;
+  -webkit-user-select: text; user-select: text;
+}
+.slide-txt span::selection { background: rgba(14,155,138,.35); }
 </style>
 </head>
 <body>
@@ -507,7 +632,7 @@ button.link { border: 0; background: none; color: var(--tealDark); text-decorati
 <div class="scrim" id="scrim"></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <div class="present-code" id="presentCode"></div>
-<script>window.DATA={"prompts": {"A": {"title": "附錄 A　文件格式萃取與複用助手（完整系統提示詞）", "text": "# 文件格式萃取與複用助手\n\n你是一位熟悉行政文書、工作文件分析與內容查核的「文件格式萃取與複用助手」。\n\n你的任務是協助使用者完成兩件事：\n\n1. 從一份已經完成的成品文件中，萃取可重複使用的格式。\n2. 將萃取出的格式套用到新的素材，產生同類型的新文件。\n\n這兩個階段必須分開執行。\n\n完成第一階段後，不得自動進入第二階段。只有當使用者明確要求「套用模板」，並提供新素材後，才可以進入第二階段。\n\n\n# 一、首次互動的開場引導\n\n當使用者第一次開啟 Gem，或尚未提供明確任務時，請使用以下開場方式：\n\n你好，我可以協助你把一份已完成的工作文件，轉換成可以重複使用的模板。\n\n你可以使用以下兩種功能：\n\n1. 萃取格式\n請提供一份已經填寫完成的文件，我會分析它的結構、欄位與寫作規則，整理成可重複使用的模板。\n\n2. 套用模板\n如果你已經有一份模板，可以再提供新的會議內容、逐字稿、工作資料或其他素材，我會先檢查資料是否足夠，再協助你產生一份新文件。\n\n建議先從「萃取格式」開始。\n\n請上傳一份已經完成的文件，並告訴我：\n「請幫我萃取這份文件的格式。」\n\n開場說明應保持簡短清楚，不要一次向使用者說明所有內部規則。\n\n\n# 二、模式判斷\n\n請根據使用者的指令判斷目前要執行的模式。\n\n## 模式一：萃取格式\n\n當使用者：\n\n- 上傳一份已完成的文件\n- 說「萃取格式」\n- 說「把這份文件做成模板」\n- 說「分析這份文件的格式」\n- 或提出意思相近的要求\n\n請執行「第一階段：萃取格式」。\n\n## 模式二：套用模板\n\n當使用者：\n\n- 明確說「套用模板」\n- 要求用既有格式產生一份新文件\n- 同時提供模板與新的原始素材\n- 或提出意思相近的要求\n\n請執行「第二階段：套用模板」。\n\n## 無法判斷時\n\n如果無法判斷使用者要萃取格式還是套用模板，請只問：\n\n請問你現在想要：\n\n1. 從成品文件中萃取格式\n2. 把既有模板套用到新的素材\n\n請選擇其中一項，我再繼續協助你。\n\n不要自行選擇模式。\n\n\n# 三、第一階段：萃取格式\n\n## 第一階段的任務\n\n當使用者提供一份已完成的文件時，請分析這份文件背後可重複使用的：\n\n- 文件結構\n- 標題層級\n- 固定欄位\n- 替換欄位\n- 選填欄位\n- 表格結構\n- 各段落的功能\n- 寫作語氣\n- 內容詳細程度\n- 完成文件前需要準備的資料\n\n這個階段的任務是「萃取格式」，不是摘要、改寫或重新產出文件內容。\n\n\n## 第一階段的重要規則\n\n1. 必須以使用者提供的成品文件為主要依據。\n2. 不要把文件中的特定人名、日期、地點、事件、數字或議題當成固定格式。\n3. 不要把單次會議的決議或內容誤認為每次都要保留的固定文字。\n4. 不要自行增加原文件不存在的欄位。\n5. 不要在這個階段產生新的工作文件。\n6. 不要只把原文件清空，必須進一步說明各欄位的功能與使用規則。\n7. 如果某項規則只能從單一文件推測，請標示：\n   「可能的格式規則，建議人工確認。」\n8. 如果使用者提供的是空白表格，而不是已完成的成品，請主動提醒：\n   「這是一份空白表格，可以辨識欄位，但不足以完整判斷各欄位實際的寫作方式。若要準確萃取模板，建議再提供一份已填寫完成的文件。」\n9. 若文件涉及醫療、護理、個資或其他敏感內容，提醒使用者確認資料已完成適當的去識別化處理。\n10. 不要因為文件中有空白欄位，就自行判斷該欄位是選填、不適用或應刪除。\n\n\n## 第一階段的輸出格式\n\n請依照以下順序輸出：\n\n### 一、文件名稱與用途\n\n說明：\n\n- 這是什麼類型的文件\n- 通常在什麼情境下使用\n- 主要目的是什麼\n\n如果用途無法從文件中確認，請清楚標示需要使用者確認。\n\n\n### 二、文件結構地圖\n\n依照原文件的實際順序，列出：\n\n- 文件標題\n- 基本資料\n- 主要章節\n- 次要章節\n- 固定欄位\n- 表格欄位\n- 結尾資訊\n- 附件或簽核區\n\n必須保留原文件的層級與順序。\n\n\n### 三、欄位分類\n\n將辨識出的內容分成以下三類：\n\n#### 固定結構\n\n每次使用時通常會保留的：\n\n- 標題\n- 章節\n- 欄位名稱\n- 表格欄名\n- 文件順序\n\n#### 每次替換的內容\n\n每次製作新文件時，需要依新素材更新的內容。\n\n#### 視情況使用的內容\n\n只有特定情況才會出現的段落或欄位。\n\n如果無法確定某個欄位是否為選填，請標示：\n\n「是否選填需要使用者確認。」\n\n\n### 四、各段落的寫作規則\n\n針對每個主要段落說明：\n\n- 這一段要放什麼內容\n- 要回答什麼問題\n- 使用什麼語氣\n- 大約需要多詳細\n- 是否需要條列\n- 是否需要保留正式用語\n- 是否涉及裁示、決議、責任或簽核\n- 容易出錯的地方\n\n\n### 五、可重複使用的文件模板\n\n依照原文件的結構，建立一份可直接複製的模板。\n\n需要替換的內容統一使用以下形式：\n\n［欄位名稱］\n\n例如：\n\n時間：［會議日期與時間］\n地點：［會議地點］\n主席：［主席姓名與職銜］\n\n模板中只能保留：\n\n- 固定結構\n- 固定欄位名稱\n- 必要的寫作提示\n\n不得保留原文件中特定的人名、事件、日期、數字或個案內容。\n\n\n### 六、使用模板前需要準備的資料\n\n列出使用者下一次套用模板時，需要提供哪些資料。\n\n例如：\n\n- 日期與時間\n- 地點\n- 參與人員\n- 原始逐字稿\n- 會議議程\n- 發言內容\n- 決議內容\n- 負責單位\n- 執行期限\n\n請依實際文件類型調整，不要直接套用上述範例。\n\n\n### 七、格式檢查清單\n\n列出完成新文件後需要人工確認的項目，包括：\n\n- 結構是否完整\n- 欄位是否遺漏\n- 人名與職稱是否正確\n- 日期與數字是否正確\n- 發言、建議、裁示與決議是否清楚區分\n- 是否含有不應公開的個人資料\n- 是否需要主管、承辦人或專業人員複核\n\n\n# 四、第一階段完成後的引導\n\n完成格式萃取後，請在回覆最後加入以下提醒：\n\n格式已經萃取完成。\n\n接下來你可以：\n\n1. 先檢查這份模板是否符合你實際工作的使用方式\n2. 告訴我需要修改、增加或刪除哪些欄位\n3. 提供一份新的原始素材，請我將內容套用到這份模板\n\n如果你要繼續，請提供新的素材並告訴我：\n「請將這份素材套用到剛才的模板。」\n\n進入套用階段後，我會先檢查新素材是否足以完成模板。若資料不足、文件性質不同，或有內容無法判斷，我會先向你提問，不會自行補寫。\n\n\n# 五、第二階段：套用模板\n\n## 第二階段的啟動條件\n\n只有當使用者明確要求「套用模板」，並提供新的原始素材後，才能進入第二階段。\n\n不要因為第一階段已經完成，就自行接續產生新文件。\n\n\n## 第二階段的第一個動作：資料適用性檢查\n\n產出文件前，必須先比對模板與新素材。\n\n請檢查：\n\n1. 新素材與原模板是否屬於相同或相近的文件類型\n2. 模板需要哪些必要資料\n3. 新素材已經提供哪些資料\n4. 哪些重要資料仍然缺少\n5. 哪些模板欄位不適用於新素材\n6. 哪些內容可能需要推測才能填寫\n7. 新素材中是否清楚區分發言、建議、回覆、裁示與正式決議\n8. 是否含有需要去識別化的個人資料或敏感資訊\n\n\n# 六、必須先提問的情況\n\n遇到以下任一情況時，不得直接產出完整文件：\n\n- 無法確認文件日期或時間\n- 無法確認文件地點\n- 無法確認主持人、主席、紀錄人或相關人員\n- 無法確認人物姓名或職銜\n- 無法判斷內容是發言、建議、回覆、裁示或正式決議\n- 新素材缺少模板中的關鍵資料\n- 新素材的文件性質與模板不同\n- 原模板中的部分欄位不適用於新素材\n- 必須依靠推測才能完成內容\n- 來源資料彼此矛盾\n- 不確定某個欄位應保留、刪除、留白或標示不適用\n- 新素材只包含部分內容，無法代表完整事件或完整會議\n\n遇到上述情況時，請先輸出「產出前確認」。\n\n\n# 七、產出前確認\n\n請使用以下格式：\n\n## 產出前確認\n\n### 目前可以確認的資料\n\n列出新素材中可以直接確認的資訊。\n\n### 缺少的關鍵資料\n\n列出模板需要、但新素材沒有提供的資訊。\n\n### 模板與新素材不一致的地方\n\n說明：\n\n- 哪些欄位不適用\n- 哪些段落需要調整\n- 原模板與新素材的文件性質有何不同\n\n### 需要你確認的問題\n\n一次最多提出五個最關鍵的問題。\n\n問題必須具體且容易回答。\n\n例如：\n\n1. 這份文件的正式日期為何？\n2. 影片中的主持人是否等同正式會議主席？\n3. 公聽會沒有正式裁示時，你希望保留欄位並標示不適用，還是刪除該欄位？\n4. 這次要整理整場內容，還是只整理指定的時間範圍？\n5. 發言人的姓名與職銜是否已有正式名單可供核對？\n\n提出問題後必須停止，等待使用者回答。\n\n在使用者回答以前，不得產出完整文件。\n\n\n# 八、第二階段的產出規則\n\n收到使用者補充或選擇後，才能產出文件。\n\n產出時必須遵守以下規則：\n\n1. 只使用使用者提供，或新素材中可以直接確認的資訊。\n2. 不得為了填滿模板而推測、腦補或合理化缺少的內容。\n3. 不得使用影片發布日期推測活動或會議日期。\n4. 不得根據畫面、稱呼或一般背景知識，自行判斷人物姓名、身分與職銜。\n5. 不得把主持人自動視為正式主席。\n6. 不得把發言、建議、期待、倡議或討論內容改寫成主席裁示。\n7. 不得把個人主張或團體訴求改寫成正式決議。\n8. 不得自行產生主管機關回覆、行政承諾、執行方式、改善時程或列管結果。\n9. 未經使用者確認，不得自行填寫「無」「略」「洽悉」「解除列管」或其他具有正式文件意義的文字。\n10. 未經使用者確認，不得自行刪除、留白或標示不適用。\n11. 若使用者提供的資料只涵蓋部分內容，必須標示本文件的資料範圍。\n12. 如果來源互相矛盾，必須再次請使用者決定，不可自行選擇。\n13. 涉及醫療、護理或其他專業內容時，必須提醒由專業人員複核。\n\n\n# 九、資料不足時的處理選項\n\n如果使用者無法補充缺少的資料，請詢問使用者希望如何處理各缺漏欄位：\n\n1. 保留欄位並標示「待確認」\n2. 標示「不適用」\n3. 刪除該欄位\n4. 暫不產出，等資料補齊後再繼續\n\n不得替使用者選擇。\n\n\n# 十、使用者要求先產出草稿時\n\n如果使用者明確表示：\n\n「請先依現有資料產出，缺少內容標示待確認。」\n\n你可以繼續製作草稿。\n\n但仍須遵守：\n\n- 不得自行推測\n- 不得補寫來源中沒有的內容\n- 不得把發言轉換成裁示或決議\n- 不得把影片發布時間當成事件日期\n- 必須清楚標示資料範圍\n- 必須在文件後列出待確認資訊\n\n\n# 十一、第二階段的輸出格式\n\n資料確認完成後，請依序輸出：\n\n## 一、使用的模板\n\n簡要說明這次套用的文件格式。\n\n## 二、資料範圍\n\n說明這次使用的素材範圍。\n\n如果是影片，應標示：\n\n- 影片名稱\n- 使用的開始時間\n- 使用的結束時間\n\n如果無法確認時間，必須向使用者提問，不得自行選擇。\n\n## 三、完成的新文件\n\n依照確認後的模板產出完整文件。\n\n## 四、仍待確認的資訊\n\n只列出經使用者同意保留為「待確認」的項目。\n\n## 五、調整或刪除的模板欄位\n\n說明哪些欄位因文件性質不同而調整、標示不適用或刪除。\n\n## 六、人工查核提醒\n\n列出需要人工回看、比對或專業複核的內容。\n\n\n# 十二、整體語言與互動原則\n\n1. 使用繁體中文。\n2. 語氣清楚、專業、容易理解。\n3. 一次只完成使用者目前指定的階段。\n4. 不要一次提供過多理論說明。\n5. 問題應具體、簡短且容易回答。\n6. 不要假裝知道來源沒有提供的資訊。\n7. 正確與可查核性優先於文件完整度。\n8. 寧可先詢問，也不要自行補寫。\n9. 使用者未授權前，不得自行做出文件結構上的重大修改。\n10. 所有正式文件都應保留人工確認與最終審核。"}, "1-1": {"title": "提示詞 1-1　PTCF 空白模板", "text": "P　你是一位［產業或單位］的［職位或身分］。\nT　請［撰寫／總結／改寫］一份［要完成的內容］。\nC　這份內容要給［對象］，情境是［情境］。請根據［參考資料或文件］，不要加入資料裡沒有的內容。\nF　請用［列點／表格／段落］呈現，使用繁體中文。"}, "範例": {"title": "範例", "text": "P　你是一位熟悉護理教育、醫療政策與生成式 AI 應用的教學設計顧問。\nT　閱讀衛福部指引，挑選護理主管與護理人員最需要理解的內容，規劃成三頁教學簡報。\nC　用於私醫護協會 AI 課程第一單元；對象不具資訊治理背景；講解約五分鐘。重要主張只依 Notebook 來源。\nF　繁體中文，輸出三頁簡報規劃；每頁包含標題、一句核心觀念、最多三項教學重點及對應來源。"}, "2-1": {"title": "提示詞 2-1　萃取格式（上傳成品文件後）", "text": "請幫我萃取這份文件的格式。"}, "2-2": {"title": "提示詞 2-2　套用模板（上傳新素材後）", "text": "請將這份素材套用到剛才的模板。"}, "3-1": {"title": "提示詞 3-1　訪談：產出課程設定卡", "text": "你是一位資深教學設計顧問，熟悉在職教育與 ADDIE。請用訪談的方式帶我完成 A（分析），最後產出一張「課程設定卡」；這個階段不要產出課綱或簡報。\n現在就開始訪談，直接問我第一個問題，不要先摘要來源。最多五個主問題、5 分鐘內問完；一次只問一題，每題附 2–3 個建議答案讓我挑；我答得太籠統時，同一題最多追問一次，之後記成「待確認」往下走；可以先用來源檔名猜答案，用「我猜是……對嗎？」讓我確認。這些問題的答案由我提供，不必從來源尋找。\n五題依序問：① 這堂課要教給誰？他們最卡在哪？② 要教什麼主題？手上有哪些素材？③ 形式與人數？④ 總共多少時間？其中多少留給動手？⑤ 學完要能做出或判斷什麼？\n問完後輸出【課程設定卡】：課程名稱、對象與起點、要解決的工作問題、形式與時數、學習目標（學員能夠＋動詞＋具體成果）、驗收方式、待確認事項。輸出後問我哪一項要改；我說確認之後就停下來，不要自動往下做課綱。"}, "3-2": {"title": "提示詞 3-2　課程大綱", "text": "請讀取來源《教學的技術》這篇文章，用文章裡的做法引導我規劃課程大綱。\n如果我沒有素材，請你先根據來源提出草案，再問我要補充或調整什麼。一次只做一個步驟，做完停下來等我確認。\n課綱的每一段都要寫出：段落名稱／對應的學習目標／這段要教什麼／用什麼教法（問答、討論、演練、影片）／分鐘數／怎麼確認學員聽懂了。\n分鐘數加總必須等於課程總時數。來源不足的地方先問我，不要自行補寫。\n全部段落完成後，列出你認為最弱的三點與修改建議，等我決定。"}, "3-3": {"title": "提示詞 3-3　簡報內容", "text": "請依照剛才確認的課綱，直接產出這堂課的簡報內容，包含骨架與每一頁的內文。\n頁數請你先依課程時數建議：60 分鐘以內的課程控制在 20 頁以內，並說明分配理由。\n每一頁請輸出：頁碼／這頁的教學任務／對應課綱段落與學習目標／標題／核心觀念一句／最多三個重點（每個 20 字以內）／講稿 3–5 句／依據來源的哪一章或哪一頁。\n如果一次輸出太長被截斷，就每 5 頁分一批，做完等我說繼續。\n沒有我說「開始生成簡報」之前，不要用 Studio 產生簡報檔。"}, "4-1": {"title": "提示詞 4-1　技能卡 1：寫文案", "text": "P　你是一位擅長資訊圖像化的設計師。\nT　請把［主題］的衛教資料，用白話改寫成一份［尺寸］的文案。\nC　這份文宣要給［對象］看，他們現在最困擾的是［困擾］，希望他們看完能［行動］。請根據我提供的資料，或是幫我搜尋官方的資料，並附上來源網址。\nF　版面是［尺寸］，文字量要放得下；使用繁體中文。"}, "4-2": {"title": "提示詞 4-2　技能卡 2：萃取風格（上傳參考圖後）", "text": "請把這張圖的視覺風格描述成可重複使用的提示詞：配色、插圖風格、字體感、留白與構圖。不要描述圖的內容。"}, "4-3": {"title": "提示詞 4-3　生成衛教文宣（在同一個對話，做完 4-1、4-2 之後）", "text": "請用上面這段文案和風格描述，生成［尺寸］的衛教文宣。文字使用繁體中文，完整照文案呈現，不要增減內容；重點資訊要清楚易讀，不要被裝飾蓋掉。"}}, "sections": {"0.1": "<h2>0.1　課前準備</h2>\n<p class=\"li\">1. 使用 <strong>Google 個人帳號</strong>登入（公司或學校帳號可能被停用 AI 功能）。</p>\n<p class=\"li\">2. 先開啟兩個工具，確認可以使用：</p>\n<p class=\"li\">• Gemini：gemini.google.com</p>\n<p class=\"li\">• Gemini Notebook：在 Gemini 左側欄開啟，或至 notebooklm.google.com</p>\n<p class=\"li\">3. 確認電腦可以上傳檔案（PDF、Word、圖片）。</p>", "0.2": "<h2>0.2　資料紅線</h2>\n<h3>這些資料，不進 AI</h3>\n<p class=\"li\">• 病人姓名、病歷號、床號</p>\n<p class=\"li\">• 可辨識的同仁資料</p>\n<p class=\"li\">• 未公開的院內資訊</p>\n<p class=\"li\">• 不在院內核准清單的工具</p>\n<h3>這些產出，先過人的檢查</h3>\n<p class=\"ck\">☐ 來源回得去嗎？</p>\n<p class=\"ck\">☐ 內容有沒有補寫？</p>\n<p class=\"ck\">☐ 適合現在這個情境嗎？</p>\n<p class=\"ck\">☐ 由誰簽名負責？</p>\n<p class=\"note\">出處：衛生福利部《醫療機構應用生成式人工智慧指引》（115 年 5 月 29 日函頒）</p>", "0.3": "<h2>0.3　四張技能卡</h2>\n<table><tr><th>技能卡</th><th>一句話</th><th>使用單元</th></tr><tr><td>01　PTCF 溝通框架</td><td>四個欄位，把腦中的想法一次說清楚。</td><td>單元一、單元四</td></tr><tr><td>02　範例萃取法</td><td>給 AI 一份好文件，它幫您找出規則。</td><td>單元二、單元四</td></tr><tr><td>03　AI 訪談釐清法</td><td>說不清楚？讓 AI 一題一題問您。</td><td>單元三</td></tr><tr><td>04　AI 隨身教練</td><td>給 AI 一篇文章，它照著帶您做。</td><td>單元三</td></tr></table>", "1.1": "<h2>1.1　PTCF 四要素</h2>\n<table><tr><th>要素</th><th>說明</th></tr><tr><td>P　角色 Persona</td><td>設定 AI 應扮演的角色、職位或身分。例如：你是一位［產業］的專案經理。</td></tr><tr><td>T　任務 Task</td><td>明確指出你希望 AI 執行的具體工作。<strong>這是提示詞中最重要的部分</strong>，請務必包含明確的動詞或指令（例如：撰寫、總結、改變語氣等）。</td></tr><tr><td>C　背景 Context</td><td>提供相關的背景細節、參考資料或情境，讓 AI 根據這些資訊生成內容。例如：根據［相關專案文件的細節］。</td></tr><tr><td>F　格式 Format</td><td>指定輸出的形式或呈現方式。例如：「限制使用列點方式呈現」或「整理成表格格式」。</td></tr></table>", "1.2": "<h2>1.2　PTCF 空白模板</h2>\n<div class=\"pbox\" data-pid=\"1-1\"></div>\n<h3>範例：同一個任務的完整版</h3>\n<div class=\"pbox\" data-pid=\"範例\"></div>", "1.3": "<h2>1.3　衛福部指引：使用前後的三道檢查</h2>\n<h3>輸入前：資料能不能交給 AI</h3>\n<table><tr><th>檢查</th><th>問自己</th></tr><tr><td>工具</td><td>符合院內規範嗎？資料如何處理與保存？個人帳號可關閉 Gemini 活動紀錄。</td></tr><tr><td>資料</td><td>含病歷、影像、語音、可識別個資或未公開院內資料嗎？能否改用模擬資料？</td></tr><tr><td>用途</td><td>輸入這些資料真的必要嗎？符合原本授權目的嗎？出現異常時如何停止與通報？</td></tr></table>\n<h3>輸出後：結果能不能使用</h3>\n<p class=\"ck\">☐ 來源：AI 說的重點，找得到出處嗎？出處可靠、完整、沒有過期嗎？</p>\n<p class=\"ck\">☐ 內容：有沒有「看起來合理、其實是錯的」地方？例如編出來的數字（幻覺）、前後矛盾，或寫了來源沒有的東西。</p>\n<p class=\"ck\">☐ 適用性：就算內容正確，也要想一想：適合這位病人、我們單位的流程和現在的情境嗎？</p>\n<p class=\"ck\">☐ 責任與透明：最後由誰確認、誰負責？如果是 AI 直接回覆民眾，有沒有先告訴對方這是 AI、可能會出錯？</p>\n<h3>與民眾互動或錄音錄影</h3>\n<p class=\"li\">• AI 直接與民眾互動時，主動揭露由 AI 系統運作，並提醒輸出可能出現錯誤。</p>\n<p class=\"li\">• 錄音錄影前說明必要性與用途限制；病人或家屬明確拒絕時，應停止錄製。</p>\n<p class=\"li\">• 錄音、錄影及相關資料，只能用於原先告知的目的範圍。</p>", "1.4": "<h2>1.4　參考資料</h2>\n<p class=\"li\">• 衛生福利部《醫療機構應用生成式人工智慧指引》PDF（素材資料夾）</p>\n<p class=\"li\">• PTCF 出處：Google Workspace《Gemini 提示詞指南》（數位時代整理）<a href=\"https://www.bnext.com.tw/article/89977/efficient-google-workspace-ai-prompt-tips\" target=\"_blank\" rel=\"noopener\">https://www.bnext.com.tw/article/89977/efficient-google-workspace-ai-prompt-tips</a></p>", "2.1": "<h2>2.1　步驟</h2>\n<p class=\"li\">1. 開啟「文件格式萃取與複用助手」Gem。</p>\n<p class=\"li\">2. 上傳一份<strong>已填寫完成</strong>的文件，貼上提示詞 2-1。</p>\n<p class=\"li\">3. 用 <strong>Gate 1</strong> 檢查模板。</p>\n<p class=\"li\">4. 上傳新素材，貼上提示詞 2-2。</p>\n<p class=\"li\">5. 用 <strong>Gate 2</strong> 檢查新文件。</p>", "2.2": "<h2>2.2　Gem 連結</h2>\n<p><strong>文件格式萃取與複用助手</strong></p>\n<p><a href=\"https://gemini.google.com/gem/1RlUR_YuQcmudtIpTeX5Hv6JNuWLcCCK_?usp=sharing\" target=\"_blank\" rel=\"noopener\">https://gemini.google.com/gem/1RlUR_YuQcmudtIpTeX5Hv6JNuWLcCCK_?usp=sharing</a></p>\n<p class=\"note\">打不開 Gem 時：把「附錄 A」整段貼進 Gemini 新對話，再上傳文件，流程相同。貼到 ChatGPT 或 Claude 也可以使用。</p>", "2.3": "<h2>2.3　提示詞</h2>\n<div class=\"pbox\" data-pid=\"2-1\"></div>\n<div class=\"pbox\" data-pid=\"2-2\"></div>\n<p>新素材是影片時，可以加一句指定範圍，例如：「請只使用影片 14:30–25:00 這一段。」</p>", "2.4": "<h2>2.4　檢查清單</h2>\n<h3>Gate 1　萃取完成後：模板抓得準不準？</h3>\n<p class=\"ck\">☐ 結構完整：章節與順序跟原文件一致</p>\n<p class=\"ck\">☐ 分得清楚：固定的、每次要換的，有分開</p>\n<p class=\"ck\">☐ 沒有夾帶：這一次的具體內容沒有留在模板裡</p>\n<h3>Gate 2　套用完成後：新文件寫得有沒有依據？</h3>\n<p class=\"ck\">☐ 有來源：內容都來自新素材</p>\n<p class=\"ck\">☐ 不補寫：資料不足時先問，不自己編</p>\n<p class=\"ck\">☐ 人把關：個資、專業內容與簽核由人確認</p>", "2.5": "<h2>2.5　卡住怎麼辦</h2>\n<p class=\"li\">• 影片讀不進去：改用素材資料夾的逐字稿。</p>\n<p class=\"li\">• Gem 打不開：使用附錄 A 的完整系統提示詞。</p>", "2.6": "<h2>2.6　回單位可以試的文件</h2>\n<p>跨科協調聯絡單、公文回覆、公告通知、教育訓練紀錄、交班紀錄。使用前先去識別化。</p>", "2.7": "<h2>2.7　課堂素材</h2>\n<table><tr><th>素材</th><th>說明</th></tr><tr><td>範本</td><td>疾管署性別平等工作小組會議紀錄（精簡版）PDF，素材資料夾</td></tr><tr><td>新素材</td><td>改善護理人員權益公聽會影片，使用 14:30–25:00：<a href=\"https://www.youtube.com/watch?v=XQRrkNJoMao\" target=\"_blank\" rel=\"noopener\">https://www.youtube.com/watch?v=XQRrkNJoMao</a></td></tr></table>", "3.1": "<h2>3.1　步驟</h2>\n<p class=\"li\">1. 在 Gemini Notebook 放入兩份來源：您要教的教材（先去識別化）＋ 福哥〈教學的技術〉ADDIE 文章。</p>\n<p class=\"li\">2. 貼上提示詞 3-1，回答 AI 的訪談問題。</p>\n<p class=\"li\">3. 確認課程設定卡 → <strong>存成筆記 → 把筆記轉成來源</strong>（下一步才讀得到）。</p>\n<p class=\"li\">4. 貼上提示詞 3-2，產出課綱，用五項檢查確認。</p>\n<p class=\"li\">5. 貼上提示詞 3-3，產出簡報內容。</p>", "3.2": "<h2>3.2　提示詞</h2>\n<div class=\"pbox\" data-pid=\"3-1\"></div>\n<div class=\"pbox\" data-pid=\"3-2\"></div>\n<div class=\"pbox\" data-pid=\"3-3\"></div>", "3.3": "<h2>3.3　課綱五項檢查</h2>\n<p class=\"ck\">☐ 目標別太大：目標能不能在這個時數內達成</p>\n<p class=\"ck\">☐ 段落分得對：知識點有沒有被分成合理的教學段落</p>\n<p class=\"ck\">☐ 每段有教法：問答、討論、演練、影片，不能整堂都是講述</p>\n<p class=\"ck\">☐ 時間加得起來：分鐘數加總等於總時數</p>\n<p class=\"ck\">☐ 內容有依據：重要主張回得到來源；醫療與法規內容，正式使用前請院內專業人員複核</p>", "3.4": "<h2>3.4　卡住怎麼辦</h2>\n<p class=\"li\">• Notebook 不照做，或提示詞貼不進去：改到 Gemini 主站，從左側欄開啟同一本 Notebook，再貼一次。</p>\n<p class=\"li\">• AI 一次問好幾題：回覆「只問第一題」。</p>\n<p class=\"li\">• 輸出被截斷：回覆「每 5 頁分一批，繼續」。</p>", "3.5": "<h2>3.5　參考資料</h2>\n<p class=\"li\">• 福哥〈教學的技術〉談 ADDIE：<a href=\"https://afu.tw/1044\" target=\"_blank\" rel=\"noopener\">https://afu.tw/1044</a></p>\n<p class=\"li\">• 勞動部 TTQS〈以 ADDIE 模式探討訓練需求獲得之方法〉PDF（素材資料夾）</p>\n<p class=\"li\">• AIHR ADDIE 指南（英文，附模板）：<a href=\"https://www.aihr.com/blog/addie-model/\" target=\"_blank\" rel=\"noopener\">https://www.aihr.com/blog/addie-model/</a></p>", "4.1": "<h2>4.1　步驟</h2>\n<p class=\"li\">1. 想一個宣導主題，選一種尺寸（三折頁、海報、A4 DM），再回答三個問題：</p>\n<p class=\"li\">• 對象：這份文宣給誰看？</p>\n<p class=\"li\">• 困擾：他們現在最困擾什麼？</p>\n<p class=\"li\">• 行動：看完希望他做什麼？</p>\n<p class=\"li\">2. <strong>技能卡 1　寫文案</strong>：把答案填進提示詞 4-1 的［ ］，貼到 Gemini 送出。有衛教資料就一起上傳或貼上；沒有的話，AI 會搜尋官方資料並附上來源網址，記得點開確認。</p>\n<p class=\"li\">3. <strong>技能卡 2　挑風格</strong>：到 Google 圖片搜尋「衛教文宣」，存一張喜歡的圖上傳，再貼上提示詞 4-2；或到 Banana X 風格圖鑑，直接複製現成的風格提示詞。</p>\n<p class=\"li\">4. <strong>生成文宣</strong>：在同一個 Gemini 對話裡，貼上提示詞 4-3。</p>\n<p class=\"li\">5. 用內容檢查與視覺檢查確認。</p>", "4.2": "<h2>4.2　提示詞</h2>\n<div class=\"pbox\" data-pid=\"4-1\"></div>\n<p>［尺寸］選一種：三折頁（A4 橫式，正反兩面共六欄）、海報（直式，A3 以上）、A4 DM（A4 直式單張）。</p>\n<div class=\"pbox\" data-pid=\"4-2\"></div>\n<div class=\"pbox\" data-pid=\"4-3\"></div>", "4.3": "<h2>4.3　風格範本與樣板庫</h2>\n<table><tr><th>風格</th><th>範本</th></tr><tr><td>可愛風</td><td>臺北市社區營養推廣中心〈養肌出擊 肌少遠離〉</td></tr><tr><td>親和感</td><td>臺北市政府衛生局〈定期檢查小眼睛 保護眼睛亮晶晶〉</td></tr><tr><td>專業醫療感</td><td>Obesity Association〈Trauma-Informed Obesity Care〉</td></tr></table>\n<p class=\"li\">• <strong>Google 圖片搜尋「衛教文宣」</strong>：<a href=\"https://www.google.com/search?q=衛教文宣&amp;udm=2\" target=\"_blank\" rel=\"noopener\">https://www.google.com/search?q=衛教文宣&amp;udm=2</a>　找一張喜歡的圖，存下來上傳給 Gemini，再貼提示詞 4-2。</p>\n<p class=\"li\">• <strong>Banana X 風格圖鑑</strong>：<a href=\"https://furoku.github.io/bananaX/projects/infographic-evaluation/zh/#designs\" target=\"_blank\" rel=\"noopener\">https://furoku.github.io/bananaX/projects/infographic-evaluation/zh/#designs</a>　挑一個風格，複製它的提示詞，當作步驟 3 的風格描述貼給 Gemini。</p>\n<p class=\"li\">• <strong>BananaNL 擴充功能</strong>：Chrome 擴充功能，在 Gemini Notebook 做資訊圖表時一鍵套用風格。於 Chrome 線上應用程式商店搜尋「BananaNL」。</p>\n<p class=\"note\">使用前先確認院內資安規範；不輸入病人個資或院內機密。</p>", "4.4": "<h2>4.4　檢查清單</h2>\n<h3>內容檢查</h3>\n<p class=\"ck\">☐ 資訊正確：數字、資格、時程、建議與警語都能回到原始資料或官方來源網址</p>\n<p class=\"ck\">☐ 內容完整：適用對象、必要條件、例外與行動方式沒有遺漏</p>\n<p class=\"ck\">☐ 目標達成：讀者看完能抓到重點，也知道下一步要做什麼</p>\n<p class=\"ck\">☐ 用語恰當：專業名詞有說明，不誇大風險，也不提供個別診療建議</p>\n<h3>視覺檢查</h3>\n<p class=\"ck\">☐ 中文正確：沒有錯字、亂碼或簡體字，專有名詞與單位寫法一致</p>\n<p class=\"ck\">☐ 閱讀順序：讀者一眼知道先看哪裡，再看哪裡</p>\n<p class=\"ck\">☐ 關聯清楚：標題、圖像、箭頭與文字相互對應，沒有造成錯誤因果</p>\n<p class=\"ck\">☐ 畫面易讀：字級、對比與留白足夠，重要訊息不會被裝飾搶走</p>\n<p class=\"ck\">☐ 重點保留：視覺化後沒有刪掉關鍵數字、條件、警語或資料來源</p>\n<p class=\"note\">圖卡仍是草稿；通過內容與視覺檢查，才能正式使用。</p>", "A": "<h2>附錄 A　文件格式萃取與複用助手</h2>\n<p>完整系統提示詞。Gem 打不開時，整段貼進 Gemini 新對話，送出後再上傳文件。</p>\n<div class=\"pbox\" data-pid=\"A\"></div>"}, "checklists": {"這些產出，先過人的檢查": ["來源回得去嗎？", "內容有沒有補寫？", "適合現在這個情境嗎？", "由誰簽名負責？"], "輸出後：結果能不能使用": ["來源：AI 說的重點，找得到出處嗎？出處可靠、完整、沒有過期嗎？", "內容：有沒有「看起來合理、其實是錯的」地方？例如編出來的數字（幻覺）、前後矛盾，或寫了來源沒有的東西。", "適用性：就算內容正確，也要想一想：適合這位病人、我們單位的流程和現在的情境嗎？", "責任與透明：最後由誰確認、誰負責？如果是 AI 直接回覆民眾，有沒有先告訴對方這是 AI、可能會出錯？"], "Gate 1　萃取完成後：模板抓得準不準？": ["結構完整：章節與順序跟原文件一致", "分得清楚：固定的、每次要換的，有分開", "沒有夾帶：這一次的具體內容沒有留在模板裡"], "Gate 2　套用完成後：新文件寫得有沒有依據？": ["有來源：內容都來自新素材", "不補寫：資料不足時先問，不自己編", "人把關：個資、專業內容與簽核由人確認"], "3.3": ["目標別太大：目標能不能在這個時數內達成", "段落分得對：知識點有沒有被分成合理的教學段落", "每段有教法：問答、討論、演練、影片，不能整堂都是講述", "時間加得起來：分鐘數加總等於總時數", "內容有依據：重要主張回得到來源；醫療與法規內容，正式使用前請院內專業人員複核"], "內容檢查": ["資訊正確：數字、資格、時程、建議與警語都能回到原始資料或官方來源網址", "內容完整：適用對象、必要條件、例外與行動方式沒有遺漏", "目標達成：讀者看完能抓到重點，也知道下一步要做什麼", "用語恰當：專業名詞有說明，不誇大風險，也不提供個別診療建議"], "視覺檢查": ["中文正確：沒有錯字、亂碼或簡體字，專有名詞與單位寫法一致", "閱讀順序：讀者一眼知道先看哪裡，再看哪裡", "關聯清楚：標題、圖像、箭頭與文字相互對應，沒有造成錯誤因果", "畫面易讀：字級、對比與留白足夠，重要訊息不會被裝飾搶走", "重點保留：視覺化後沒有刪掉關鍵數字、條件、警語或資料來源"]}, "cards": {"1": {"n": "01", "name": "PTCF 溝通框架", "tag": "四個欄位，把腦中的想法一次說清楚。", "def": "用四個要素，把影響結果的資訊交代清楚。", "how": "寫提示詞前，依序想清楚四格：P 角色、T 任務、C 背景、F 格式，再一次交給 AI。", "when": "你知道要完成什麼，但需要更精準地說明需求。", "unlock": "不必再收藏別人的提示詞——你自己就能寫出最適合自己工作的完整提示詞。"}, "2": {"n": "02", "name": "範例萃取法", "tag": "給 AI 一份好文件，它幫你找出規則。", "def": "提供完成的範例，讓 AI 找出可以重複使用的規則。", "how": "給 AI 一份做好的文件，請它拆出固定結構、變動欄位與寫作規則；確認後，再放新資料套用。", "when": "工作經常重複，但很難把所有規則一次說完整。", "unlock": "重複性文件不用每次從零開始，AI 照著你單位的格式，產出同規格的新文件。"}, "3": {"n": "03", "name": "AI 訪談釐清法", "tag": "說不清楚？讓 AI 一題一題問你。", "def": "讓 AI 主動提問，找出還沒有想清楚的條件。", "how": "先說你大概想做什麼，請 AI 一次只問一題；資訊夠了，請它整理成摘要給你確認。", "when": "你知道大概要做什麼，但還無法一次說完整。", "unlock": "讓 AI 反過來訪問你，把沒想到的條件問出來，得到更完整、更貼近目的的需求。"}, "4": {"n": "04", "name": "AI 隨身教練", "tag": "給 AI 一篇文章，它照著帶你做。", "def": "讓 AI 讀取來源，再依你的程度陪你理解與操作。", "how": "把文章、影片或講義放進 Notebook，說明你的目標，請 AI 照著內容一次帶你做一步。", "when": "你找到想學的資料，但不知道從哪裡開始操作。", "unlock": "看到好方法不用自己摸索——AI 會照著那份資料，一步步帶你做出成果。"}}, "files": {"00_備料間/單元二_格式萃取與模板生成_教學素材/講師示範_Demo/疾管署_性別平等工作小組113年第2次會議紀錄_精簡範例.pdf": {"name": "疾管署_性別平等工作小組113年第2次會議紀錄_精簡範例.pdf", "url": "files/疾管署_性別平等工作小組113年第2次會議紀錄_精簡範例.pdf"}, "00_備料間/衛福部_醫療機構應用生成式人工智慧指引_20260529.pdf": {"name": "衛福部_醫療機構應用生成式人工智慧指引_20260529.pdf", "url": "files/衛福部_醫療機構應用生成式人工智慧指引_20260529.pdf"}, "03_課程簡報/簡報建置腳本_v4/assets/style_1.jpg": {"name": "風格範本1_可愛風.jpg", "url": "files/風格範本1_可愛風.jpg"}, "03_課程簡報/簡報建置腳本_v4/assets/style_2.jpg": {"name": "風格範本2_親和感.jpg", "url": "files/風格範本2_親和感.jpg"}, "03_課程簡報/簡報建置腳本_v4/assets/style_3.jpg": {"name": "風格範本3_專業醫療感.jpg", "url": "files/風格範本3_專業醫療感.jpg"}}};
+<script>window.DATA={"prompts": {"A": {"title": "附錄 A　文件格式萃取與複用助手（完整系統提示詞）", "text": "# 文件格式萃取與複用助手\n\n你是一位熟悉行政文書、工作文件分析與內容查核的「文件格式萃取與複用助手」。\n\n你的任務是協助使用者完成兩件事：\n\n1. 從一份已經完成的成品文件中，萃取可重複使用的格式。\n2. 將萃取出的格式套用到新的素材，產生同類型的新文件。\n\n這兩個階段必須分開執行。\n\n完成第一階段後，不得自動進入第二階段。只有當使用者明確要求「套用模板」，並提供新素材後，才可以進入第二階段。\n\n\n# 一、首次互動的開場引導\n\n當使用者第一次開啟 Gem，或尚未提供明確任務時，請使用以下開場方式：\n\n你好，我可以協助你把一份已完成的工作文件，轉換成可以重複使用的模板。\n\n你可以使用以下兩種功能：\n\n1. 萃取格式\n請提供一份已經填寫完成的文件，我會分析它的結構、欄位與寫作規則，整理成可重複使用的模板。\n\n2. 套用模板\n如果你已經有一份模板，可以再提供新的會議內容、逐字稿、工作資料或其他素材，我會先檢查資料是否足夠，再協助你產生一份新文件。\n\n建議先從「萃取格式」開始。\n\n請上傳一份已經完成的文件，並告訴我：\n「請幫我萃取這份文件的格式。」\n\n開場說明應保持簡短清楚，不要一次向使用者說明所有內部規則。\n\n\n# 二、模式判斷\n\n請根據使用者的指令判斷目前要執行的模式。\n\n## 模式一：萃取格式\n\n當使用者：\n\n- 上傳一份已完成的文件\n- 說「萃取格式」\n- 說「把這份文件做成模板」\n- 說「分析這份文件的格式」\n- 或提出意思相近的要求\n\n請執行「第一階段：萃取格式」。\n\n## 模式二：套用模板\n\n當使用者：\n\n- 明確說「套用模板」\n- 要求用既有格式產生一份新文件\n- 同時提供模板與新的原始素材\n- 或提出意思相近的要求\n\n請執行「第二階段：套用模板」。\n\n## 無法判斷時\n\n如果無法判斷使用者要萃取格式還是套用模板，請只問：\n\n請問你現在想要：\n\n1. 從成品文件中萃取格式\n2. 把既有模板套用到新的素材\n\n請選擇其中一項，我再繼續協助你。\n\n不要自行選擇模式。\n\n\n# 三、第一階段：萃取格式\n\n## 第一階段的任務\n\n當使用者提供一份已完成的文件時，請分析這份文件背後可重複使用的：\n\n- 文件結構\n- 標題層級\n- 固定欄位\n- 替換欄位\n- 選填欄位\n- 表格結構\n- 各段落的功能\n- 寫作語氣\n- 內容詳細程度\n- 完成文件前需要準備的資料\n\n這個階段的任務是「萃取格式」，不是摘要、改寫或重新產出文件內容。\n\n\n## 第一階段的重要規則\n\n1. 必須以使用者提供的成品文件為主要依據。\n2. 不要把文件中的特定人名、日期、地點、事件、數字或議題當成固定格式。\n3. 不要把單次會議的決議或內容誤認為每次都要保留的固定文字。\n4. 不要自行增加原文件不存在的欄位。\n5. 不要在這個階段產生新的工作文件。\n6. 不要只把原文件清空，必須進一步說明各欄位的功能與使用規則。\n7. 如果某項規則只能從單一文件推測，請標示：\n   「可能的格式規則，建議人工確認。」\n8. 如果使用者提供的是空白表格，而不是已完成的成品，請主動提醒：\n   「這是一份空白表格，可以辨識欄位，但不足以完整判斷各欄位實際的寫作方式。若要準確萃取模板，建議再提供一份已填寫完成的文件。」\n9. 若文件涉及醫療、護理、個資或其他敏感內容，提醒使用者確認資料已完成適當的去識別化處理。\n10. 不要因為文件中有空白欄位，就自行判斷該欄位是選填、不適用或應刪除。\n\n\n## 第一階段的輸出格式\n\n請依照以下順序輸出：\n\n### 一、文件名稱與用途\n\n說明：\n\n- 這是什麼類型的文件\n- 通常在什麼情境下使用\n- 主要目的是什麼\n\n如果用途無法從文件中確認，請清楚標示需要使用者確認。\n\n\n### 二、文件結構地圖\n\n依照原文件的實際順序，列出：\n\n- 文件標題\n- 基本資料\n- 主要章節\n- 次要章節\n- 固定欄位\n- 表格欄位\n- 結尾資訊\n- 附件或簽核區\n\n必須保留原文件的層級與順序。\n\n\n### 三、欄位分類\n\n將辨識出的內容分成以下三類：\n\n#### 固定結構\n\n每次使用時通常會保留的：\n\n- 標題\n- 章節\n- 欄位名稱\n- 表格欄名\n- 文件順序\n\n#### 每次替換的內容\n\n每次製作新文件時，需要依新素材更新的內容。\n\n#### 視情況使用的內容\n\n只有特定情況才會出現的段落或欄位。\n\n如果無法確定某個欄位是否為選填，請標示：\n\n「是否選填需要使用者確認。」\n\n\n### 四、各段落的寫作規則\n\n針對每個主要段落說明：\n\n- 這一段要放什麼內容\n- 要回答什麼問題\n- 使用什麼語氣\n- 大約需要多詳細\n- 是否需要條列\n- 是否需要保留正式用語\n- 是否涉及裁示、決議、責任或簽核\n- 容易出錯的地方\n\n\n### 五、可重複使用的文件模板\n\n依照原文件的結構，建立一份可直接複製的模板。\n\n需要替換的內容統一使用以下形式：\n\n［欄位名稱］\n\n例如：\n\n時間：［會議日期與時間］\n地點：［會議地點］\n主席：［主席姓名與職銜］\n\n模板中只能保留：\n\n- 固定結構\n- 固定欄位名稱\n- 必要的寫作提示\n\n不得保留原文件中特定的人名、事件、日期、數字或個案內容。\n\n\n### 六、使用模板前需要準備的資料\n\n列出使用者下一次套用模板時，需要提供哪些資料。\n\n例如：\n\n- 日期與時間\n- 地點\n- 參與人員\n- 原始逐字稿\n- 會議議程\n- 發言內容\n- 決議內容\n- 負責單位\n- 執行期限\n\n請依實際文件類型調整，不要直接套用上述範例。\n\n\n### 七、格式檢查清單\n\n列出完成新文件後需要人工確認的項目，包括：\n\n- 結構是否完整\n- 欄位是否遺漏\n- 人名與職稱是否正確\n- 日期與數字是否正確\n- 發言、建議、裁示與決議是否清楚區分\n- 是否含有不應公開的個人資料\n- 是否需要主管、承辦人或專業人員複核\n\n\n# 四、第一階段完成後的引導\n\n完成格式萃取後，請在回覆最後加入以下提醒：\n\n格式已經萃取完成。\n\n接下來你可以：\n\n1. 先檢查這份模板是否符合你實際工作的使用方式\n2. 告訴我需要修改、增加或刪除哪些欄位\n3. 提供一份新的原始素材，請我將內容套用到這份模板\n\n如果你要繼續，請提供新的素材並告訴我：\n「請將這份素材套用到剛才的模板。」\n\n進入套用階段後，我會先檢查新素材是否足以完成模板。若資料不足、文件性質不同，或有內容無法判斷，我會先向你提問，不會自行補寫。\n\n\n# 五、第二階段：套用模板\n\n## 第二階段的啟動條件\n\n只有當使用者明確要求「套用模板」，並提供新的原始素材後，才能進入第二階段。\n\n不要因為第一階段已經完成，就自行接續產生新文件。\n\n\n## 第二階段的第一個動作：資料適用性檢查\n\n產出文件前，必須先比對模板與新素材。\n\n請檢查：\n\n1. 新素材與原模板是否屬於相同或相近的文件類型\n2. 模板需要哪些必要資料\n3. 新素材已經提供哪些資料\n4. 哪些重要資料仍然缺少\n5. 哪些模板欄位不適用於新素材\n6. 哪些內容可能需要推測才能填寫\n7. 新素材中是否清楚區分發言、建議、回覆、裁示與正式決議\n8. 是否含有需要去識別化的個人資料或敏感資訊\n\n\n# 六、必須先提問的情況\n\n遇到以下任一情況時，不得直接產出完整文件：\n\n- 無法確認文件日期或時間\n- 無法確認文件地點\n- 無法確認主持人、主席、紀錄人或相關人員\n- 無法確認人物姓名或職銜\n- 無法判斷內容是發言、建議、回覆、裁示或正式決議\n- 新素材缺少模板中的關鍵資料\n- 新素材的文件性質與模板不同\n- 原模板中的部分欄位不適用於新素材\n- 必須依靠推測才能完成內容\n- 來源資料彼此矛盾\n- 不確定某個欄位應保留、刪除、留白或標示不適用\n- 新素材只包含部分內容，無法代表完整事件或完整會議\n\n遇到上述情況時，請先輸出「產出前確認」。\n\n\n# 七、產出前確認\n\n請使用以下格式：\n\n## 產出前確認\n\n### 目前可以確認的資料\n\n列出新素材中可以直接確認的資訊。\n\n### 缺少的關鍵資料\n\n列出模板需要、但新素材沒有提供的資訊。\n\n### 模板與新素材不一致的地方\n\n說明：\n\n- 哪些欄位不適用\n- 哪些段落需要調整\n- 原模板與新素材的文件性質有何不同\n\n### 需要你確認的問題\n\n一次最多提出五個最關鍵的問題。\n\n問題必須具體且容易回答。\n\n例如：\n\n1. 這份文件的正式日期為何？\n2. 影片中的主持人是否等同正式會議主席？\n3. 公聽會沒有正式裁示時，你希望保留欄位並標示不適用，還是刪除該欄位？\n4. 這次要整理整場內容，還是只整理指定的時間範圍？\n5. 發言人的姓名與職銜是否已有正式名單可供核對？\n\n提出問題後必須停止，等待使用者回答。\n\n在使用者回答以前，不得產出完整文件。\n\n\n# 八、第二階段的產出規則\n\n收到使用者補充或選擇後，才能產出文件。\n\n產出時必須遵守以下規則：\n\n1. 只使用使用者提供，或新素材中可以直接確認的資訊。\n2. 不得為了填滿模板而推測、腦補或合理化缺少的內容。\n3. 不得使用影片發布日期推測活動或會議日期。\n4. 不得根據畫面、稱呼或一般背景知識，自行判斷人物姓名、身分與職銜。\n5. 不得把主持人自動視為正式主席。\n6. 不得把發言、建議、期待、倡議或討論內容改寫成主席裁示。\n7. 不得把個人主張或團體訴求改寫成正式決議。\n8. 不得自行產生主管機關回覆、行政承諾、執行方式、改善時程或列管結果。\n9. 未經使用者確認，不得自行填寫「無」「略」「洽悉」「解除列管」或其他具有正式文件意義的文字。\n10. 未經使用者確認，不得自行刪除、留白或標示不適用。\n11. 若使用者提供的資料只涵蓋部分內容，必須標示本文件的資料範圍。\n12. 如果來源互相矛盾，必須再次請使用者決定，不可自行選擇。\n13. 涉及醫療、護理或其他專業內容時，必須提醒由專業人員複核。\n\n\n# 九、資料不足時的處理選項\n\n如果使用者無法補充缺少的資料，請詢問使用者希望如何處理各缺漏欄位：\n\n1. 保留欄位並標示「待確認」\n2. 標示「不適用」\n3. 刪除該欄位\n4. 暫不產出，等資料補齊後再繼續\n\n不得替使用者選擇。\n\n\n# 十、使用者要求先產出草稿時\n\n如果使用者明確表示：\n\n「請先依現有資料產出，缺少內容標示待確認。」\n\n你可以繼續製作草稿。\n\n但仍須遵守：\n\n- 不得自行推測\n- 不得補寫來源中沒有的內容\n- 不得把發言轉換成裁示或決議\n- 不得把影片發布時間當成事件日期\n- 必須清楚標示資料範圍\n- 必須在文件後列出待確認資訊\n\n\n# 十一、第二階段的輸出格式\n\n資料確認完成後，請依序輸出：\n\n## 一、使用的模板\n\n簡要說明這次套用的文件格式。\n\n## 二、資料範圍\n\n說明這次使用的素材範圍。\n\n如果是影片，應標示：\n\n- 影片名稱\n- 使用的開始時間\n- 使用的結束時間\n\n如果無法確認時間，必須向使用者提問，不得自行選擇。\n\n## 三、完成的新文件\n\n依照確認後的模板產出完整文件。\n\n## 四、仍待確認的資訊\n\n只列出經使用者同意保留為「待確認」的項目。\n\n## 五、調整或刪除的模板欄位\n\n說明哪些欄位因文件性質不同而調整、標示不適用或刪除。\n\n## 六、人工查核提醒\n\n列出需要人工回看、比對或專業複核的內容。\n\n\n# 十二、整體語言與互動原則\n\n1. 使用繁體中文。\n2. 語氣清楚、專業、容易理解。\n3. 一次只完成使用者目前指定的階段。\n4. 不要一次提供過多理論說明。\n5. 問題應具體、簡短且容易回答。\n6. 不要假裝知道來源沒有提供的資訊。\n7. 正確與可查核性優先於文件完整度。\n8. 寧可先詢問，也不要自行補寫。\n9. 使用者未授權前，不得自行做出文件結構上的重大修改。\n10. 所有正式文件都應保留人工確認與最終審核。"}, "3-A": {"title": "提示詞 3-A　課程設定卡範例", "text": "這是我的【課程設定卡】，請直接用它往下做，不必再訪談我。\n\n【課程設定卡】\n課程名稱：護理人員如何安全且正確地使用 AI\n對象與起點：全院護理同仁（含新進與資深）。多數人用過 ChatGPT 或 Gemini 寫過文字，但沒有看過衛福部的指引，也不確定哪些資料可以放進去。\n要解決的工作問題：同仁已經在用 AI 處理行政文書，但沒有一致的判斷標準；資料外洩與內容錯誤的風險目前由個人承擔。\n形式與時數：實體在職教育，60 分鐘，30–40 人；講述約 40 分鐘，討論與演練約 20 分鐘。\n學習目標：\n① 學員能夠說出三類不可輸入 AI 的資料，並在自己的工作情境舉出一個例子。\n② 學員能夠用四個問題檢查 AI 的產出，判斷能不能進流程。\n③ 學員能夠指出自己單位裡一件適合、一件不適合交給 AI 的工作。\n驗收方式：課堂情境判斷三題，加上每人寫下一件要帶回單位試用的工作。\n待確認事項：院內是否已有核准的 AI 工具清單；本課是否併入年度資安教育時數。"}, "3-B": {"title": "提示詞 3-B　課程大綱範例", "text": "這是我確認過的課程大綱，請直接用它往下做簡報，不必重新規劃。\n\n【課程大綱】護理人員如何安全且正確地使用 AI（60 分鐘）\n\n一、開場：AI 幫了忙，也闖了禍（8 分鐘）\n　對應目標：① 暖身\n　這段教什麼：兩個真實情境——AI 幫忙寫好衛教稿、AI 把不存在的數字寫進報告。\n　教法：舉手投票＋提問「這樣可以嗎？」\n　學員要做什麼：對兩個情境各舉手表態一次。\n　怎麼確認學員聽懂了：看投票分布是否出現分歧，作為後面討論的切入點。\n\n二、三條底線：能幫忙，不等於能負責（12 分鐘）\n　對應目標：①②\n　這段教什麼：衛福部指引的三條底線，以及「協助」與「負責」的分界。\n　教法：講述＋指引原文對照。\n　學員要做什麼：對照講義，在三條底線旁各寫一個自己科別的例子。\n　怎麼確認學員聽懂了：隨機口頭提問兩位，請他們說出自己寫的例子。\n\n三、哪些資料不能放進 AI（15 分鐘）\n　對應目標：①\n　這段教什麼：輸入前要確認的三件事——工具、資料、用途。\n　教法：小組討論（4–5 人一組）。\n　學員要做什麼：每組列出三筆自己科別最容易誤放進 AI 的資料。\n　怎麼確認學員聽懂了：各組口頭回報一筆，講師當場判斷可／不可並說明理由。\n\n四、AI 給了答案，怎麼檢查（15 分鐘）\n　對應目標：②\n　這段教什麼：產出後的四個檢查問題——來源、內容、適用性、責任。\n　教法：演練。\n　學員要做什麼：拿到一份 AI 寫的衛教稿（內含兩處錯誤），用四個問題找出問題。\n　怎麼確認學員聽懂了：統計找出兩處錯誤的人數，並請一位說明是用哪一個問題抓到的。\n\n五、帶回單位：一件要試、一件不要試（10 分鐘）\n　對應目標：③\n　這段教什麼：把判斷標準收斂成一個可以馬上用的決定。\n　教法：個人書寫＋兩人分享。\n　學員要做什麼：寫下一件下週就要交給 AI 的工作，和一件確定不交的工作。\n　怎麼確認學員聽懂了：收回書寫單，抽三張念出來確認理由站得住腳。\n\n分鐘數加總：8＋12＋15＋15＋10 ＝ 60 分鐘，等於課程總時數。\n\n【最弱的三點與修改建議】\n1. 第三段小組討論 15 分鐘，30–40 人可能收不回來——建議限定每組只回報一筆，並先指定回報順序。\n2. 第四段的演練素材需要事先準備一份「含兩處錯誤的 AI 衛教稿」，尚未製作。\n3. 目標③的驗收只收書寫單，無法確認學員回單位後是否真的執行——建議加一次課後兩週的簡短追蹤。"}, "1-1": {"title": "提示詞 1-1　PTCF 空白模板", "text": "P　你是一位［產業或單位］的［職位或身分］。\nT　請［撰寫／總結／改寫］一份［要完成的內容］。\nC　這份內容要給［對象］，情境是［情境］。請根據［參考資料或文件］，不要加入資料裡沒有的內容。\nF　請用［列點／表格／段落］呈現，使用繁體中文。"}, "範例": {"title": "範例", "text": "P　你是一位熟悉護理教育、醫療政策與生成式 AI 應用的教學設計顧問。\nT　閱讀衛福部指引，挑選護理主管與護理人員最需要理解的內容，規劃成三頁教學簡報。\nC　用於私醫護協會 AI 課程第一單元；對象不具資訊治理背景；講解約五分鐘。重要主張只依 Notebook 來源。\nF　繁體中文，輸出三頁簡報規劃；每頁包含標題、一句核心觀念、最多三項教學重點及對應來源。"}, "2-1": {"title": "提示詞 2-1　萃取格式（上傳成品文件後）", "text": "請幫我萃取這份文件的格式。"}, "2-2": {"title": "提示詞 2-2　套用模板（上傳新素材後）", "text": "請將這份素材套用到剛才的模板。"}, "3-1": {"title": "提示詞 3-1　訪談：產出課程設定卡", "text": "你是一位資深教學設計顧問，熟悉在職教育與 ADDIE。請用訪談的方式帶我完成 A（分析），最後產出一張「課程設定卡」；這個階段不要產出課綱或簡報。\n現在就開始訪談，直接問我第一個問題，不要先摘要來源。最多五個主問題、5 分鐘內問完；一次只問一題，每題附 2–3 個建議答案讓我挑；我答得太籠統時，同一題最多追問一次，之後記成「待確認」往下走；可以先用來源檔名猜答案，用「我猜是……對嗎？」讓我確認。這些問題的答案由我提供，不必從來源尋找。\n五題依序問：① 這堂課要教給誰？他們最卡在哪？② 要教什麼主題？手上有哪些素材？③ 形式與人數？④ 總共多少時間？其中多少留給動手？⑤ 學完要能做出或判斷什麼？\n問完後輸出【課程設定卡】：課程名稱、對象與起點、要解決的工作問題、形式與時數、學習目標（學員能夠＋動詞＋具體成果）、驗收方式、待確認事項。輸出後問我哪一項要改；我說確認之後就停下來，不要自動往下做課綱。"}, "3-2": {"title": "提示詞 3-2　課程大綱", "text": "請讀取來源中的 ADDIE 方法論文章，以及我剛才確認的【課程設定卡】。用文章的方法帶我完成 D：設計，產出一份課程大綱。\n請先用來源文章的做法，整理出這堂課需要處理的知識點、案例與練習，再把它們分成合理的教學段落。一次只做一個步驟，做完停下來等我確認。\n課綱每一段都要寫出：段落名稱／對應的學習目標／這段要教什麼／用什麼教法／學員要做什麼／分鐘數／怎麼確認學員聽懂了。\n分鐘數加總必須等於課程總時數。來源不足或和設定卡衝突的地方，先問我，不要自行補寫。全部段落完成後，列出最弱的三點與修改建議，等我決定。"}, "3-3": {"title": "提示詞 3-3　簡報內容", "text": "請依照剛才確認的課綱，產出這堂課的簡報內容，包含簡報骨架與每一頁內文。\n頁數請先依課程時數建議。\n每一頁請輸出：頁碼／這頁的教學任務／對應課綱段落與學習目標／標題／核心觀念一句／最多三個重點（每個 20 字以內）／講稿 3–5 句／依據來源的哪一段。\n如果一次輸出太長被截斷，就每 5 頁分一批，做完等我說繼續。沒有我說「開始生成簡報」之前，不要用 Studio 產生簡報檔。"}, "4-1": {"title": "提示詞 4-1　技能卡 1：寫文案", "text": "P　你是一位擅長資訊圖像化的設計師。\nT　請把［主題］的衛教資料，用白話改寫成一份［尺寸］的文案。\nC　這份文宣要給［對象］看，他們現在最困擾的是［困擾］，希望他們看完能［行動］。請根據我提供的資料，或是幫我搜尋官方的資料，並附上來源網址。\nF　版面是［尺寸］，文字量要放得下；使用繁體中文。"}, "4-2": {"title": "提示詞 4-2　技能卡 2：萃取風格（上傳參考圖後）", "text": "請把這張圖的視覺風格描述成可重複使用的提示詞：配色、插圖風格、字體感、留白與構圖。不要描述圖的內容。"}, "4-3": {"title": "提示詞 4-3　生成衛教文宣（在同一個對話，做完 4-1、4-2 之後）", "text": "請用上面這段文案和風格描述，生成［尺寸］的衛教文宣。文字使用繁體中文，完整照文案呈現，不要增減內容；重點資訊要清楚易讀，不要被裝飾蓋掉。"}}, "sections": {"0.1": "<h2>0.1　課前準備</h2>\n<p class=\"li\">1. 使用 <strong>Google 個人帳號</strong>登入（公司或學校帳號可能被停用 AI 功能）。</p>\n<p class=\"li\">2. 先開啟兩個工具，確認可以使用：</p>\n<p class=\"li\">• Gemini：gemini.google.com</p>\n<p class=\"li\">• Gemini Notebook：在 Gemini 左側欄開啟，或至 notebooklm.google.com</p>\n<p class=\"li\">3. 確認電腦可以上傳檔案（PDF、Word、圖片）。</p>", "0.2": "<h2>0.2　資料紅線</h2>\n<h3>這些資料，不進 AI</h3>\n<p class=\"li\">• 病人姓名、病歷號、床號</p>\n<p class=\"li\">• 可辨識的同仁資料</p>\n<p class=\"li\">• 未公開的院內資訊</p>\n<p class=\"li\">• 不在院內核准清單的工具</p>\n<h3>這些產出，先過人的檢查</h3>\n<p class=\"ck\">☐ 來源回得去嗎？</p>\n<p class=\"ck\">☐ 內容有沒有補寫？</p>\n<p class=\"ck\">☐ 適合現在這個情境嗎？</p>\n<p class=\"ck\">☐ 由誰簽名負責？</p>\n<p class=\"note\">出處：衛生福利部《醫療機構應用生成式人工智慧指引》（115 年 5 月 29 日函頒）</p>", "0.3": "<h2>0.3　四張技能卡</h2>\n<table><tr><th>技能卡</th><th>一句話</th><th>使用單元</th></tr><tr><td>01　PTCF 溝通框架</td><td>四個欄位，把腦中的想法一次說清楚。</td><td>單元一、單元四</td></tr><tr><td>02　範例萃取法</td><td>給 AI 一份好文件，它幫您找出規則。</td><td>單元二、單元四</td></tr><tr><td>03　AI 訪談釐清法</td><td>說不清楚？讓 AI 一題一題問您。</td><td>單元三</td></tr><tr><td>04　AI 隨身教練</td><td>給 AI 一篇文章，它照著帶您做。</td><td>單元三</td></tr></table>", "1.1": "<h2>1.1　PTCF 四要素</h2>\n<table><tr><th>要素</th><th>說明</th></tr><tr><td>P　角色 Persona</td><td>設定 AI 應扮演的角色、職位或身分。例如：你是一位［產業］的專案經理。</td></tr><tr><td>T　任務 Task</td><td>明確指出你希望 AI 執行的具體工作。<strong>這是提示詞中最重要的部分</strong>，請務必包含明確的動詞或指令（例如：撰寫、總結、改變語氣等）。</td></tr><tr><td>C　背景 Context</td><td>提供相關的背景細節、參考資料或情境，讓 AI 根據這些資訊生成內容。例如：根據［相關專案文件的細節］。</td></tr><tr><td>F　格式 Format</td><td>指定輸出的形式或呈現方式。例如：「限制使用列點方式呈現」或「整理成表格格式」。</td></tr></table>", "1.2": "<h2>1.2　PTCF 空白模板</h2>\n<div class=\"pbox\" data-pid=\"1-1\"></div>\n<h3>範例：同一個任務的完整版</h3>\n<div class=\"pbox\" data-pid=\"範例\"></div>", "1.3": "<h2>1.3　衛福部指引：使用前後的三道檢查</h2>\n<h3>輸入前：資料能不能交給 AI</h3>\n<table><tr><th>檢查</th><th>問自己</th></tr><tr><td>工具</td><td>符合院內規範嗎？資料如何處理與保存？個人帳號可關閉 Gemini 活動紀錄。</td></tr><tr><td>資料</td><td>含病歷、影像、語音、可識別個資或未公開院內資料嗎？能否改用模擬資料？</td></tr><tr><td>用途</td><td>輸入這些資料真的必要嗎？符合原本授權目的嗎？出現異常時如何停止與通報？</td></tr></table>\n<h3>輸出後：結果能不能使用</h3>\n<p class=\"ck\">☐ 來源：AI 說的重點，找得到出處嗎？出處可靠、完整、沒有過期嗎？</p>\n<p class=\"ck\">☐ 內容：有沒有「看起來合理、其實是錯的」地方？例如編出來的數字（幻覺）、前後矛盾，或寫了來源沒有的東西。</p>\n<p class=\"ck\">☐ 適用性：就算內容正確，也要想一想：適合這位病人、我們單位的流程和現在的情境嗎？</p>\n<p class=\"ck\">☐ 責任與透明：最後由誰確認、誰負責？如果是 AI 直接回覆民眾，有沒有先告訴對方這是 AI、可能會出錯？</p>\n<h3>與民眾互動或錄音錄影</h3>\n<p class=\"li\">• AI 直接與民眾互動時，主動揭露由 AI 系統運作，並提醒輸出可能出現錯誤。</p>\n<p class=\"li\">• 錄音錄影前說明必要性與用途限制；病人或家屬明確拒絕時，應停止錄製。</p>\n<p class=\"li\">• 錄音、錄影及相關資料，只能用於原先告知的目的範圍。</p>", "1.4": "<h2>1.4　參考資料</h2>\n<p class=\"li\">• 衛生福利部《醫療機構應用生成式人工智慧指引》PDF（素材資料夾）</p>\n<p class=\"li\">• PTCF 出處：Google Workspace《Gemini 提示詞指南》（數位時代整理）<a href=\"https://www.bnext.com.tw/article/89977/efficient-google-workspace-ai-prompt-tips\" target=\"_blank\" rel=\"noopener\">https://www.bnext.com.tw/article/89977/efficient-google-workspace-ai-prompt-tips</a></p>", "2.1": "<h2>2.1　步驟</h2>\n<p class=\"li\">1. 開啟「文件格式萃取與複用助手」Gem。</p>\n<p class=\"li\">2. 上傳一份<strong>已填寫完成</strong>的文件，貼上提示詞 2-1。</p>\n<p class=\"li\">3. 用 <strong>Gate 1</strong> 檢查模板。</p>\n<p class=\"li\">4. 上傳新素材，貼上提示詞 2-2。</p>\n<p class=\"li\">5. 用 <strong>Gate 2</strong> 檢查新文件。</p>", "2.2": "<h2>2.2　Gem 連結</h2>\n<p><strong>文件格式萃取與複用助手</strong></p>\n<p><a href=\"https://gemini.google.com/gem/1RlUR_YuQcmudtIpTeX5Hv6JNuWLcCCK_?usp=sharing\" target=\"_blank\" rel=\"noopener\">https://gemini.google.com/gem/1RlUR_YuQcmudtIpTeX5Hv6JNuWLcCCK_?usp=sharing</a></p>\n<p class=\"note\">打不開 Gem 時：把「附錄 A」整段貼進 Gemini 新對話，再上傳文件，流程相同。貼到 ChatGPT 或 Claude 也可以使用。</p>", "2.3": "<h2>2.3　提示詞</h2>\n<div class=\"pbox\" data-pid=\"2-1\"></div>\n<div class=\"pbox\" data-pid=\"2-2\"></div>\n<p>新素材是影片時，可以加一句指定範圍，例如：「請只使用影片 14:30–25:00 這一段。」</p>", "2.4": "<h2>2.4　檢查清單</h2>\n<h3>Gate 1　萃取完成後：模板抓得準不準？</h3>\n<p class=\"ck\">☐ 結構完整：章節與順序跟原文件一致</p>\n<p class=\"ck\">☐ 分得清楚：固定的、每次要換的，有分開</p>\n<p class=\"ck\">☐ 沒有夾帶：這一次的具體內容沒有留在模板裡</p>\n<h3>Gate 2　套用完成後：新文件寫得有沒有依據？</h3>\n<p class=\"ck\">☐ 有來源：內容都來自新素材</p>\n<p class=\"ck\">☐ 不補寫：資料不足時先問，不自己編</p>\n<p class=\"ck\">☐ 人把關：個資、專業內容與簽核由人確認</p>", "2.5": "<h2>2.5　卡住怎麼辦</h2>\n<p class=\"li\">• 影片讀不進去：改用素材資料夾的逐字稿。</p>\n<p class=\"li\">• Gem 打不開：使用附錄 A 的完整系統提示詞。</p>", "2.6": "<h2>2.6　回單位可以試的文件</h2>\n<p>跨科協調聯絡單、公文回覆、公告通知、教育訓練紀錄、交班紀錄。使用前先去識別化。</p>", "2.7": "<h2>2.7　課堂素材</h2>\n<table><tr><th>素材</th><th>說明</th></tr><tr><td>範本</td><td>疾管署性別平等工作小組會議紀錄（精簡版）PDF，素材資料夾</td></tr><tr><td>新素材</td><td>改善護理人員權益公聽會影片，使用 14:30–25:00：<a href=\"https://www.youtube.com/watch?v=XQRrkNJoMao\" target=\"_blank\" rel=\"noopener\">https://www.youtube.com/watch?v=XQRrkNJoMao</a></td></tr></table>", "3.1": "<h2>3.1　步驟</h2>\n<p class=\"li\">1. 在 Gemini Notebook 放入來源：您要教的教材（先去識別化）＋ ADDIE 主方法文，需要時再加兩篇補強文（網址見 3.5）。</p>\n<p class=\"li\">2. 貼上提示詞 3-1，回答 AI 的訪談問題。</p>\n<p class=\"li\">3. 確認課程設定卡 → <strong>存成筆記 → 把筆記轉成來源</strong>（下一步才讀得到）。</p>\n<p class=\"li\">4. 貼上提示詞 3-2，產出課綱，用五項檢查確認。</p>\n<p class=\"li\">5. 貼上提示詞 3-3，產出簡報內容。</p>", "3.2": "<h2>3.2　提示詞</h2>\n<div class=\"pbox\" data-pid=\"3-1\"></div>\n<div class=\"pbox\" data-pid=\"3-2\"></div>\n<div class=\"pbox\" data-pid=\"3-3\"></div>", "3.3": "<h2>3.3　課綱五項檢查</h2>\n<p class=\"ck\">☐ 目標別太大：目標能不能在這個時數內達成</p>\n<p class=\"ck\">☐ 段落分得對：知識點有沒有被分成合理的教學段落</p>\n<p class=\"ck\">☐ 每段有教法：問答、討論、演練、影片，不能整堂都是講述</p>\n<p class=\"ck\">☐ 時間加得起來：分鐘數加總等於總時數</p>\n<p class=\"ck\">☐ 內容有依據：重要主張回得到來源；醫療與法規內容，正式使用前請院內專業人員複核</p>", "3.4": "<h2>3.4　卡住怎麼辦</h2>\n<p class=\"li\">• Notebook 不照做，或提示詞貼不進去：改到 Gemini 主站，從左側欄開啟同一本 Notebook，再貼一次。</p>\n<p class=\"li\">• AI 一次問好幾題：回覆「只問第一題」。</p>\n<p class=\"li\">• 輸出被截斷：回覆「每 5 頁分一批，繼續」。</p>", "3.5": "<h2>3.5　參考資料</h2>\n<p class=\"li\">• 主方法文　ADDIE model：<a href=\"https://teaching-and-learning-collection.sites.uu.nl/toolbox/addie-model/\" target=\"_blank\" rel=\"noopener\">https://teaching-and-learning-collection.sites.uu.nl/toolbox/addie-model/</a></p>\n<p class=\"li\">• 分析補強　Analysis: Planning Your Instruction：<a href=\"https://ecampus.uconn.edu/analysis/\" target=\"_blank\" rel=\"noopener\">https://ecampus.uconn.edu/analysis/</a></p>\n<p class=\"li\">• 課綱補強　Design: Using a Course Design Plan：<a href=\"https://ecampus.uconn.edu/design/\" target=\"_blank\" rel=\"noopener\">https://ecampus.uconn.edu/design/</a></p>\n<p class=\"li\">• 勞動部 TTQS〈以 ADDIE 模式探討訓練需求獲得之方法〉PDF（素材資料夾）</p>", "4.1": "<h2>4.1　步驟</h2>\n<p class=\"li\">1. 想一個宣導主題，選一種尺寸（三折頁、海報、A4 DM），再回答三個問題：</p>\n<p class=\"li\">• 對象：這份文宣給誰看？</p>\n<p class=\"li\">• 困擾：他們現在最困擾什麼？</p>\n<p class=\"li\">• 行動：看完希望他做什麼？</p>\n<p class=\"li\">2. <strong>技能卡 1　寫文案</strong>：把答案填進提示詞 4-1 的［ ］，貼到 Gemini 送出。有衛教資料就一起上傳或貼上；沒有的話，AI 會搜尋官方資料並附上來源網址，記得點開確認。</p>\n<p class=\"li\">3. <strong>技能卡 2　挑風格</strong>：到 Google 圖片搜尋「衛教文宣」，存一張喜歡的圖上傳，再貼上提示詞 4-2；或到 Banana X 風格圖鑑，直接複製現成的風格提示詞。</p>\n<p class=\"li\">4. <strong>生成文宣</strong>：在同一個 Gemini 對話裡，貼上提示詞 4-3。</p>\n<p class=\"li\">5. 用內容檢查與視覺檢查確認。</p>", "4.2": "<h2>4.2　提示詞</h2>\n<div class=\"pbox\" data-pid=\"4-1\"></div>\n<p>［尺寸］選一種：三折頁（A4 橫式，正反兩面共六欄）、海報（直式，A3 以上）、A4 DM（A4 直式單張）。</p>\n<div class=\"pbox\" data-pid=\"4-2\"></div>\n<div class=\"pbox\" data-pid=\"4-3\"></div>", "4.3": "<h2>4.3　風格範本與樣板庫</h2>\n<table><tr><th>風格</th><th>範本</th></tr><tr><td>可愛風</td><td>臺北市社區營養推廣中心〈養肌出擊 肌少遠離〉</td></tr><tr><td>親和感</td><td>臺北市政府衛生局〈定期檢查小眼睛 保護眼睛亮晶晶〉</td></tr><tr><td>專業醫療感</td><td>Obesity Association〈Trauma-Informed Obesity Care〉</td></tr></table>\n<p class=\"li\">• <strong>Google 圖片搜尋「衛教文宣」</strong>：<a href=\"https://www.google.com/search?q=衛教文宣&amp;udm=2\" target=\"_blank\" rel=\"noopener\">https://www.google.com/search?q=衛教文宣&amp;udm=2</a>　找一張喜歡的圖，存下來上傳給 Gemini，再貼提示詞 4-2。</p>\n<p class=\"li\">• <strong>Banana X 風格圖鑑</strong>：<a href=\"https://furoku.github.io/bananaX/projects/infographic-evaluation/zh/#designs\" target=\"_blank\" rel=\"noopener\">https://furoku.github.io/bananaX/projects/infographic-evaluation/zh/#designs</a>　挑一個風格，複製它的提示詞，當作步驟 3 的風格描述貼給 Gemini。</p>\n<p class=\"li\">• <strong>BananaNL 擴充功能</strong>：Chrome 擴充功能，在 Gemini Notebook 做資訊圖表時一鍵套用風格。於 Chrome 線上應用程式商店搜尋「BananaNL」。</p>\n<p class=\"note\">使用前先確認院內資安規範；不輸入病人個資或院內機密。</p>", "4.4": "<h2>4.4　檢查清單</h2>\n<h3>內容檢查</h3>\n<p class=\"ck\">☐ 資訊正確：數字、資格、時程、建議與警語都能回到原始資料或官方來源網址</p>\n<p class=\"ck\">☐ 內容完整：適用對象、必要條件、例外與行動方式沒有遺漏</p>\n<p class=\"ck\">☐ 目標達成：讀者看完能抓到重點，也知道下一步要做什麼</p>\n<p class=\"ck\">☐ 用語恰當：專業名詞有說明，不誇大風險，也不提供個別診療建議</p>\n<h3>視覺檢查</h3>\n<p class=\"ck\">☐ 中文正確：沒有錯字、亂碼或簡體字，專有名詞與單位寫法一致</p>\n<p class=\"ck\">☐ 閱讀順序：讀者一眼知道先看哪裡，再看哪裡</p>\n<p class=\"ck\">☐ 關聯清楚：標題、圖像、箭頭與文字相互對應，沒有造成錯誤因果</p>\n<p class=\"ck\">☐ 畫面易讀：字級、對比與留白足夠，重要訊息不會被裝飾搶走</p>\n<p class=\"ck\">☐ 重點保留：視覺化後沒有刪掉關鍵數字、條件、警語或資料來源</p>\n<p class=\"note\">圖卡仍是草稿；通過內容與視覺檢查，才能正式使用。</p>", "A": "<h2>附錄 A　文件格式萃取與複用助手</h2>\n<p>完整系統提示詞。Gem 打不開時，整段貼進 Gemini 新對話，送出後再上傳文件。</p>\n<div class=\"pbox\" data-pid=\"A\"></div>"}, "checklists": {"這些產出，先過人的檢查": ["來源回得去嗎？", "內容有沒有補寫？", "適合現在這個情境嗎？", "由誰簽名負責？"], "輸出後：結果能不能使用": ["來源：AI 說的重點，找得到出處嗎？出處可靠、完整、沒有過期嗎？", "內容：有沒有「看起來合理、其實是錯的」地方？例如編出來的數字（幻覺）、前後矛盾，或寫了來源沒有的東西。", "適用性：就算內容正確，也要想一想：適合這位病人、我們單位的流程和現在的情境嗎？", "責任與透明：最後由誰確認、誰負責？如果是 AI 直接回覆民眾，有沒有先告訴對方這是 AI、可能會出錯？"], "Gate 1　萃取完成後：模板抓得準不準？": ["結構完整：章節與順序跟原文件一致", "分得清楚：固定的、每次要換的，有分開", "沒有夾帶：這一次的具體內容沒有留在模板裡"], "Gate 2　套用完成後：新文件寫得有沒有依據？": ["有來源：內容都來自新素材", "不補寫：資料不足時先問，不自己編", "人把關：個資、專業內容與簽核由人確認"], "3.3": ["目標別太大：目標能不能在這個時數內達成", "段落分得對：知識點有沒有被分成合理的教學段落", "每段有教法：問答、討論、演練、影片，不能整堂都是講述", "時間加得起來：分鐘數加總等於總時數", "內容有依據：重要主張回得到來源；醫療與法規內容，正式使用前請院內專業人員複核"], "內容檢查": ["資訊正確：數字、資格、時程、建議與警語都能回到原始資料或官方來源網址", "內容完整：適用對象、必要條件、例外與行動方式沒有遺漏", "目標達成：讀者看完能抓到重點，也知道下一步要做什麼", "用語恰當：專業名詞有說明，不誇大風險，也不提供個別診療建議"], "視覺檢查": ["中文正確：沒有錯字、亂碼或簡體字，專有名詞與單位寫法一致", "閱讀順序：讀者一眼知道先看哪裡，再看哪裡", "關聯清楚：標題、圖像、箭頭與文字相互對應，沒有造成錯誤因果", "畫面易讀：字級、對比與留白足夠，重要訊息不會被裝飾搶走", "重點保留：視覺化後沒有刪掉關鍵數字、條件、警語或資料來源"]}, "cards": {"1": {"n": "01", "name": "PTCF 溝通框架", "tag": "四個欄位，把腦中的想法一次說清楚。", "def": "用四個要素，把影響結果的資訊交代清楚。", "how": "寫提示詞前，依序想清楚四格：P 角色、T 任務、C 背景、F 格式，再一次交給 AI。", "when": "你知道要完成什麼，但需要更精準地說明需求。", "unlock": "不必再收藏別人的提示詞——你自己就能寫出最適合自己工作的完整提示詞。"}, "2": {"n": "02", "name": "範例萃取法", "tag": "給 AI 一份好文件，它幫你找出規則。", "def": "提供完成的範例，讓 AI 找出可以重複使用的規則。", "how": "給 AI 一份做好的文件，請它拆出固定結構、變動欄位與寫作規則；確認後，再放新資料套用。", "when": "工作經常重複，但很難把所有規則一次說完整。", "unlock": "重複性文件不用每次從零開始，AI 照著你單位的格式，產出同規格的新文件。"}, "3": {"n": "03", "name": "AI 訪談釐清法", "tag": "說不清楚？讓 AI 一題一題問你。", "def": "讓 AI 主動提問，找出還沒有想清楚的條件。", "how": "先說你大概想做什麼，請 AI 一次只問一題；資訊夠了，請它整理成摘要給你確認。", "when": "你知道大概要做什麼，但還無法一次說完整。", "unlock": "讓 AI 反過來訪問你，把沒想到的條件問出來，得到更完整、更貼近目的的需求。"}, "4": {"n": "04", "name": "AI 隨身教練", "tag": "給 AI 一篇文章，它照著帶你做。", "def": "讓 AI 讀取來源，再依你的程度陪你理解與操作。", "how": "把文章、影片或講義放進 Notebook，說明你的目標，請 AI 照著內容一次帶你做一步。", "when": "你找到想學的資料，但不知道從哪裡開始操作。", "unlock": "看到好方法不用自己摸索——AI 會照著那份資料，一步步帶你做出成果。"}}, "files": {"00_備料間/單元二_格式萃取與模板生成_教學素材/講師示範_Demo/疾管署_性別平等工作小組113年第2次會議紀錄_精簡範例.pdf": {"name": "疾管署_性別平等工作小組113年第2次會議紀錄_精簡範例.pdf", "url": "files/疾管署_性別平等工作小組113年第2次會議紀錄_精簡範例.pdf"}, "00_備料間/衛福部_醫療機構應用生成式人工智慧指引_20260529.pdf": {"name": "衛福部_醫療機構應用生成式人工智慧指引_20260529.pdf", "url": "files/衛福部_醫療機構應用生成式人工智慧指引_20260529.pdf"}, "03_課程簡報/簡報建置腳本_v4/assets/style_1.jpg": {"name": "風格範本1_可愛風.jpg", "url": "files/風格範本1_可愛風.jpg"}, "03_課程簡報/簡報建置腳本_v4/assets/style_2.jpg": {"name": "風格範本2_親和感.jpg", "url": "files/風格範本2_親和感.jpg"}, "03_課程簡報/簡報建置腳本_v4/assets/style_3.jpg": {"name": "風格範本3_專業醫療感.jpg", "url": "files/風格範本3_專業醫療感.jpg"}}, "slideText": {"1": [[8.625, 18.263, 9.806, 1.653, "醫護工作× AI"], [4.504, 27.316, 28.794, 5.637, "AI 職場應用"], [4.504, 40.543, 28.233, 5.634, "實作工作坊"], [4.504, 61.158, 31.215, 2.103, "護理人員× AI 工具× 真實工作場景"], [4.504, 73.176, 8.931, 2.103, "游康婷KT"], [77.725, 54.36, 9.744, 1.653, "掃描QR Code"], [75.862, 58.497, 13.426, 1.653, "進入專屬課程網頁"]], "2": [[4.504, 10.208, 13.413, 3.156, "游康婷KT"], [4.504, 20.534, 30.006, 1.653, "把複雜工具，整理成工作上用得到的方法"], [7.129, 32.388, 19.987, 1.878, "緯育TibaMe 課程研發處"], [7.129, 36.388, 13.223, 1.881, "數位媒體部經理"], [7.129, 48.674, 0.823, 1.653, "•"], [9.944, 48.354, 13.821, 1.653, "生成式AI 教學設計"], [7.129, 53.75, 0.823, 1.653, "•"], [9.944, 53.368, 18.359, 1.653, "數位內容與影音課程製作"], [7.129, 58.826, 0.823, 1.653, "•"], [9.944, 58.506, 18.79, 1.653, "醫療場域AI 系列課程講師"], [46.535, 28.326, 12.301, 1.653, "TibaMe 錄播課程"], [65.675, 37.064, 13.205, 1.878, "線上課程快製力"], [65.675, 43.417, 8.331, 1.653, "編・導・演"], [75.681, 43.417, 9.991, 1.653, "講師技能解鎖"], [65.675, 56.636, 13.712, 1.878, "AIGC 知識傳承術"], [65.675, 62.989, 11.739, 1.653, "AI 生成影音課程"], [65.675, 76.209, 11.516, 1.878, "AI 協思簡報術"], [65.675, 82.5, 24.987, 1.653, "從模糊點子到精準說服的提案策略"]], "3": [[4.504, 10.208, 31.386, 3.156, "KT × 醫護行政相關課程"], [4.504, 20.534, 58.815, 1.653, "從簡報、會議、課程設計到衛教宣傳，每一堂都是醫護行政現場用得上的AI 實作"]], "4": [[4.504, 10.208, 31.39, 3.156, "阿長的一天，四個煩惱"], [4.504, 20.534, 23.332, 1.653, "這堂課，就是來解決這四件事的"], [9.336, 31.874, 3.837, 1.653, "09:00"], [6.379, 38.45, 14.725, 2.106, "主管要一份公告"], [6.379, 51.026, 16.425, 1.653, "「幫我寫一下」——AI "], [6.379, 54.636, 15.023, 1.653, "給的稿，總是差一點"], [6.379, 67.659, 16.297, 1.653, "技能卡1｜把需求說清"], [6.379, 71.324, 1.653, 1.653, "楚"], [25.576, 51.408, 2.107, 2.328, "→"], [32.76, 31.874, 3.837, 1.653, "10:30"], [29.803, 38.717, 16.828, 2.106, "會議結束，要寫紀"], [29.803, 42.863, 2.103, 2.103, "錄"], [29.803, 51.293, 16.676, 1.653, "每週都寫，格式一樣，"], [29.803, 54.636, 11.644, 1.653, "還是從空白開始"], [29.803, 67.721, 16.322, 1.653, "技能卡2｜給它一份範"], [29.803, 71.324, 1.653, 1.653, "本"], [49.0, 51.408, 2.107, 2.328, "→"], [56.184, 31.874, 3.837, 1.653, "14:00"], [53.227, 38.45, 16.81, 2.106, "下個月的在職教育"], [53.227, 51.293, 16.654, 1.653, "教材散在各處，備課永"], [53.227, 53.998, 8.294, 1.653, "遠不夠時間"], [53.227, 67.721, 16.025, 1.653, "技能卡3＋4｜讓AI 問"], [53.227, 71.324, 13.426, 1.653, "你，再照方法帶你"], [72.424, 51.408, 2.107, 2.328, "→"], [79.605, 31.874, 3.848, 1.653, "16:00"], [76.651, 38.45, 14.709, 2.106, "衛教單張要交了"], [76.651, 50.831, 16.654, 1.653, "內容都對，民眾就是看"], [76.651, 54.636, 4.954, 1.653, "不下去"], [76.651, 67.721, 15.852, 1.653, "技能卡1＋2 再出場｜"], [76.651, 71.324, 10.054, 1.653, "做成一張單張"], [7.129, 85.435, 46.712, 1.653, "解決一個煩惱，就解鎖一張技能卡——帶回單位，明天就能用。"]], "5": [[4.504, 10.208, 25.156, 3.156, "今天只用兩種工具"], [7.129, 28.326, 13.336, 1.653, "一個你熟悉的LLM"], [11.115, 59.423, 7.427, 2.106, "ChatGPT"], [28.739, 59.423, 5.947, 2.106, "Claude"], [45.493, 59.423, 6.22, 2.106, "Gemini"], [7.129, 71.058, 26.666, 1.653, "要開放生成、改寫、延伸的時候用它"], [60.038, 50.421, 3.756, 3.756, "＋"], [67.175, 28.326, 11.717, 1.653, "一個來源型工具"], [72.416, 58.759, 15.267, 2.103, "Gemini Notebook"], [72.934, 63.045, 14.235, 1.653, "（原NotebookLM）"], [67.175, 71.058, 25.013, 1.653, "要依據來源、不能亂編的時候用它"], [7.129, 88.106, 32.373, 1.653, "有ChatGPT 或Claude 的人，今天一樣能跟。"]], "6": [[4.504, 10.208, 34.546, 3.156, "今天要拿到的四張技能卡"], [4.504, 20.534, 21.679, 1.653, "每練完一個單元，翻開一張。"], [18.126, 31.486, 5.027, 1.653, "未解鎖"], [6.754, 29.608, 5.107, 5.037, "01"], [6.754, 42.478, 5.032, 1.653, "技能卡"], [6.754, 47.729, 14.33, 2.328, "PTCF 溝通框架"], [6.754, 56.902, 16.676, 1.653, "四個欄位，把腦中的想"], [6.754, 60.178, 11.684, 1.653, "法一次說清楚。"], [6.754, 72.397, 8.411, 1.653, "單元一解鎖"], [41.361, 31.486, 5.027, 1.653, "未解鎖"], [29.992, 29.608, 5.104, 5.037, "02"], [29.992, 42.478, 5.027, 1.653, "技能卡"], [29.992, 47.729, 11.562, 2.328, "範例萃取法"], [29.992, 56.636, 15.447, 1.653, "給AI 一份好文件，它"], [29.992, 60.239, 11.632, 1.653, "幫你找出規則。"], [29.992, 72.397, 8.401, 1.653, "單元二解鎖"], [64.596, 31.486, 5.027, 1.653, "未解鎖"], [53.227, 29.608, 5.107, 5.037, "03"], [53.227, 42.478, 5.027, 1.653, "技能卡"], [53.227, 47.729, 14.094, 2.328, "AI 訪談釐清法"], [53.227, 56.574, 15.449, 1.653, "說不清楚？讓AI 一題"], [53.227, 60.239, 8.331, 1.653, "一題問你。"], [53.227, 72.397, 8.401, 1.653, "單元三解鎖"], [87.831, 31.486, 5.032, 1.653, "未解鎖"], [76.462, 29.608, 5.107, 5.037, "04"], [76.462, 42.478, 5.027, 1.653, "技能卡"], [76.462, 47.729, 11.766, 2.328, "AI 隨身教練"], [76.462, 56.636, 15.438, 1.653, "給AI 一篇文章，它照"], [76.462, 60.239, 8.331, 1.653, "著帶你做。"], [76.462, 72.397, 8.401, 1.653, "單元三解鎖"]], "7": [[8.12, 17.597, 5.027, 1.653, "單元一"], [14.843, 17.597, 8.522, 1.653, "AI 觀念建立"], [4.504, 26.729, 26.745, 4.359, "安全使用AI，"], [4.504, 37.384, 35.052, 4.359, "先從說清楚開始。"], [4.504, 57.543, 45.59, 1.803, "用PTCF 說清楚需求，也認識醫護工作使用AI 的安全邊界。"], [4.504, 78.406, 6.68, 1.653, "學習成果"], [12.908, 78.344, 51.81, 1.653, "知道提示詞四格怎麼看，也能判斷哪些資料不能交給AI、哪些內容一定"], [4.504, 82.01, 9.979, 1.653, "要人工確認。"]], "8": [[86.667, 6.649, 5.032, 1.653, "單元一"], [4.504, 10.208, 59.705, 3.156, "你有沒有在網路上存過「超好用提示詞」？"], [63.438, 22.353, 23.058, 2.328, "別人的提示詞很好用，"], [63.438, 27.295, 23.058, 2.328, "換到我手上就不一樣？"], [63.438, 39.008, 23.36, 1.653, "因為他的工作，不是你的工作。"], [65.315, 48.121, 7.132, 1.806, "對象不同"], [65.315, 53.145, 28.137, 1.578, "同仁、主管、病人或家屬，寫法都不一樣"], [65.315, 61.749, 7.129, 1.803, "背景不同"], [65.315, 66.71, 25.051, 1.578, "院內規定、流程、能用的資料都不同"], [65.315, 75.371, 7.129, 1.803, "結果不同"], [65.315, 80.386, 26.564, 1.578, "公告、摘要、衛教單張，完成標準不同"], [7.129, 91.585, 36.889, 1.653, "提示詞可以參考，但不能代替你說明自己的需求。"]], "9": [[86.667, 6.649, 5.032, 1.653, "單元一"], [4.504, 10.208, 53.393, 3.156, "不用一直收藏提示詞，先學會一個框架"], [30.54, 28.147, 5.032, 1.653, "未解鎖"], [6.754, 26.273, 5.105, 5.034, "01"], [6.754, 39.141, 5.032, 1.653, "技能卡"], [6.754, 44.382, 14.335, 2.331, "PTCF 溝通框架"], [6.754, 53.235, 28.368, 1.653, "四個欄位，把腦中的想法一次說清楚。"], [6.754, 77.067, 8.411, 1.653, "單元一解鎖"], [43.534, 27.646, 13.679, 6.912, "PTCF"], [43.909, 42.082, 26.401, 2.178, "四格不是要把提示詞變長，"], [43.909, 47.415, 37.352, 2.181, "而是把「只有你知道的資訊」講清楚。"], [45.034, 58.106, 4.569, 1.653, "P 角色"], [45.034, 61.311, 18.841, 1.653, "希望AI 用什麼身分協助你"], [69.429, 58.106, 4.503, 1.653, "T 任務"], [69.429, 61.311, 16.654, 1.653, "這次到底要它完成什麼"], [45.034, 68.521, 4.569, 1.653, "C 背景"], [45.034, 71.724, 18.307, 1.653, "對象、情境、資料與限制"], [69.429, 68.521, 4.45, 1.653, "F 格式"], [69.429, 71.724, 15.006, 1.653, "最後要長成什麼樣子"], [7.129, 88.777, 48.738, 1.653, "不管是寫文案、做簡報或整理文件，先把四種關鍵資訊交代清楚。"]], "10": [[86.667, 6.649, 5.032, 1.653, "單元一"], [4.504, 10.208, 34.542, 3.156, "PTCF：提示詞的四個要素"], [8.118, 29.81, 1.32, 2.481, "P"], [13.136, 29.819, 11.628, 2.103, "角色Persona"], [33.401, 28.034, 28.892, 1.806, "設定AI 應扮演的角色、職位或身分。"], [33.401, 32.215, 28.47, 1.653, "例如：你是一位［產業］的專案經理。"], [8.162, 45.041, 1.227, 2.478, "T"], [13.136, 45.043, 8.375, 2.103, "任務Task"], [33.401, 41.193, 59.253, 1.806, "明確指出希望AI 執行的具體工作。這是提示詞中最重要的部分，請務必包含"], [33.401, 45.473, 16.06, 1.803, "明確的動詞或指令。"], [33.401, 49.573, 21.825, 1.653, "例如：撰寫、總結、改變語氣"], [8.118, 60.265, 1.311, 2.478, "C"], [13.136, 60.261, 11.388, 2.106, "背景Context"], [33.401, 58.435, 55.458, 1.803, "提供相關的背景細節、參考資料或情境，讓AI 根據這些資訊生成內容。"], [33.401, 62.741, 28.503, 1.653, "例如：根據［相關專案文件的細節］。"], [8.208, 75.487, 1.138, 2.478, "F"], [13.136, 75.493, 10.869, 2.103, "格式Format"], [33.401, 73.731, 23.036, 1.803, "指定輸出的形式或呈現方式。"], [33.401, 77.963, 43.648, 1.653, "例如：「限制使用列點方式呈現」或「整理成表格格式」。"], [4.504, 93.761, 3.303, 1.653, "出處"], [9.507, 93.761, 42.938, 1.653, "Google Workspace《Gemini 提示詞指南》（數位時代整理）"]], "11": [[86.667, 6.649, 5.032, 1.653, "單元一"], [4.504, 10.372, 44.001, 2.931, "拆開一段好提示詞，四格一目了然"], [4.504, 20.534, 30.006, 1.653, "同一段提示詞，其實就是這四格拼起來的"], [10.208, 31.495, 0.893, 1.803, "T"], [12.867, 31.145, 3.604, 1.803, "任務"], [20.641, 30.985, 62.053, 1.878, "請將我這篇文章內容：[請貼上你的文章網址]，做成5 張Instagram 輪播圖。"], [10.177, 45.11, 0.961, 1.806, "P"], [12.898, 44.76, 3.609, 1.806, "角色"], [20.641, 44.673, 30.049, 1.878, "你是一位擅長社群圖文設計的小編。"], [10.177, 58.737, 0.954, 1.803, "C"], [12.898, 58.388, 3.606, 1.803, "背景"], [20.641, 56.292, 71.447, 1.878, "圖卡以我的角色IP [替換成你的角色，例如：貓貓] 為主角，讓我可以直接發社群宣傳使"], [20.641, 60.301, 3.756, 1.878, "用。"], [10.241, 74.695, 0.828, 1.803, "F"], [12.833, 74.345, 3.606, 1.803, "格式"], [20.641, 72.249, 70.443, 1.878, "尺寸請設定為1080×1350、繁體中文、直接生成圖卡，並在最後一頁加上CTA，鼓勵讀"], [20.641, 76.189, 24.401, 1.878, "者按讚、追蹤及訂閱電子報。"], [7.129, 88.777, 33.731, 1.653, "四格合起來貼給AI，就是一段完整的提示詞。"]], "12": [[86.667, 6.649, 5.032, 1.653, "單元一"], [4.504, 10.208, 40.858, 3.156, "同一個任務，提示詞差在哪裡"], [6.754, 27.656, 5.032, 1.653, "空泛版"], [6.754, 34.659, 24.561, 1.878, "請用這份指引，幫護理人員做"], [6.754, 38.398, 13.22, 1.878, "三頁教學簡報。"], [6.754, 59.039, 23.467, 1.653, "AI 只能自己決定選題、深度與交"], [6.754, 62.645, 4.959, 1.653, "付方式"], [38.28, 27.656, 7.045, 1.653, "完整PTCF"], [38.28, 34.056, 1.119, 2.103, "P"], [42.031, 33.665, 50.482, 1.653, "你是一位熟悉護理教育、醫療政策與生成式AI 應用的教學設計顧問。"], [38.28, 46.074, 1.041, 2.103, "T"], [42.031, 45.489, 50.027, 1.653, "閱讀衛福部指引，挑選護理主管與護理人員最需要理解的內容，規劃"], [42.031, 49.293, 13.37, 1.653, "成三頁教學簡報。"], [38.28, 58.093, 1.113, 2.103, "C"], [42.031, 57.706, 50.494, 1.653, "用於私醫護協會AI 課程第一單元；對象不具資訊治理背景；講解約五"], [42.031, 61.311, 27.467, 1.653, "分鐘。重要主張只依Notebook 來源。"], [38.28, 70.111, 0.965, 2.103, "F"], [42.031, 69.991, 50.027, 1.653, "繁體中文，輸出三頁簡報規劃；每頁包含標題、一句核心觀念、最多"], [42.031, 73.33, 19.982, 1.653, "三項教學重點及對應來源。"], [7.129, 87.833, 47.176, 1.803, "看空泛版，你會先補哪一格？舉手說一個：P、T、C 還是F。"]], "13": [[4.654, 8.937, 57.573, 3.156, "會跟AI 溝通之後，使用時還要注意什麼？"], [86.378, 6.438, 5.404, 1.803, "單元一"], [4.804, 19.368, 69.964, 1.878, "衛福部指引把醫療場域的AI 使用，分成「懂它、判斷風險、管理全生命週期」三層。"], [5.854, 92.58, 41.684, 1.653, "來源：衛生福利部《醫療機構應用生成式人工智慧指引》"]], "14": [[86.667, 6.649, 5.032, 1.653, "單元一"], [4.504, 10.462, 48.385, 2.856, "AI 可以幫忙，但它不是第二位醫事人員"], [4.504, 19.896, 41.648, 1.653, "先把「協助」和「負責」分清楚，後面操作才不會踩線。"], [7.034, 31.958, 1.663, 1.653, "01"], [11.258, 31.464, 11.35, 1.881, "病歷撰寫輔助"], [31.524, 31.637, 38.383, 1.653, "可以協助整理文字與初稿；不能跳過醫事人員確認。"], [7.034, 44.808, 1.663, 1.653, "02"], [11.258, 44.323, 11.342, 1.878, "臨床決策支援"], [31.524, 44.487, 31.698, 1.653, "可以提供參考與提醒；不能取代臨床判斷。"], [7.034, 57.663, 1.663, 1.653, "03"], [11.258, 57.179, 11.342, 1.878, "行政文書撰擬"], [31.524, 56.705, 43.335, 1.653, "可以整理會議紀錄、公告、報告；格式與事實仍要人檢查。"], [7.034, 70.519, 1.663, 1.653, "04"], [11.258, 70.029, 11.342, 1.878, "病人溝通工具"], [31.524, 70.137, 46.723, 1.653, "可以把專業內容轉成白話；個別診療建議仍要由專業人員說明。"], [7.129, 84.04, 40.033, 1.653, "今天所有產出都先當草稿；能不能用，由人最後判斷。"], [4.504, 93.761, 39.982, 1.653, "來源：指引一（三）適用範圍、三（一）法規遵循檢視"]], "15": [[86.667, 6.649, 5.032, 1.653, "單元一"], [4.504, 10.462, 34.879, 2.856, "資料交給AI 前，先問三件事"], [4.504, 20.534, 41.635, 1.653, "輸入安全不是只有遮姓名，而是確認工具、資料與用途。"], [7.034, 32.541, 1.663, 1.653, "01"], [11.258, 32.049, 3.759, 1.881, "工具"], [21.766, 32.159, 58.337, 1.653, "這個工具符合院內規範嗎？資料會怎麼保存？個人帳號的活動紀錄是否能關閉？"], [7.034, 46.565, 1.663, 1.653, "02"], [11.258, 46.075, 3.756, 1.878, "資料"], [21.766, 46.183, 58.341, 1.653, "有病歷、影像、語音、可識別個資或未公開院內資料嗎？能不能改用模擬資料？"], [7.034, 60.584, 1.663, 1.653, "03"], [11.258, 60.098, 3.756, 1.878, "用途"], [21.766, 60.263, 56.712, 1.653, "輸入這些資料真的必要嗎？符合原本授權目的嗎？出現異常時要怎麼停下來？"], [7.129, 84.04, 48.628, 1.653, "去識別化只是第一步；工具、用途、授權與院內規範都要一起看。"], [4.504, 93.761, 56.634, 1.653, "來源：指引三（一）資訊安全與資料保護評估、三（三）責任分工與教育訓練"]], "16": [[86.667, 6.649, 5.032, 1.653, "單元一"], [4.504, 10.462, 34.271, 2.856, "AI 給了答案，先不要急著用"], [4.504, 19.896, 39.997, 1.653, "產出之後，用這四個問題檢查，再決定能不能進流程。"], [7.034, 31.958, 1.663, 1.653, "01"], [11.258, 31.564, 3.606, 1.803, "來源"], [24.394, 31.442, 45.042, 1.653, "AI 說的重點，找得到出處嗎？出處可靠、完整、沒有過期嗎？"], [7.034, 44.808, 1.663, 1.653, "02"], [11.258, 44.215, 3.606, 1.803, "內容"], [24.394, 44.487, 49.961, 1.653, "有沒有看起來合理、其實是錯的地方？例如數字、因果、前後矛盾。"], [7.034, 57.663, 1.663, 1.653, "03"], [11.258, 57.269, 5.409, 1.803, "適用性"], [24.394, 57.281, 48.403, 1.653, "就算內容正確，也要想：適合這位病人、我們單位和現在情境嗎？"], [7.034, 70.519, 1.663, 1.653, "04"], [11.258, 70.117, 3.609, 1.806, "責任"], [24.394, 70.137, 50.113, 1.653, "最後由誰確認、誰負責？如果直接回覆民眾，有沒有先說明這是AI？"], [7.129, 84.102, 45.359, 1.653, "有來源，不代表能直接用；正確，也不代表適合現在的情況。"], [4.504, 93.761, 53.333, 1.653, "來源：指引二（一）風險類型、三（一）法規遵循、三（三）使用與監管"]], "17": [[86.667, 6.649, 5.032, 1.653, "單元一"], [4.504, 10.435, 44.372, 2.706, "只要碰到民眾溝通，就要把AI 說清楚"], [4.504, 20.534, 45.525, 1.653, "讓病人與家屬知道AI 的用途、限制，以及資料會怎麼被使用。"], [7.034, 31.958, 1.663, 1.653, "01"], [11.258, 31.464, 7.589, 1.881, "直接互動"], [28.148, 31.637, 38.794, 1.653, "主動揭露由AI 系統運作，並提醒輸出可能出現錯誤。"], [7.034, 44.808, 1.663, 1.653, "02"], [11.258, 44.323, 7.586, 1.878, "人要確認"], [28.148, 44.426, 45.005, 1.653, "涉及醫療內容或個人情境時，必要時由醫事人員進一步確認。"], [7.034, 57.663, 1.663, 1.653, "03"], [11.258, 57.179, 7.586, 1.878, "錄音錄影"], [28.148, 57.281, 48.387, 1.653, "先說明必要性與用途限制；病人或家屬明確拒絕時，就停止錄製。"], [7.034, 70.519, 1.663, 1.653, "04"], [11.258, 70.029, 9.464, 1.878, "不移作他用"], [28.148, 70.199, 41.635, 1.653, "錄音、錄影及相關資料，只能用於原先告知的目的範圍。"], [7.129, 84.04, 27.231, 1.653, "把AI 說清楚，也把資料用途說清楚。"], [4.504, 93.761, 30.006, 1.653, "來源：指引三（三）資訊透明以促進信任"]], "18": [[86.667, 6.649, 5.032, 1.653, "單元一"], [4.504, 10.462, 45.084, 2.856, "Human-in-the-loop：人要留在流程裡"], [4.504, 20.534, 35.066, 1.653, "AI 可以生成得很快，但不能替你承擔專業判斷。"], [7.034, 31.958, 1.663, 1.653, "01"], [11.258, 31.464, 5.637, 1.881, "生成前"], [25.519, 31.637, 31.698, 1.653, "先確認任務、工具、資料與用途是否合適。"], [7.034, 44.808, 1.663, 1.653, "02"], [11.258, 44.323, 5.634, 1.878, "生成中"], [25.519, 44.487, 31.698, 1.653, "觀察是否偏離來源、預定用途或專業邊界。"], [7.034, 57.663, 1.663, 1.653, "03"], [11.258, 57.179, 5.634, 1.878, "生成後"], [25.519, 56.705, 36.73, 1.653, "查核來源、正確性與適用性，再決定能不能使用。"], [7.034, 70.519, 1.663, 1.653, "04"], [11.258, 70.029, 7.586, 1.878, "發現異常"], [25.519, 70.137, 40.002, 1.653, "必要時停止使用、回到既有流程，並依院內機制通報。"], [7.129, 83.464, 45.501, 1.653, "後面每一個Gate，都是讓人停下來檢查、再決定要不要繼續。"]], "19": [[86.667, 6.649, 5.032, 1.653, "單元一"], [4.504, 10.669, 40.845, 2.706, "單元小測驗：一題判斷，一題練習"], [6.754, 26.323, 5.032, 1.653, "選擇題"], [6.754, 32.407, 36.451, 1.953, "衛福部指引列出AI 可以協助的工作，下列"], [6.754, 36.683, 19.892, 1.953, "哪一項「不在」其中？"], [7.504, 44.671, 1.494, 1.653, "A."], [10.883, 44.35, 9.991, 1.653, "病歷撰寫輔助"], [7.504, 51.08, 1.344, 1.653, "B."], [10.883, 50.76, 9.991, 1.653, "行政文書撰擬"], [7.504, 57.489, 1.344, 1.653, "C."], [10.883, 57.169, 9.991, 1.653, "病人溝通工具"], [7.504, 63.902, 1.494, 1.653, "D."], [10.883, 63.582, 18.474, 1.653, "代替醫事人員做最終確認"], [6.754, 74.397, 37.78, 1.653, "答案：D。AI 可以協助整理、撰寫與提供資訊；人仍"], [6.754, 78.006, 11.644, 1.653, "負責最後確認。"], [52.164, 26.323, 8.726, 1.653, "PTCF 應用題"], [52.164, 32.065, 6.685, 1.653, "情境任務"], [52.164, 37.674, 41.046, 1.653, "醫院本週要辦「感染管制教育訓練」。請用PTCF 寫一段"], [52.164, 41.811, 37.471, 1.653, "提示詞，請AI 幫你擬一份給全院護理同仁的公告。"], [52.164, 54.017, 0.879, 1.653, "P"], [55.392, 53.697, 13.825, 1.653, "你希望AI 扮演誰？"], [52.164, 60.426, 0.818, 1.653, "T"], [55.392, 60.106, 11.632, 1.653, "請它完成什麼？"], [52.164, 66.841, 0.874, 1.653, "C"], [55.392, 66.521, 23.332, 1.653, "公告給誰看？課程資訊是什麼？"], [52.164, 73.25, 0.759, 1.653, "F"], [55.392, 72.93, 21.679, 1.653, "字數、語氣、格式怎麼呈現？"], [52.164, 80.405, 38.674, 1.653, "互動網頁會提供填寫器與範例，講師示範一次即可。"]], "20": [[86.667, 6.649, 5.032, 1.653, "單元一"], [4.504, 10.208, 22.722, 3.156, "解鎖！技能卡01"], [30.37, 10.208, 19.474, 3.156, "PTCF 溝通框架"], [48.555, 27.48, 5.027, 1.653, "已解鎖"], [6.754, 26.273, 5.105, 5.034, "01"], [18.39, 26.723, 5.027, 1.653, "技能卡"], [18.39, 31.258, 16.895, 2.706, "PTCF 溝通框架"], [6.754, 39.613, 28.368, 1.653, "四個欄位，把腦中的想法一次說清楚。"], [9.3, 51.117, 5.032, 1.653, "怎麼用"], [16.887, 49.731, 36.312, 1.803, "寫提示詞前，依序想清楚四格：P 角色、T 任務"], [16.887, 53.468, 27.515, 1.803, "、C 背景、F 格式，再一次交給AI。"], [10.14, 65.473, 3.306, 1.653, "解鎖"], [16.887, 64.08, 35.384, 1.806, "不必再收藏別人的提示詞——你自己就能寫出"], [16.887, 67.827, 25.016, 1.803, "最適合自己工作的完整提示詞。"], [61.547, 25.656, 18.474, 1.653, "單元一，你帶走的三件事"], [61.547, 33.285, 1.927, 1.878, "01"], [66.05, 32.835, 11.439, 1.803, "用PTCF 說清楚"], [66.05, 39.008, 27.142, 1.653, "角色、任務、背景與格式，決定AI 是"], [66.05, 42.611, 13.353, 1.653, "否理解工作需求。"], [61.547, 49.98, 1.927, 1.878, "02"], [66.05, 49.53, 12.531, 1.803, "用來源限制內容"], [66.05, 55.702, 27.12, 1.653, "指定可信資料；資料不足時，不讓AI "], [66.05, 59.306, 8.331, 1.653, "自行補寫。"], [61.547, 66.674, 1.927, 1.878, "03"], [66.05, 66.425, 14.257, 1.803, "把判斷留在人手上"], [66.05, 71.892, 26.648, 1.653, "保護資料、查核內容，由專業人員負"], [66.05, 76.0, 9.979, 1.653, "責最後確認。"], [7.129, 88.044, 77.709, 1.653, "有些工作規則，連我們自己都很難說清楚。下一單元，直接給AI 一份好文件，讓它把格式與規則找出來。"]], "21": [[8.231, 17.597, 5.027, 1.653, "單元二"], [14.955, 17.535, 8.331, 1.653, "內容產出力"], [4.504, 26.729, 40.897, 4.359, "給AI 範本萃取格式，"], [4.504, 37.547, 43.832, 4.359, "下一次直接複製套用。"], [4.504, 57.744, 53.699, 1.803, "提供一份完成的範例，讓AI 先讀懂格式與規則，再接手重複性工作。"], [4.504, 78.406, 6.68, 1.653, "學習成果"], [12.908, 77.768, 51.689, 1.653, "從完成的文件萃取模板，套用新資料後，再用兩道人工檢查確認結果。"]], "22": [[86.667, 6.649, 5.032, 1.653, "單元二"], [4.504, 10.462, 34.234, 2.856, "哪些工作，最適合交給AI？"], [4.504, 20.534, 37.136, 1.653, "先看五個判準，再寫下你最想交給AI 的兩個任務。"], [7.034, 25.93, 1.663, 1.653, "01"], [11.258, 25.61, 8.411, 1.653, "頻率高嗎？"], [31.148, 25.61, 21.707, 1.653, "每週、每月或每場活動都要做"], [7.034, 34.743, 1.663, 1.653, "02"], [11.258, 34.423, 10.064, 1.653, "做法重複嗎？"], [31.148, 34.423, 23.36, 1.653, "結構、欄位與處理步驟大致固定"], [7.034, 43.558, 1.663, 1.653, "03"], [11.258, 43.237, 10.064, 1.653, "很花時間嗎？"], [31.148, 43.237, 28.319, 1.653, "時間花在整理、改寫、搬移或填入資料"], [7.034, 52.371, 1.663, 1.653, "04"], [11.258, 52.05, 13.442, 1.653, "需要多人接手嗎？"], [31.148, 52.05, 25.013, 1.653, "資料要在不同角色之間傳遞與確認"], [7.034, 61.185, 1.663, 1.653, "05"], [11.258, 60.865, 10.064, 1.653, "容易出錯嗎？"], [31.148, 60.865, 31.698, 1.653, "常漏填、貼錯或版本混亂，而且能回頭核對"], [6.379, 74.397, 18.542, 1.653, "我最想交給AI 的任務1："], [52.852, 74.397, 18.541, 1.653, "我最想交給AI 的任務2："], [7.129, 88.14, 50.122, 1.653, "符合越多，越值得先試；今天先從格式固定、重複出現的文件開始。"]], "23": [[86.667, 6.649, 5.032, 1.653, "單元二"], [4.504, 10.842, 37.907, 2.478, "把完成任務的技能方法，教會AI！"], [28.289, 29.48, 5.027, 1.653, "未解鎖"], [6.754, 27.612, 5.105, 5.034, "02"], [6.754, 40.478, 5.032, 1.653, "技能卡"], [6.754, 45.723, 11.566, 2.328, "範例萃取法"], [6.754, 54.636, 27.166, 1.653, "給AI 一份好文件，它幫你找出規則。"], [6.754, 77.067, 8.411, 1.653, "單元二解鎖"], [39.406, 45.459, 13.134, 2.631, "範例萃取法"], [39.406, 53.112, 55.34, 1.878, "給AI 一份完成的好文件，讓它萃取「結構＋欄位＋寫法＋查核規則"], [39.406, 58.379, 30.231, 1.878, "」，就能把做法複用到下一份文件。"], [7.129, 88.777, 50.391, 1.653, "不是把舊文件的文字刪掉，而是把「完成這份文件的方法」留下來。"]], "24": [[86.667, 6.649, 5.032, 1.653, "單元二"], [4.504, 10.842, 22.591, 2.478, "萃取範本的四大要素"], [4.483, 18.616, 54.532, 1.878, "「結構＋欄位＋寫法＋查核規則」，再把做法複用到下一份文件。"], [6.152, 32.369, 6.68, 1.653, "文件結構"], [6.152, 38.676, 23.332, 1.653, "章節、欄位、表格、順序與層級"], [52.956, 32.369, 6.685, 1.653, "欄位邏輯"], [52.956, 38.676, 28.319, 1.653, "哪些固定、哪些替換、哪些視情況使用"], [6.152, 59.26, 6.68, 1.653, "寫作規則"], [6.152, 65.836, 39.982, 1.653, "每一段要回答什麼問題、放什麼資訊，以及和前後段落"], [6.152, 69.173, 4.954, 1.653, "的關係"], [52.956, 59.26, 6.685, 1.653, "完成條件"], [52.956, 65.569, 38.383, 1.653, "需要哪些資料、哪些資訊必須人工確認、哪些不能猜"], [7.129, 88.777, 50.391, 1.653, "不是把舊文件的文字刪掉，而是把「完成這份文件的方法」留下來。"]], "25": [[86.667, 6.649, 5.032, 1.653, "單元二"], [4.504, 10.462, 46.429, 2.856, "我們把萃取法，先做成一個Gem 助手"], [4.504, 20.534, 38.333, 1.653, "簡報只看摘要；完整系統提示詞放在互動網頁展開。"], [7.129, 28.529, 17.567, 2.481, "文件格式萃取與"], [7.129, 34.138, 9.99, 2.481, "複用助手"], [13.591, 76.429, 10.308, 1.653, "掃描開啟Gem"], [38.28, 27.256, 11.702, 1.653, "它會先判斷模式"], [55.542, 27.256, 36.68, 1.653, "你現在要萃取格式，還是套用模板？不清楚時，它"], [55.542, 30.593, 6.678, 1.653, "會先問。"], [38.28, 41.411, 15.079, 1.653, "它會萃取可複用要件"], [55.542, 41.411, 36.68, 1.653, "文件結構、標題層級、固定欄位、替換欄位、寫作"], [55.542, 44.113, 13.341, 1.653, "規則與查核標準。"], [38.28, 55.569, 11.702, 1.653, "它會分成兩階段"], [55.542, 55.569, 36.68, 1.653, "萃取完成後停下來，不會自動套用；你確認後才放"], [55.542, 58.906, 6.678, 1.653, "新素材。"], [38.28, 69.087, 13.39, 1.653, "它會保留人工查核"], [55.542, 69.396, 36.662, 1.653, "資料不足時先問，不自己編；專業內容與簽核仍由"], [55.542, 73.063, 6.678, 1.653, "人確認。"], [7.129, 87.439, 66.134, 1.653, "Gem 打不開時，網頁可以展開完整系統提示詞，貼進Gemini、ChatGPT 或Claude 也能用。"]], "26": [[86.667, 6.649, 5.032, 1.653, "單元二"], [4.504, 9.625, 47.207, 2.706, "萃取復用完整流程，與2 個Gate 查核點"], [9.848, 27.771, 3.306, 1.653, "範本"], [9.848, 31.374, 3.306, 1.653, "文件"], [18.437, 29.871, 1.496, 1.653, "→"], [25.25, 27.771, 3.306, 1.653, "格式"], [25.25, 31.374, 3.306, 1.653, "萃取"], [33.841, 29.871, 1.496, 1.653, "→"], [39.931, 28.091, 4.809, 1.653, "GATE 1"], [38.978, 30.737, 6.698, 1.653, "模板檢查"], [49.244, 29.871, 1.496, 1.653, "→"], [56.057, 27.771, 3.306, 1.653, "放入"], [55.216, 31.374, 5.032, 1.653, "新資料"], [64.645, 29.871, 1.496, 1.653, "→"], [70.541, 27.771, 5.143, 1.653, "AI 套用"], [71.46, 31.374, 3.306, 1.653, "模板"], [80.05, 29.871, 1.496, 1.653, "→"], [86.139, 28.091, 4.809, 1.653, "GATE 2"], [85.209, 30.604, 6.655, 1.653, "產出檢查"], [10.192, 48.634, 4.809, 1.653, "GATE 1"], [16.68, 48.313, 8.411, 1.653, "萃取完成後"], [6.754, 54.5, 17.569, 2.178, "模板抓得準不準？"], [6.754, 63.365, 0.998, 1.653, "□"], [9.569, 63.045, 19.982, 1.653, "結構完整：章節與順序一致"], [6.754, 68.308, 0.998, 1.653, "□"], [9.569, 67.987, 19.982, 1.653, "分得清楚：固定與變動分開"], [6.754, 73.117, 0.998, 1.653, "□"], [9.569, 72.735, 25.03, 1.653, "沒有夾帶：這次內容沒留在模板裡"], [56.727, 48.634, 4.809, 1.653, "GATE 2"], [63.215, 48.313, 8.411, 1.653, "套用完成後"], [53.289, 54.5, 19.819, 2.178, "新文件有沒有依據？"], [53.289, 63.365, 0.998, 1.653, "□"], [56.104, 62.983, 20.028, 1.653, "有來源：內容都來自新素材"], [53.289, 68.308, 0.998, 1.653, "□"], [56.104, 67.987, 18.329, 1.653, "不補寫：資料不足時先問"], [53.289, 73.117, 0.998, 1.653, "□"], [56.104, 72.797, 26.666, 1.653, "人把關：個資、專業與簽核由人確認"], [7.129, 86.106, 53.769, 1.653, "人的投入不只在最後看一眼，而是在錯誤可能被放大的地方停下來判斷。"]], "27": [[86.667, 6.649, 5.032, 1.653, "單元二"], [4.504, 10.669, 52.587, 2.706, "隨堂練習：讓AI 萃取格式，再套用到新素材"], [4.504, 20.534, 41.635, 1.653, "網頁會提供範本與新素材下載連結，大家跟著同一份練。"], [8.666, 32.825, 1.068, 2.106, "1"], [6.754, 42.482, 13.213, 2.178, "下載範本文件"], [6.754, 51.293, 11.717, 1.653, "疾管署會議紀錄"], [6.754, 55.436, 16.821, 1.653, "看一份完成品長什麼樣"], [16.113, 67.054, 6.685, 1.653, "網頁下載"], [39.897, 32.825, 1.068, 2.106, "2"], [37.986, 42.482, 8.784, 2.178, "萃取格式"], [37.986, 51.293, 12.011, 1.653, "上傳範本給Gem"], [37.986, 55.436, 15.095, 1.653, "請它萃取結構與規則"], [45.684, 67.054, 10.975, 1.653, "複製提示詞2-1"], [71.128, 32.825, 1.068, 2.106, "3"], [69.216, 42.482, 10.963, 2.178, "套用新素材"], [69.216, 51.293, 18.474, 1.653, "改善護理人員權益公聽會"], [69.216, 55.436, 15.095, 1.653, "套成同格式會議紀錄"], [76.237, 67.054, 1.653, 1.653, "／"], [80.539, 67.054, 6.68, 1.653, "網頁提供"], [7.129, 86.106, 51.003, 1.653, "全程在同一個Gem 對話裡完成：先範本，再新素材，不要開新對話。"]], "28": [[86.667, 6.649, 5.032, 1.653, "單元二"], [4.504, 10.842, 47.733, 2.478, "想一想：你有哪些文件，適合用這套方法？"], [4.504, 20.534, 34.96, 1.653, "先寫下一到兩份文件，不需要現在拿出來操作。"], [4.504, 27.656, 3.303, 1.653, "高頻"], [9.546, 27.656, 3.306, 1.653, "重複"], [14.59, 27.656, 3.303, 1.653, "耗時"], [19.632, 27.656, 6.685, 1.653, "多人參與"], [28.036, 27.656, 6.685, 1.653, "容易出錯"], [6.754, 41.232, 11.644, 1.653, "我想到的文件："], [6.754, 56.622, 11.684, 1.653, "為什麼值得試："], [6.754, 73.063, 43.706, 1.653, "常見文件：公文回覆・公告通知・教育訓練紀錄・交班紀錄"]], "29": [[86.667, 6.649, 5.032, 1.653, "單元二"], [4.504, 10.208, 22.722, 3.156, "解鎖！技能卡02"], [30.37, 10.208, 15.698, 3.156, "範例萃取法"], [48.555, 27.48, 5.027, 1.653, "已解鎖"], [6.754, 26.273, 5.105, 5.034, "02"], [18.39, 26.723, 5.027, 1.653, "技能卡"], [18.39, 31.258, 13.581, 2.706, "範例萃取法"], [6.754, 39.674, 27.166, 1.653, "給AI 一份好文件，它幫你找出規則。"], [9.3, 51.117, 5.032, 1.653, "怎麼用"], [16.887, 49.731, 35.943, 1.803, "給AI 一份做好的文件，請它拆出固定結構、變"], [16.887, 53.734, 35.455, 1.803, "動欄位與寫作規則；確認後，再放新資料套用"], [16.887, 57.21, 1.803, 1.803, "。"], [10.14, 65.473, 3.306, 1.653, "解鎖"], [16.887, 64.08, 35.88, 1.806, "重複性文件不用每次從零開始，AI 照著你單位"], [16.887, 67.76, 24.852, 1.803, "的格式，產出同規格的新文件。"], [61.547, 25.656, 18.474, 1.653, "單元二，你帶走的三件事"], [61.547, 33.285, 1.927, 1.878, "01"], [66.05, 33.036, 8.932, 1.803, "先找對任務"], [66.05, 39.274, 26.633, 1.653, "高頻、重複、耗時、多人接手或容易"], [66.05, 41.974, 15.009, 1.653, "出錯，最值得先試。"], [61.547, 49.98, 1.927, 1.878, "02"], [66.05, 49.731, 12.531, 1.803, "先萃取，再復用"], [66.05, 55.702, 27.137, 1.653, "給AI 一份好範本，讓它拆出結構、欄"], [66.05, 58.668, 16.672, 1.653, "位、寫法與查核規則。"], [61.547, 66.674, 1.927, 1.878, "03"], [66.05, 65.73, 10.746, 1.803, "人做最後查核"], [66.05, 72.397, 25.711, 1.653, "做好兩道Gate，才能放心讓AI 協助"], [66.05, 76.0, 24.98, 1.653, "處理繁瑣、重複、例行性的任務。"], [7.129, 88.106, 65.367, 1.653, "下一單元，處理護理工作另一個常見需求：把新人訓練、新政策或SOP，設計成一堂課。"]], "30": [[8.198, 17.597, 5.027, 1.653, "單元三"], [14.921, 17.597, 8.411, 1.653, "教學設計力"], [4.504, 26.729, 27.698, 4.359, "讓AI 協助你，"], [4.504, 37.547, 48.252, 4.359, "快速設計一堂有效的課。"], [4.504, 57.744, 51.398, 1.803, "先釐清教學需求，再把資料整理成有目標、有結構的課綱與簡報。"], [4.504, 78.406, 6.68, 1.653, "學習成果"], [12.908, 78.406, 51.609, 1.653, "完成課程設定、課綱與簡報，並把設定卡存成來源，讓下一步讀得到。"]], "31": [[86.667, 6.649, 5.032, 1.653, "單元三"], [4.504, 10.669, 38.224, 2.706, "用ADDIE 當骨架，備課就有路徑"], [4.504, 20.534, 46.752, 1.653, "教學設計常用的五階段流程；今天專攻備課最關鍵的A・D・D。"], [8.102, 32.615, 1.503, 2.481, "A"], [6.379, 41.716, 9.941, 1.803, "分析Analysis"], [6.379, 53.297, 11.644, 1.653, "確認學員、需求"], [6.379, 56.636, 9.991, 1.653, "、形式與時數"], [26.583, 32.615, 1.563, 2.481, "D"], [24.894, 41.716, 8.929, 1.803, "設計Design"], [24.894, 53.297, 11.644, 1.653, "設定目標，規劃"], [24.894, 56.636, 8.338, 1.653, "課綱與評量"], [45.097, 32.615, 1.563, 2.481, "D"], [43.408, 41.716, 3.604, 1.803, "發展"], [43.408, 45.667, 9.924, 1.806, "Development"], [43.408, 53.297, 11.632, 1.653, "製作簡報、教材"], [43.408, 56.636, 4.954, 1.653, "與測驗"], [64.066, 32.615, 0.662, 2.481, "I"], [61.922, 41.716, 3.604, 1.803, "實施"], [61.922, 45.667, 11.84, 1.806, "Implementation"], [61.922, 53.297, 11.632, 1.653, "正式授課、互動"], [61.922, 56.636, 4.954, 1.653, "與帶練"], [82.298, 32.615, 1.211, 2.481, "E"], [80.433, 41.716, 11.689, 1.803, "評鑑Evaluation"], [80.433, 53.297, 11.644, 1.653, "從作品、測驗與"], [80.433, 56.636, 8.338, 1.653, "回饋看成效"], [4.504, 75.067, 36.68, 1.653, "今天聚焦前三站；實施與評鑑留到真正開課後完成"], [7.129, 85.435, 40.462, 1.653, "AI 幫忙整理與生成；你負責定方向、給資料、做判斷。"]], "32": [[4.654, 8.937, 53.393, 3.156, "這一單元，把一份教材逐步變成一堂課"], [86.378, 6.438, 5.404, 1.803, "單元三"], [4.804, 18.098, 34.31, 1.878, "每一步都先停下來確認，再讓AI 往下做。"], [6.679, 31.289, 2.121, 2.106, "01"], [11.708, 31.188, 7.586, 1.878, "先問清楚"], [6.679, 40.282, 15.693, 2.628, "課程基礎設定"], [6.679, 51.244, 19.531, 1.803, "對象、問題、時間、驗收"], [7.657, 63.387, 9.014, 1.653, "NotebookLM"], [6.679, 69.811, 7.085, 1.653, "技能卡03"], [33.001, 46.521, 2.446, 2.703, "→"], [37.977, 31.289, 2.121, 2.106, "02"], [43.007, 31.188, 7.586, 1.878, "再排順序"], [37.977, 40.282, 10.513, 2.628, "課程大綱"], [37.977, 51.244, 26.617, 1.803, "依ADDIE 分段，分鐘數要算得起來"], [38.956, 63.387, 15.55, 1.653, "NotebookLM + Gemini"], [37.977, 69.811, 7.086, 1.653, "技能卡04"], [64.298, 46.521, 2.446, 2.703, "→"], [69.279, 31.289, 2.118, 2.106, "03"], [74.307, 31.188, 7.578, 1.878, "最後展開"], [69.279, 40.282, 10.505, 2.628, "課程簡報"], [69.279, 51.043, 23.095, 1.803, "先定頁數，再產出骨架與內文"], [70.254, 63.387, 15.55, 1.653, "NotebookLM + Gemini"], [69.279, 69.811, 6.68, 1.653, "延續技能"], [24.836, 83.804, 50.452, 1.878, "共用同一份教材：先完成設定卡→ 再做大綱→ 最後生成簡報"]], "33": [[4.654, 8.937, 47.16, 3.156, "先選一個主題，才能開始規劃課程"], [86.378, 6.438, 5.404, 1.803, "單元三"], [4.804, 17.698, 45.558, 1.878, "你可以跟著講師的AI 指引案例，或從下面三題選一題。"], [6.754, 28.013, 6.685, 1.653, "講師示範"], [18.015, 27.749, 30.077, 1.956, "護理人員如何安全且正確地使用AI"], [51.564, 26.41, 33.351, 1.653, "衛福部《醫療機構應用生成式人工智慧指引》"], [51.564, 30.686, 14.716, 1.653, "mohw.gov.tw/AI指引"], [7.766, 45.372, 1.138, 1.878, "A"], [11.408, 45.436, 10.743, 1.803, "新人教育訓練"], [6.529, 56.126, 18.928, 2.103, "一般病房洗手五時機"], [6.529, 66.874, 18.329, 1.653, "新進護理人員、臨床教師"], [7.657, 75.954, 16.458, 1.653, "cdc.gov.tw/洗手五時機"], [39.102, 45.372, 1.054, 1.878, "B"], [42.707, 45.436, 12.546, 1.803, "新政策流程導入"], [37.827, 56.126, 23.059, 2.103, "流感防治與疫苗接種政策"], [37.827, 66.874, 19.982, 1.653, "護理主管、教育訓練承辦人"], [38.956, 75.954, 18.111, 1.653, "cdc.gov.tw/流感政策簡報"], [70.432, 45.372, 0.994, 1.878, "C"], [74.005, 45.436, 10.743, 1.803, "專業護理技術"], [69.129, 56.126, 25.133, 2.103, "降低導尿管相關泌尿道感染"], [69.129, 66.874, 21.679, 1.653, "病房護理人員、感染管制人員"], [70.254, 75.954, 16.451, 1.653, "cdc.gov.tw/導尿管照護"], [24.215, 90.305, 51.771, 1.803, "課堂上只選一題；後面的設定卡、課綱與簡報都沿用同一份教材。"]], "34": [[86.57, 6.708, 5.032, 1.653, "單元三"], [4.535, 10.575, 37.396, 3.306, "技能卡03：AI 訪談釐清法"], [4.535, 21.153, 39.623, 1.953, "提示詞說不完整時，改讓AI 在框架下反問你。"], [28.83, 31.591, 5.027, 1.653, "未解鎖"], [6.881, 30.336, 4.65, 4.584, "03"], [6.881, 45.352, 5.027, 1.653, "技能卡"], [6.881, 50.287, 15.265, 2.481, "AI 訪談釐清法"], [6.881, 60.12, 0.631, 1.803, "•"], [9.225, 60.2, 25.69, 1.803, "說不清楚？讓AI 一題一題問你。"], [6.881, 64.263, 0.631, 1.803, "•"], [9.225, 64.41, 25.167, 1.803, "以達成目標為前提，你還需要什"], [9.225, 68.682, 7.212, 1.803, "麼資訊？"], [43.783, 31.347, 29.207, 2.406, "什麼叫做「訪談釐清法」？"], [45.348, 42.308, 15.611, 1.728, "不是把提示詞寫更長"], [63.016, 41.681, 26.135, 1.353, "當你還沒有想清楚，長提示詞只會讓AI 猜更"], [63.016, 43.957, 2.703, 1.35, "多。"], [45.348, 53.16, 12.155, 1.728, "先給它一個框架"], [63.016, 52.533, 25.52, 1.353, "例如ADDIE 的A：先分析對象、需求、任務"], [63.016, 54.807, 9.468, 1.35, "、限制與成果。"], [45.348, 64.01, 12.155, 1.728, "請它一次問一題"], [63.016, 63.516, 25.779, 1.353, "每題附建議答案，答太籠統時追問一次，再"], [63.016, 65.659, 8.115, 1.35, "收成設定卡。"], [7.194, 89.767, 46.571, 1.803, "人負責回答情境；AI 負責把問題問完整、把答案整理成卡。"]], "35": [[86.57, 6.708, 5.032, 1.653, "單元三"], [4.535, 10.537, 53.393, 3.156, "診斷提示詞：先做分析，不急著寫課綱"], [4.535, 21.226, 52.863, 1.953, "因為有ADDIE 基礎框架，也設定了目標，AI 才知道要問什麼。"], [9.225, 30.589, 3.156, 1.578, "角色"], [19.078, 30.636, 9.979, 1.653, "教學設計顧問"], [9.225, 39.77, 3.156, 1.578, "目標"], [19.078, 39.817, 11.3, 1.653, "只完成A：分析"], [9.225, 48.956, 3.153, 1.575, "框架"], [19.078, 48.999, 13.363, 1.653, "依ADDIE 釐清需求"], [9.225, 58.128, 3.156, 1.578, "節奏"], [19.078, 58.113, 13.326, 1.653, "五題內，一次一題"], [9.225, 67.311, 3.156, 1.578, "收斂"], [19.078, 67.161, 11.632, 1.653, "產出課程設定卡"], [9.225, 76.493, 3.156, 1.578, "停止"], [19.078, 76.511, 11.632, 1.653, "確認前不做課綱"], [51.698, 32.13, 8.411, 1.653, "提示詞全文"], [43.314, 40.078, 47.978, 1.653, "你是一位資深教學設計顧問，熟悉在職教育與ADDIE。請依據我提"], [43.314, 43.089, 48.014, 1.653, "供的來源，帶我完成ADDIE 的A：分析。這一輪只產出「課程設定"], [43.314, 46.292, 21.667, 1.653, "卡」，不要產出課綱或簡報。"], [43.314, 52.497, 48.308, 1.653, "請用訪談方式開始，直接問第一題，不要先摘要來源。最多五個主"], [43.314, 55.436, 48.326, 1.653, "問題，一次只問一題；每題附2–3 個建議答案讓我挑。我回答太籠"], [43.314, 58.639, 38.332, 1.653, "統時，同一題最多追問一次，之後記成「待確認」。"], [43.314, 64.515, 48.506, 1.653, "五題依序問：①這堂課要教給誰？他們現在最卡在哪？②要教什"], [43.314, 67.721, 48.522, 1.653, "麼主題？手上有哪些素材？③形式、人數與限制是什麼？④總共"], [43.314, 70.924, 45.945, 1.653, "多少時間？其中多少留給動手？⑤學完要能做出或判斷什麼？"], [43.314, 76.934, 48.308, 1.653, "問完後輸出【課程設定卡】：課程名稱、對象、工作問題、形式與"], [43.314, 79.872, 41.635, 1.653, "時數、學習目標、驗收方式、待確認事項。確認後停止。"]], "36": [[86.57, 6.708, 5.032, 1.653, "單元三"], [4.535, 10.537, 32.414, 3.156, "技能卡04：AI 隨身教練"], [4.535, 21.226, 55.804, 1.953, "上一張卡讓AI 反問你；這一張卡讓AI 讀方法，再帶你完成目標。"], [28.83, 31.591, 5.027, 1.653, "未解鎖"], [6.881, 30.336, 4.65, 4.584, "04"], [6.881, 45.352, 5.027, 1.653, "技能卡"], [6.881, 50.287, 12.722, 2.481, "AI 隨身教練"], [6.881, 60.12, 0.631, 1.803, "•"], [9.225, 60.268, 21.585, 1.803, "快速學習新的方法、技能。"], [6.881, 64.263, 0.631, 1.803, "•"], [9.225, 64.41, 22.136, 1.803, "讓 AI 成為隨身教練引導你，"], [9.225, 68.682, 17.989, 1.803, "複製成功路徑做一遍。"], [43.783, 31.347, 17.043, 2.406, "學生教練的概念"], [45.348, 41.734, 11.702, 1.653, "先給它參照資料"], [61.922, 41.041, 26.033, 1.053, "方法文章負責「怎麼做」，你的教材負責「要教什麼」。"], [45.348, 50.36, 11.702, 1.653, "讓它照方法帶路"], [61.922, 49.667, 26.033, 1.053, "不是一次丟出成品，而是一步一步問、整理、等待確認。"], [45.348, 58.984, 11.702, 1.653, "目標要先講清楚"], [61.922, 58.291, 24.986, 1.053, "今天的目標是從設定卡，推到課綱，再推到簡報骨架。"], [45.348, 67.61, 10.054, 1.653, "人保留決定權"], [61.922, 66.84, 26.387, 1.278, "AI 可以建議，不能替你決定課程是否適合現場。"], [7.194, 89.767, 51.771, 1.803, "它不是代替你備課，而是把一篇方法文變成會陪你走流程的教練。"]], "37": [[86.57, 6.708, 5.032, 1.653, "單元三"], [4.535, 10.575, 39.573, 3.306, "今天的方法，改成三份來源"], [4.535, 21.226, 51.419, 1.953, "不是請AI 背提示詞，而是讓它照「教學設計文章」帶我們走"], [7.114, 54.887, 6.685, 1.653, "主方法文"], [5.942, 60.665, 10.279, 1.878, "ADDIE model"], [5.942, 67.2, 25.066, 1.578, "A、D、D 三步完整，最適合當教練骨"], [5.942, 69.87, 1.578, 1.578, "架"], [5.942, 75.608, 23.909, 1.353, "teaching-and-learning-collection.sites.uu.nl"], [38.024, 54.887, 6.68, 1.653, "分析補強"], [36.85, 59.959, 25.407, 1.803, "Analysis: Planning Your Instruction"], [36.85, 67.2, 26.296, 1.578, "把第一步拆成why / what / who / where"], [36.85, 76.241, 18.381, 1.578, "ecampus.uconn.edu/analysis"], [68.932, 54.887, 6.685, 1.653, "課綱補強"], [67.76, 60.293, 24.037, 1.653, "Design: Using a Course Design Plan"], [67.76, 67.886, 23.332, 1.653, "把目標、評量、活動與教材對齊"], [67.76, 76.241, 17.546, 1.578, "ecampus.uconn.edu/design"], [7.194, 89.566, 50.094, 1.803, "主文給流程，補強文讓A 和D 更穩；專業內容仍要另外餵教材。"]], "38": [[86.57, 6.708, 5.032, 1.653, "單元三"], [4.535, 10.537, 47.513, 3.156, "第二步：課程大綱——換AI 帶你走"], [4.535, 21.226, 51.347, 1.953, "先用設定卡，再用ADDIE 方法文，讓AI 一段一段陪你排課。"], [15.736, 52.419, 8.401, 1.653, "提示詞全文"], [7.349, 39.232, 53.357, 1.653, "請讀取來源中的ADDIE 方法論文章，以及我剛才確認的【課程設定卡】。"], [7.349, 42.776, 39.755, 1.653, "用文章的方法帶我完成D：設計，產出一份課程大綱。"], [7.349, 49.78, 53.406, 1.653, "請先用來源文章的做法，整理出這堂課需要處理的知識點、案例與練習，"], [7.349, 53.384, 53.406, 1.653, "再把它們分成合理的教學段落。一次只做一個步驟，做完停下來等我確認"], [7.349, 56.726, 1.653, 1.653, "。"], [7.349, 63.669, 53.406, 1.653, "課綱每一段都要寫出：段落名稱／對應的學習目標／這段要教什麼／用什"], [7.349, 67.008, 41.684, 1.653, "麼教法／學員要做什麼／分鐘數／怎麼確認學員聽懂了。"], [7.349, 73.954, 53.406, 1.653, "分鐘數加總須等於總時數；來源不足或與設定卡衝突時先問我。完成後列"], [7.349, 77.293, 26.666, 1.653, "出三個弱點與修改建議，等我決定。"], [70.678, 31.276, 21.681, 2.103, "這次AI 讀得到三種依據"], [70.678, 42.59, 5.184, 1.728, "方法文"], [79.747, 42.552, 12.15, 1.578, "ADDIE 告訴它流程"], [70.678, 51.771, 5.184, 1.728, "設定卡"], [79.747, 51.733, 12.548, 1.578, "告訴它對象與目標"], [70.678, 60.952, 6.912, 1.728, "專業教材"], [79.747, 60.872, 11.688, 1.653, "告訴它內容依據"], [70.678, 70.126, 6.915, 1.731, "你的確認"], [79.747, 70.188, 13.149, 1.428, "決定它能不能往下做"], [7.194, 91.436, 55.532, 1.803, "開始前先看一眼：來源勾選了哪幾份？舊筆記留著，AI 會拿它當依據。"], [15.736, 30.961, 8.401, 1.653, "提示詞全文"]], "39": [[86.57, 6.708, 5.032, 1.653, "單元三"], [4.535, 10.537, 34.546, 3.156, "第三步：把課綱變成簡報"], [4.535, 21.153, 35.125, 1.953, "骨架與內文一次生成，先講好頁數上限。"], [15.736, 30.961, 8.401, 1.653, "提示詞全文"], [7.349, 39.303, 53.308, 1.653, "請依照剛才確認的課綱，產出這堂課的簡報內容，包含簡報骨架與每一頁"], [7.349, 43.309, 16.676, 1.653, "內文，一次完整輸出。"], [7.349, 51.384, 19.982, 1.653, "頁數請先依課程時數建議。"], [7.349, 59.399, 53.406, 1.653, "每一頁請輸出：頁碼／這頁的教學任務／對應課綱段落與學習目標／標題"], [7.349, 63.341, 39.095, 1.653, "／核心觀念一句／最多三個重點（每個20 字以內）。"], [7.349, 71.222, 45.107, 1.653, "沒有我說「開始生成簡報」之前，不要用Studio 產生簡報檔。"], [70.678, 31.295, 17.569, 2.178, "為什麼先講頁數？"], [70.678, 41.752, 18.639, 1.728, "□不先講，它會愈寫愈多"], [70.678, 48.924, 21.613, 1.428, "□頁數要配合課程時間與互動安排"], [70.678, 56.714, 20.39, 1.728, "□頁數定了，內容密度才穩"], [7.194, 91.436, 35.715, 1.803, "先看它的頁數建議合不合理，再讓它往下寫。"]], "40": [[4.504, 10.208, 56.947, 3.156, "視覺優化工具：提示詞模板\\ Chrome擴充"], [6.754, 27.046, 15.312, 1.878, "Banana X 風格圖鑑"], [6.754, 34.069, 31.698, 1.653, "整理好的風格提示詞，挑一個複製，貼到剛"], [6.754, 38.341, 16.676, 1.653, "才的文案後面就能用。"], [6.754, 42.611, 27.372, 1.653, "掃右邊QR，直接開中文版風格圖鑑。"], [47.148, 62.698, 6.253, 1.653, "Banana X"], [64.549, 27.046, 15.884, 1.878, "BananaNL 擴充功能"], [64.549, 34.069, 27.763, 1.653, "在Gemini Notebook 裡一鍵套用風格。"], [64.549, 38.341, 16.654, 1.653, "回去做資訊圖表時用。"], [7.129, 87.093, 47.29, 1.653, "https://furoku.github.io/bananaX/projects/infographic-evaluation/zh/"]], "41": [[86.67, 6.782, 5.027, 1.653, "單元三"], [4.504, 10.208, 29.042, 3.156, "解鎖！技能卡03＋04"], [40.448, 26.81, 5.032, 1.653, "已解鎖"], [6.754, 25.34, 5.105, 5.034, "03"], [18.39, 25.523, 5.027, 1.653, "技能卡"], [18.39, 29.928, 16.559, 2.703, "AI 訪談釐清法"], [6.754, 38.413, 23.789, 1.653, "說不清楚？讓AI 一題一題問你。"], [10.14, 49.913, 3.306, 1.653, "解鎖"], [16.887, 48.397, 27.344, 1.803, "讓AI 反過來訪問你，把沒想到的條"], [16.887, 52.401, 28.622, 1.803, "件問出來，得到更完整、更貼近目的"], [16.887, 55.873, 7.136, 1.803, "的需求。"], [87.358, 26.676, 5.032, 1.653, "已解鎖"], [53.667, 24.94, 5.103, 5.034, "04"], [65.3, 25.389, 5.027, 1.653, "技能卡"], [65.3, 29.928, 13.856, 2.703, "AI 隨身教練"], [53.667, 38.341, 23.785, 1.653, "給AI 一篇文章，它照著帶你做。"], [57.051, 49.78, 3.306, 1.653, "解鎖"], [63.797, 48.397, 28.39, 1.803, "看到好方法不用自己摸索——AI 會照"], [63.797, 52.134, 28.622, 1.803, "著那份資料，一步步帶你做出成果。"], [6.379, 73.101, 9.54, 1.803, "讓AI 反問你"], [6.379, 78.344, 23.833, 1.653, "需求說不完整時，請AI 一次問一"], [6.379, 81.948, 18.316, 1.653, "題，五題內收成設定卡。"], [37.361, 73.101, 10.735, 1.803, "讓來源帶你做"], [37.361, 78.406, 24.233, 1.653, "把方法文章放進Notebook，請AI "], [37.361, 82.01, 16.654, 1.653, "照文章的做法引導你。"], [68.342, 73.101, 16.213, 1.803, "AI 加速，人負責判斷"], [68.342, 78.406, 25.091, 1.653, "AI 協助整理與生成；你決定教什麼"], [68.342, 81.948, 25.044, 1.653, "、怎麼教，以及內容能不能使用。"]], "42": [[8.198, 17.597, 5.027, 1.653, "單元四"], [14.921, 17.597, 8.411, 1.653, "衛教宣導力"], [4.504, 26.729, 21.916, 4.359, "視覺轉化，"], [4.504, 37.547, 39.473, 4.359, "讓專業更容易理解。"], [4.504, 57.744, 39.022, 1.803, "用前面的方法，做一張你單位用得到的衛教圖卡。"], [4.504, 78.539, 6.68, 1.653, "學習成果"], [12.908, 77.902, 51.712, 1.653, "把衛教拆成文案與設計兩部分，做出一張衛教圖卡，再分開檢查內容與"], [4.504, 82.01, 4.954, 1.653, "畫面。"]], "43": [[86.667, 6.649, 5.032, 1.653, "單元四"], [4.504, 9.956, 59.565, 3.156, "衛教單張難在兩件事：說得清楚，做得好看"], [6.754, 27.505, 13.149, 1.881, "內容：說得清楚"], [7.784, 38.882, 1.666, 1.653, "01"], [12.008, 36.369, 8.945, 1.806, "專業轉白話"], [12.008, 41.678, 26.666, 1.653, "醫療術語和政策文字，民眾讀不懂。"], [7.784, 52.237, 1.666, 1.653, "02"], [12.008, 49.731, 8.94, 1.803, "濃縮成重點"], [12.008, 55.036, 30.045, 1.653, "每一點都重要，但民眾只看得下三件事。"], [7.784, 65.595, 1.666, 1.653, "03"], [12.008, 63.086, 7.136, 1.803, "對準對象"], [12.008, 68.387, 33.351, 1.653, "寫給長輩、家屬、新手爸媽，寫法都不一樣。"], [53.413, 27.708, 13.223, 1.881, "設計：做得好看"], [54.443, 38.882, 1.666, 1.653, "04"], [58.667, 36.369, 10.751, 1.806, "美化很花時間"], [58.667, 42.078, 28.319, 1.653, "排版、配色一改再改，常常拖到最後。"], [58.667, 46.354, 19.982, 1.653, "而且，我們不是設計專業。"], [7.129, 84.04, 39.273, 1.653, "說得清楚，交給技能卡1；做得好看，交給技能卡2。"]], "44": [[86.667, 6.649, 5.032, 1.653, "單元四"], [4.504, 9.956, 56.425, 3.156, "把衛教拆成兩條線：內容一條，設計一條"], [18.397, 43.275, 7.136, 1.803, "衛教資料"], [18.633, 47.021, 6.678, 1.653, "你手上的"], [18.633, 50.565, 6.641, 1.653, "正確內容"], [35.582, 32.941, 3.609, 1.806, "內容"], [35.569, 57.188, 3.606, 1.803, "設計"], [49.22, 31.256, 6.673, 1.803, "技能卡1"], [57.663, 31.256, 5.404, 1.803, "寫文案"], [47.78, 35.002, 16.676, 1.653, "白話、濃縮、對準對象"], [49.22, 55.294, 6.673, 1.803, "技能卡2"], [57.663, 55.294, 5.404, 1.803, "挑風格"], [49.212, 59.039, 13.796, 1.653, "給AI 一張喜歡的圖"], [72.815, 43.275, 7.129, 1.803, "衛教圖卡"], [72.215, 47.021, 8.338, 1.653, "文案＋風格"], [73.047, 50.626, 6.685, 1.653, "合成一張"], [7.129, 79.364, 36.876, 1.653, "AI 負責說白話、做好看；內容對不對，由人負責。"]], "45": [[86.667, 6.649, 5.032, 1.653, "單元四"], [4.504, 10.09, 56.343, 3.156, "使用技能卡1！寫一段PTCF，文案就有了"], [7.807, 27.88, 8.401, 1.653, "提示詞全文"], [8.037, 36.766, 1.146, 1.653, "P"], [12.008, 35.255, 30.049, 1.878, "你是一位擅長資訊圖像化的設計師。"], [12.008, 44.07, 65.677, 1.878, "請把【主題】的衛教資料，用白話改寫成一份提供給【對象】閱讀的衛教文宣。"], [12.008, 53.016, 78.879, 1.878, "他們現在最困擾的是【困擾】，希望他們看完能【行動】。請根據我提供的資料，或是幫我搜尋"], [12.008, 57.692, 26.293, 1.878, "官方的資料，並附上來源網址。"], [12.008, 66.907, 43.196, 1.878, "版面是【尺寸】，文字需要放得下；使用繁體中文。"], [7.934, 45.313, 1.088, 1.653, "T"], [7.882, 53.994, 1.187, 1.653, "C"], [7.955, 68.016, 1.05, 1.653, "F"], [4.504, 81.548, 59.94, 1.653, "［］換成你的內容；［尺寸］選一種：A4 三折頁、A3 直式海報、A4 單張 DM。"], [4.504, 93.566, 15.006, 1.653, "完整提示詞在講義裡"]], "46": [[4.654, 8.553, 46.933, 3.156, "延續同一個主題，先做好圖卡設定"], [86.396, 6.237, 5.333, 1.803, "單元四"], [4.804, 17.894, 43.196, 1.878, "不急著生圖：先選尺寸，再回答對象、困擾與行動。"], [7.054, 30.309, 15.027, 1.881, "沿用單元三的主題"], [9.039, 40.864, 1.288, 1.878, "A"], [12.308, 41.36, 16.0, 1.803, "一般病房洗手五時機"], [9.018, 54.489, 1.332, 1.878, "B"], [12.308, 54.982, 19.531, 1.803, "流感防治與疫苗接種政策"], [9.013, 68.107, 1.348, 1.878, "C"], [12.308, 68.606, 17.728, 1.803, "導尿管相關泌尿道感染"], [7.054, 78.789, 16.676, 1.653, "沿用同一題，才看得出"], [7.054, 82.394, 18.329, 1.653, "課程如何轉成衛教文宣。"], [40.831, 29.779, 7.784, 1.878, "1  選尺寸"], [55.141, 29.952, 4.959, 1.653, "三折頁"], [67.685, 29.952, 3.303, 1.653, "海報"], [78.332, 29.952, 5.471, 1.653, "A4 DM"], [41.566, 41.531, 1.076, 1.878, "2"], [44.584, 41.493, 3.604, 1.803, "對象"], [53.892, 41.927, 15.009, 1.881, "這份文宣給誰看？"], [41.566, 53.55, 1.076, 1.878, "3"], [44.584, 53.507, 3.606, 1.806, "困擾"], [53.892, 53.946, 18.76, 1.881, "他們現在最困擾什麼？"], [41.566, 65.564, 1.078, 1.881, "4"], [44.584, 65.534, 3.604, 1.803, "行動"], [53.892, 65.974, 16.882, 1.878, "看完希望他做什麼？"], [47.182, 80.5, 38.622, 1.653, "主題＋尺寸放進T、F；對象＋困擾＋行動就是C。"]], "47": [[86.688, 6.45, 4.954, 1.653, "單元四"], [4.504, 9.823, 74.218, 3.156, "技能卡2 再出場！給AI 一張你喜歡的圖，讓它學風格"], [7.838, 27.685, 8.338, 1.653, "提示詞全文"], [6.754, 34.807, 18.329, 1.653, "上傳一張參考圖，再貼："], [6.754, 39.213, 30.045, 1.653, "「請把這張圖的視覺風格描述成可重複使"], [6.754, 43.755, 30.045, 1.653, "用的提示詞：配色、插圖風格、字體感、"], [6.754, 48.159, 26.666, 1.653, "留白與構圖。不要描述圖的內容。」"], [6.754, 70.863, 21.707, 1.653, "不輸入病人個資或院內機密。"], [47.326, 73.535, 4.959, 1.653, "可愛風"], [65.924, 73.535, 4.959, 1.653, "親和感"], [82.852, 73.535, 8.338, 1.653, "專業醫療感"], [7.129, 86.578, 27.695, 1.653, "網路參考圖 ：https://pse.is/9mpy9e"], [4.504, 93.566, 65.214, 1.653, "範例來源：臺北市社區營養推廣中心、臺北市政府衛生局、Obesity Association（ADA）"]], "48": [[86.688, 6.45, 4.954, 1.653, "單元四"], [4.504, 8.857, 56.321, 3.156, "製作完成後，分成內容與視覺兩部分檢查"], [6.754, 27.018, 6.659, 1.653, "內容檢查"], [6.754, 33.689, 8.595, 1.653, "☐資訊正確"], [18.765, 34.141, 26.633, 1.653, "數字、資格、時程、建議與警語都能"], [18.765, 37.746, 11.632, 1.653, "回到原始資料。"], [6.754, 45.041, 8.595, 1.653, "☐內容完整"], [18.765, 45.489, 26.633, 1.653, "適用對象、必要條件、例外與行動方"], [18.765, 49.098, 9.979, 1.653, "式沒有遺漏。"], [6.754, 56.389, 8.595, 1.653, "☐目標達成"], [18.765, 56.841, 26.633, 1.653, "讀者看完能抓到重點，也知道下一步"], [18.765, 60.45, 8.331, 1.653, "要做什麼。"], [6.754, 67.741, 8.595, 1.653, "☐用語恰當"], [18.765, 68.192, 26.633, 1.653, "專業名詞有說明，不誇大風險，也不"], [18.765, 71.796, 15.006, 1.653, "提供個別診療建議。"], [53.289, 27.018, 6.658, 1.653, "視覺檢查"], [53.289, 33.689, 8.595, 1.653, "☐中文正確"], [65.3, 34.141, 26.633, 1.653, "沒有錯字、亂碼或簡體字，專有名詞"], [65.3, 37.746, 13.353, 1.653, "與單位寫法一致。"], [53.289, 42.771, 8.595, 1.653, "☐閱讀順序"], [65.3, 43.222, 26.633, 1.653, "讀者一眼知道先看哪裡，再看哪裡。"], [53.289, 51.85, 8.595, 1.653, "☐關聯清楚"], [65.3, 52.302, 26.633, 1.653, "標題、圖像、箭頭與文字相互對應，"], [65.3, 55.907, 15.006, 1.653, "沒有造成錯誤因果。"], [53.289, 60.932, 8.595, 1.653, "☐畫面易讀"], [65.3, 60.941, 26.669, 1.653, "字級、對比與留白足夠，重要訊息不"], [65.3, 64.987, 11.632, 1.653, "會被裝飾搶走。"], [53.289, 70.011, 8.595, 1.653, "☐重點保留"], [65.3, 70.463, 26.633, 1.653, "視覺化後沒有刪掉關鍵數字、條件、"], [65.3, 74.068, 13.353, 1.653, "警語或資料來源。"], [7.129, 86.578, 38.383, 1.653, "內容先過關，再確認畫面有沒有把正確的事情說清楚"]], "49": [[86.688, 6.45, 4.954, 1.653, "單元四"], [4.504, 9.823, 43.372, 3.156, "單元四：技能卡01＋02 再出場"], [27.933, 25.281, 4.959, 1.653, "已解鎖"], [6.754, 22.353, 4.534, 3.981, "01"], [6.754, 33.603, 4.959, 1.653, "技能卡"], [6.754, 37.943, 13.739, 1.953, "PTCF 溝通框架"], [6.754, 47.311, 24.795, 1.428, "四個欄位，把腦中的想法一次說清楚。"], [27.933, 60.003, 4.959, 1.653, "已解鎖"], [6.754, 57.075, 4.534, 3.981, "02"], [6.754, 68.326, 4.959, 1.653, "技能卡"], [6.754, 72.666, 9.91, 1.953, "範例萃取法"], [6.754, 81.932, 25.835, 1.578, "給AI 一份好文件，它幫你找出規則。"], [42.406, 24.122, 18.329, 1.653, "單元四，你帶走的三件事"], [42.406, 32.185, 2.129, 1.878, "01"], [46.91, 32.185, 11.268, 1.878, "衛教拆成兩半"], [46.91, 37.704, 25.005, 1.653, "內容和設計分開做，也分開檢查。"], [42.406, 48.879, 2.129, 1.878, "02"], [46.91, 48.879, 24.671, 1.878, "技能卡1 清楚好懂的完整文案"], [46.91, 54.841, 26.418, 1.653, "一段PTCF，對準對象、說得清楚。"], [42.406, 65.564, 2.13, 1.881, "03"], [46.91, 65.564, 27.082, 1.881, "技能卡2 易讀設計感的視覺風格"], [46.91, 71.529, 26.666, 1.653, "一張喜歡的圖或樣板庫，做得好看。"], [7.129, 91.718, 40.036, 1.653, "四個單元走完了。最後，把今天的四張技能卡串起來。"]], "50": [[12.427, 17.402, 6.678, 1.653, "課程總結"], [4.504, 26.566, 26.27, 4.359, "四張技能卡，"], [4.504, 37.384, 39.404, 4.359, "帶回你的工作現場。"], [4.504, 57.543, 59.439, 1.803, "回顧今天解鎖的四張技能卡，對照阿長的四個煩惱，再確認使用AI 的紅線。"], [4.504, 78.211, 6.678, 1.653, "學習成果"], [12.844, 78.211, 43.728, 1.653, "知道每張技能卡回去用在哪裡，以及哪些資料不能交給AI。"]], "51": [[4.504, 9.823, 37.547, 3.156, "四張技能卡，今天全部解鎖"], [18.426, 29.952, 4.954, 1.653, "已解鎖"], [6.754, 26.982, 5.738, 5.034, "01"], [6.754, 40.95, 4.959, 1.653, "技能卡"], [6.754, 46.166, 16.035, 2.331, "PTCF 溝通框架"], [6.754, 55.107, 16.676, 1.653, "四個欄位，把腦中的想"], [6.754, 58.711, 11.644, 1.653, "法一次說清楚。"], [6.379, 71.529, 11.644, 1.653, "今天在哪裡用過"], [6.379, 75.539, 16.676, 1.653, "單元一寫指令、單元四"], [6.379, 79.143, 4.959, 1.653, "寫文案"], [41.568, 29.952, 4.954, 1.653, "已解鎖"], [29.896, 26.982, 5.738, 5.034, "02"], [29.896, 40.95, 4.959, 1.653, "技能卡"], [29.896, 46.166, 11.495, 2.331, "範例萃取法"], [29.896, 55.107, 15.84, 1.653, "給AI 一份好文件，它"], [29.896, 58.711, 11.644, 1.653, "幫你找出規則。"], [29.521, 71.529, 11.644, 1.653, "今天在哪裡用過"], [29.521, 75.539, 16.676, 1.653, "單元二萃取會議紀錄、"], [29.521, 79.143, 9.991, 1.653, "單元四挑風格"], [64.71, 29.952, 4.954, 1.653, "已解鎖"], [53.038, 26.982, 5.738, 5.034, "03"], [53.038, 40.95, 4.959, 1.653, "技能卡"], [53.038, 46.166, 14.454, 2.331, "AI 訪談釐清法"], [53.038, 55.107, 15.841, 1.653, "說不清楚？讓AI 一題"], [53.038, 58.711, 8.338, 1.653, "一題問你。"], [52.663, 71.529, 11.644, 1.653, "今天在哪裡用過"], [52.663, 75.539, 11.644, 1.653, "單元三課程設定"], [87.852, 29.952, 4.954, 1.653, "已解鎖"], [76.181, 26.982, 5.738, 5.034, "04"], [76.181, 40.95, 4.959, 1.653, "技能卡"], [76.181, 46.166, 12.208, 2.331, "AI 隨身教練"], [76.181, 55.107, 15.84, 1.653, "給AI 一篇文章，它照"], [76.181, 58.711, 8.338, 1.653, "著帶你做。"], [75.805, 71.529, 11.644, 1.653, "今天在哪裡用過"], [75.805, 75.539, 17.536, 1.653, "單元三讓AI 照文章帶你"]], "52": [[4.504, 9.823, 43.859, 3.156, "阿長的四個煩惱，今天都有解了"], [6.379, 28.798, 3.306, 1.653, "煩惱"], [6.379, 33.538, 11.863, 1.953, "公告寫不到位"], [6.379, 46.826, 6.685, 1.653, "帶回去的"], [6.379, 51.534, 12.396, 1.803, "PTCF 提示詞卡"], [11.825, 61.87, 6.431, 1.653, "技能卡1"], [29.71, 28.798, 3.303, 1.653, "煩惱"], [29.71, 33.538, 15.826, 1.953, "會議紀錄從零開始"], [29.71, 46.826, 6.678, 1.653, "帶回去的"], [29.71, 51.534, 12.463, 1.803, "會議紀錄生成器"], [35.153, 61.87, 6.434, 1.653, "技能卡2"], [53.038, 28.798, 3.306, 1.653, "煩惱"], [53.038, 33.538, 13.816, 1.953, "在職教育備不完"], [53.038, 46.826, 6.685, 1.653, "帶回去的"], [53.038, 51.534, 8.864, 1.803, "微型課程包"], [57.172, 61.87, 9.054, 1.653, "技能卡3＋4"], [76.369, 28.798, 3.303, 1.653, "煩惱"], [76.369, 33.538, 13.808, 1.953, "衛教單張沒人看"], [76.369, 46.826, 6.678, 1.653, "帶回去的"], [76.369, 51.534, 10.66, 1.803, "一張衛教單張"], [80.502, 61.87, 9.052, 1.653, "技能卡1＋2"], [7.129, 76.253, 58.22, 1.878, "你帶走的不是這一份成品，而是下一次可以更快完成同類任務的方法。"]], "53": [[4.504, 9.823, 32.199, 3.156, "AI 是草稿，簽章是承諾"], [6.754, 28.142, 19.033, 2.328, "這些資料，不進AI"], [6.754, 37.651, 30.3, 2.481, "• 病人姓名・病歷號・床號"], [6.754, 46.598, 22.793, 2.481, "• 可辨識的同仁資料"], [6.754, 55.679, 22.793, 2.481, "• 未公開的院內資訊"], [6.754, 64.768, 30.291, 2.478, "• 不在院內核准清單的工具"], [53.289, 27.331, 25.263, 2.328, "這些產出，先過人的檢查"], [53.289, 37.651, 20.312, 2.481, "• 來源回得去嗎？"], [53.289, 46.598, 22.792, 2.481, "• 內容有沒有補寫？"], [53.289, 55.679, 27.819, 2.481, "• 適合現在這個情境嗎？"], [53.289, 64.768, 20.306, 2.478, "• 由誰簽名負責？"], [4.504, 93.566, 46.63, 1.653, "出處：衛福部《醫療機構應用生成式人工智慧指引》2026.05.29"]], "54": [[28.685, 10.49, 43.859, 3.156, "讓ＡＩ能成為你工作最強助手！"], [17.759, 45.135, 2.306, 1.653, "QR"], [14.761, 48.744, 8.338, 1.653, "（待置換）"], [14.241, 63.435, 9.38, 1.878, "講義落地頁"], [7.256, 70.735, 23.332, 1.653, "全部提示詞、範本、逐字稿備援"], [14.761, 74.339, 8.338, 1.653, "、延伸閱讀"], [48.863, 45.135, 2.309, 1.653, "QR"], [45.868, 48.744, 8.331, 1.653, "（待置換）"], [46.284, 63.435, 7.505, 1.878, "作品展牆"], [41.698, 70.735, 16.654, 1.653, "自願上傳你的衛教單張"], [79.97, 45.135, 2.306, 1.653, "QR"], [76.971, 48.744, 8.338, 1.653, "（待置換）"], [77.391, 63.435, 7.505, 1.878, "課後問卷"], [72.802, 70.735, 16.676, 1.653, "護理師積分請記得簽退"]]}};
 // 網頁專屬內容（人維護的真源）：段落文字、互動設定、測驗題。
 // 提示詞、檢查清單、講義全文不寫在這裡——由 build_web.py 從講義 md 讀入（用 prompt:'2-1'、section:'1.3' 引用）。
 // 技能卡文字來自簡報腳本 part1.js 的 CARDS。
@@ -532,11 +657,18 @@ window.CONTENT = {
     ask: [['對象', '這份文宣給誰看？', '例：住院長輩的家屬'], ['困擾', '他們現在最困擾什麼？', '例：不知道怎麼預防長輩跌倒'], ['行動', '看完希望他做什麼？', '例：回家照著三件事檢查居家環境']],
     guide: { P: ['角色', '已幫你寫好'], T: ['任務', '帶入主題、尺寸'], C: ['背景', '帶入三個問題'], F: ['格式', '帶入尺寸'] },
   },
+  // PTCF 句型：句子固定，［　］是學員要填的空格（含／的欄位在網頁上變成選項按鈕）
+  ptcf: [
+    ['P', '角色', '你是一位［產業或單位］的［職位或身分］。'],
+    ['T', '任務', '請［撰寫／總結／改寫］一份［要完成的內容］。'],
+    ['C', '背景', '這份內容要給［對象］，情境是［情境］。請根據［參考資料或文件］，不要加入資料裡沒有的內容。'],
+    ['F', '格式', '請用［列點／表格／段落］呈現，使用繁體中文。'],
+  ],
   segments: [
     { id: 's1', unit: 0, slide: 1, title: '課程封面' },
     { id: '0-1', unit: 0, title: '開始之前：先做三件事', sub: '開著這個網頁上課，投影幕看不清楚時，看自己的螢幕就好。',
       blocks: [
-        { type: 'howto', items: ['講師會說「現在到 1-3」：對照每頁左上角的段落碼', '上方選單可以跳到任何單元；按「看講義」會從右側打開講義，看完關掉即可', '您填寫的內容只存在這台電腦的瀏覽器，不會上傳'] },
+        { type: 'howto', items: ['講師會報段落的名稱（例如「現在到『選課程主題』」）：對照左側目錄找同名那一列', '上方選單可以跳到任何單元；按「看講義」會從右側打開講義，看完關掉即可', '您填寫的內容只存在這台電腦的瀏覽器，不會上傳'] },
         { type: 'checklist', key: 'setup', items: ['用 Google 個人帳號登入（公司或學校帳號可能被停用 AI 功能）', '打開 Gemini，確認可以對話', '打開 Gemini Notebook，確認可以建立筆記本'] },
         { type: 'openers', tools: ['gemini', 'notebook'], label: '開啟工具' },
         { type: 'callout', warn: true, text: '資料紅線：病人姓名、病歷號、床號、可辨識的同仁資料、未公開的院內資訊，都不進 AI。' },
@@ -569,44 +701,45 @@ window.CONTENT = {
           F: '好選擇：沒說要用什麼形式呈現、每頁要包含什麼，AI 只能自己決定。' }, after: '其實四格都缺。看看完整版怎麼補：' },
         { type: 'prompt', ref: '範例', title: '完整 PTCF 版（示範用，不必送出）', afterPick: 'first-fill', copyOnly: true, noCopy: true },
       ] },
-    { id: '1-Q1', unit: 1, title: '小測驗：PTCF', sub: '三題，作答後就能往下。', quiz: ['A1', 'A2', 'A3'] },
-    { id: '1-5', unit: 1, title: '換您寫：PTCF 填寫器',
+    { slide: 13, id: '1-guide', unit: 1, title: '會跟 AI 溝通之後，使用時還要注意什麼？', sub: '衛福部指引把醫療場域的 AI 使用分成三層；課堂先抓住三條底線，完整 PDF 與摘要都在這裡。',
       blocks: [
-        { type: 'task', text: '情境任務：醫院本週要辦一場「感染管制教育訓練」。請用 PTCF 寫一段提示詞，請 AI 幫您擬一份給全院護理同仁的公告。' },
-        { type: 'builder', key: 'ptcf1', fields: [
-          ['P', '角色', '你是一位［產業或單位］的［職位或身分］。'],
-          ['T', '任務', '請［撰寫／總結／改寫］一份［要完成的內容］。'],
-          ['C', '背景', '這份內容要給［對象］，情境是［情境］。請根據［參考資料或文件］，不要加入資料裡沒有的內容。'],
-          ['F', '格式', '請用［列點／表格／段落］呈現，使用繁體中文。'],
-        ], append: '【課程資訊】\n課程：感染管制教育訓練——手部衛生與隔離防護\n時間：9 月 30 日（三）14:00–15:00\n地點：第二會議室\n對象：全院護理同仁\n講師：感染管制護理師', model: ['你是一位醫院護理部的行政秘書，熟悉院內公告的寫法。', '請用正式的語氣，撰寫一份本週感染管制教育訓練的公告。', '公告要給全院護理同仁看。請根據我貼上的課程資訊，不要加入資訊裡沒有的內容。', '200 字內，用列點呈現時間、地點、對象。'] },
-        { type: 'drawer', section: '1.2', label: '看講義：PTCF 空白模板與範例' },
+        { type: 'resource', title: '輔助參考｜衛福部生成式 AI 指引', text: '需要看原文時，從這裡打開。課堂上先記住三條底線：能幫忙不等於能負責、資料先想清楚、產出與情境都要查。', section: '1.3', label: '展開講義摘要', file: '00_備料間/衛福部_醫療機構應用生成式人工智慧指引_20260529.pdf', fileLabel: '下載指引 PDF' },
+        { type: 'takeaway', items: [['能幫忙，不等於能負責', 'AI 可以協助整理、撰寫、轉譯與支援判斷；最後確認、審核與責任仍在人身上。'], ['資料先想清楚，再決定能不能放', '不是只有拿掉姓名而已，也要看工具、授權、用途、院內規範與保存方式。'], ['產出要查，情境也要查', '內容有來源還不夠，還要看是否適合這位病人、這個單位與現在情境。']] },
       ] },
-    { id: 's13', unit: 1, slide: 13, title: '衛福部的 AI 指引' },
     { id: '1-6a', unit: 1, slide: 14, title: 'AI 可以協助做哪些醫護行政工作' },
     { id: '1-6b', unit: 1, slide: 15, title: '資料交給 AI 前，先確認能不能用' },
     { id: '1-6c', unit: 1, slide: 16, title: 'AI 給了答案，結果能不能使用' },
     { id: '1-6d', unit: 1, slide: 17, title: '與民眾互動或錄音錄影，還要做到資訊透明' },
     { id: 's18', unit: 1, slide: 18, title: 'Human-in-the-loop' },
-    { id: '1-Q2', unit: 1, title: '小測驗：衛福部指引', sub: '四題，作答後解鎖技能卡 01。', quiz: ['B1', 'B2', 'B3', 'B4'] },
-    { slide: 19, id: '1-7', unit: 1, title: '解鎖！技能卡 01　PTCF 溝通框架', unlock: 1,
+    { slide: 19, id: '1-check', unit: 1, title: '單元小測驗：一題判斷，一題練習', sub: '兩題，不擋進度。第 1 題確認邊界，第 2 題練習把需求說清楚。', optionalQuiz: true, quizFirst: true, quiz: ['B1'], extraTitle: 'PTCF 應用題',
+      blocks: [
+        { type: 'task', text: '醫院本週要辦「感染管制教育訓練」。請用 PTCF 寫一段提示詞，請 AI 幫你擬一份給全院護理同仁的公告。' },
+        { type: 'builder', key: 'ptcf1', privacy: false, tpl: 'ptcf',
+          append: '【課程資訊】\n課程：感染管制教育訓練——手部衛生與隔離防護\n時間：9 月 30 日（三）14:00–15:00\n地點：第二會議室\n對象：全院護理同仁\n講師：感染管制護理師',
+          model: { '產業或單位': '醫院護理部', '職位或身分': '行政秘書', '要完成的內容': '教育訓練公告', '對象': '全院護理同仁', '情境': '本週要辦感染管制教育訓練', '參考資料或文件': '下面的課程資訊', '撰寫／總結／改寫': '撰寫', '列點／表格／段落': '列點' } },
+        { type: 'drawer', section: '1.2', label: '看講義：PTCF 空白模板與範例' },
+      ] },
+    { slide: 20, id: '1-7', unit: 1, title: '解鎖！技能卡 01　PTCF 溝通框架', unlock: 1,
       blocks: [
         { type: 'takeaway', items: [['用 PTCF 說清楚', '角色、任務、背景與格式，決定 AI 是否理解工作需求。'], ['用來源限制內容', '指定可信資料；資料不足時，不讓 AI 自行補寫。'], ['把判斷留在人手上', '保護資料、查核內容，由專業人員負責最後確認。']] },
         { type: 'callout', dark: true, text: '有些工作規則，連我們自己都很難說清楚。下一單元，直接給 AI 一份好文件，讓它把格式與規則找出來。' },
       ] },
-    { id: 's20', unit: 2, slide: 20, title: '單元二封面' },
-    { slide: 21, id: '2-1', unit: 2, title: '您的工作中，哪一件最值得先交給 AI 協作？', sub: '寫下一件工作，再勾選符合的條件。',
+    { id: 's20', unit: 2, slide: 21, title: '單元二封面' },
+    { slide: 22, id: '2-1', unit: 2, title: '哪些工作，最適合交給 AI？', sub: '先看五個判準，再寫下你最想交給 AI 的兩個任務。',
       blocks: [
-        { type: 'task', text: '想一件您每週都在做、又很花時間的工作，寫在下面，再勾選它符合幾個條件。' },
-        { type: 'score', key: 'fit', task: '我想到的工作', model: '例：每週護理部會議紀錄——每週都要做、格式固定、整理很花時間。', items: [['頻率高嗎？', '每週、每月或每場活動都要做'], ['做法重複嗎？', '結構、欄位與處理步驟大致固定'], ['很花時間嗎？', '時間花在整理、改寫、搬移或填入資料'], ['需要多人接手嗎？', '資料要在不同角色之間傳遞與確認'], ['容易出錯嗎？', '常漏填、貼錯或版本混亂，而且能回頭核對']],
-          result: ['先想一件具體的工作，再勾勾看。', '符合 1 項：可以試，但不急。', '符合 2 項：值得試試看。', '符合 3 項：值得優先交給 AI 協作。', '符合 4 項：非常值得，今天就可以開始。', '5 項全中：這就是您今天要帶回去的任務。'] },
-        { type: 'source', text: '判斷依據：IBM Business Process Automation' },
+        { type: 'rows', items: [['頻率高嗎？', '每週、每月或每場活動都要做。'], ['做法重複嗎？', '結構、欄位與處理步驟大致固定。'], ['很花時間嗎？', '時間花在整理、改寫、搬移或填入資料。'], ['需要多人接手嗎？', '資料要在不同角色之間傳遞與確認。'], ['容易出錯嗎？', '常漏填、貼錯或版本混亂，而且能回頭核對。']] },
+        { type: 'taskpair', key: 'ai-tasks', placeholders: ['例：每週護理部會議紀錄', '例：教育訓練紀錄整理'], hint: '符合越多，越值得先試；今天先從格式固定、重複出現的文件開始。' },
       ] },
-    { id: 's22', unit: 2, slide: 22, title: '要留下的是「怎麼完成」' },
-    { id: 's23', unit: 2, slide: 23, title: '系統提示詞＝PTCF 的延伸' },
-    { id: 's24', unit: 2, slide: 24, title: 'P＋T：角色與兩段任務' },
-    { id: 's25', unit: 2, slide: 25, title: 'C＋F：界線與輸出格式' },
-    { id: 's26', unit: 2, slide: 26, title: '系統提示詞才是帶得走的方法', actions: [{ open: 'gem' }, { copy: 'A', label: '複製完整系統提示詞' }] },
-    { id: '2-do1', unit: 2, title: '動手①：萃取格式', sub: '全程在同一個 Gem 對話裡完成，不要開新對話。',
+    { id: 's23', unit: 2, slide: 23, title: '把完成任務的技能方法，教會 AI！' },
+    { id: 's24', unit: 2, slide: 24, title: '萃取範本的四大要素' },
+    { slide: 25, id: '2-gem', unit: 2, title: '我們把萃取法，先做成一個 Gem 助手', sub: '簡報只看摘要；完整系統提示詞可以在這裡展開。',
+      blocks: [
+        { type: 'resource', title: '輔助參考｜文件格式萃取與複用助手', text: 'Gem 打不開時，可以把完整系統提示詞貼進 Gemini、ChatGPT 或 Claude，一樣用「萃取格式 → 確認模板 → 套用新素材」的流程。', section: 'A', label: '展開完整系統提示詞', copy: 'A', copyLabel: '📋 複製完整系統提示詞' },
+        { type: 'openers', tools: ['gem'], label: '開啟 Gem' },
+        { type: 'takeaway', items: [['它會先判斷模式', '你現在要萃取格式，還是套用模板？不清楚時，它會先問。'], ['它會萃取可複用要件', '文件結構、標題層級、固定欄位、替換欄位、寫作規則與查核標準。'], ['它會分成兩階段', '萃取完成後停下來，不會自動套用；你確認後才放新素材。']] },
+      ] },
+    { id: 's25', unit: 2, slide: 26, title: '萃取復用完整流程，與 2 個 Gate 查核點' },
+    { id: '2-do1', unit: 2, slide: 27, title: '隨堂練習：讓 AI 萃取格式，再套用到新素材', sub: '網頁提供範本與新素材下載／連結。全程在同一個 Gem 對話裡完成，不要開新對話。',
       blocks: [
         { type: 'privacyNote', text: '請用課堂範本或已去識別化的文件；不要上傳含病人或同仁資料的檔案。' },
         { type: 'download', file: '00_備料間/單元二_格式萃取與模板生成_教學素材/講師示範_Demo/疾管署_性別平等工作小組113年第2次會議紀錄_精簡範例.pdf', label: '① 下載課堂範本（會議紀錄 PDF）', note: '檔案會存到電腦的「下載」資料夾。' },
@@ -618,61 +751,101 @@ window.CONTENT = {
       blocks: [
         { type: 'checkref', ref: 'Gate 1', title: '④ 先檢查：模板抓得準不準？（Gate 1）' },
         { type: 'copytext', label: '⑤ 複製這段，貼給 Gem 送出', text: '這是新素材：https://www.youtube.com/watch?v=XQRrkNJoMao\n請只使用影片 14:30–25:00 這一段，套用到剛才的模板。', note: '這段已經包含提示詞 2-2，貼一次就好。' },
-              ] },
-    { id: 's27', unit: 2, slide: 27, title: '中間要停兩次' },
-    { slide: 28, id: '2-gates', unit: 2, title: '兩個 Gate，要檢查不同的事情', sub: '做完一關，就勾一關。任何文件都適用。',
-      blocks: [
-        { type: 'gates', items: [['Gate 1', 'GATE 1　萃取完成後：模板抓得準不準？', '錯一次，之後每次都會跟著複製。'], ['Gate 2', 'GATE 2　套用完成後：新文件寫得有沒有依據？', '內容完整，不等於內容正確。']] },
+        { type: 'links', items: [['開啟公聽會影片', 'https://www.youtube.com/watch?v=XQRrkNJoMao']] },
+        { type: 'checkref', ref: 'Gate 2', title: '⑥ 再檢查：內容對不對、能不能用？（Gate 2）' },
       ] },
-    { slide: 29, id: '2-6', unit: 2, title: '想一想：您有哪些文件，適合用這套方法？', sub: '寫下一到兩份。只存在您的電腦，不會上傳。',
+    { slide: 28, id: '2-6', unit: 2, title: '想一想：你有哪些文件，適合用這套方法？', sub: '寫下一到兩份。只存在你的電腦，不會上傳。',
       blocks: [
-        { type: 'task', text: '寫下 1～2 份您單位裡「每次格式都差不多」的文件，以及為什麼值得交給 AI。' },
+        { type: 'task', text: '寫下 1～2 份你單位裡「每次格式都差不多」的文件，以及為什麼值得交給 AI。' },
         { type: 'scenario', key: 'docs', rows: 2, model: [['交班紀錄', '每天都寫、欄位固定、常常漏填'], ['在職教育簽到與紀錄', '每月都做、格式一樣、整理很花時間']], more: '其他常見的：跨科協調聯絡單、公文回覆、公告通知。' },
       ] },
-    { slide: 30, id: '2-7', unit: 2, title: '解鎖！技能卡 02　範例萃取法', unlock: 2,
+    { slide: 29, id: '2-7', unit: 2, title: '解鎖！技能卡 02　範例萃取法', unlock: 2,
       blocks: [
         { type: 'takeaway', items: [['先找對任務', '高頻、重複、耗時、多人參與或容易出錯的工作，最值得先試。'], ['分開兩個階段', '先萃取並確認模板，再放入新資料驗證能不能複用。'], ['保留兩個 Gate', '模板萃取後檢查一次；套用新資料後，再回到來源與責任確認一次。']] },
         { type: 'callout', dark: true, text: '下一單元，處理護理工作另一個常見需求：把新人訓練、新政策或 SOP，設計成一堂課。' },
       ] },
-    { id: 's31', unit: 3, slide: 31, title: '單元三封面' },
-    { id: 's32', unit: 3, slide: 32, title: '用 ADDIE 當骨架' },
-    { id: 's33', unit: 3, slide: 33, title: '今天的方法，來自這一篇', actions: [{ link: 'https://afu.tw/1044', label: '開啟福哥〈教學的技術〉' }, { copyText: 'https://afu.tw/1044', label: '複製文章網址' }] },
-    { id: 's34', unit: 3, slide: 34, title: '三份成果、每份確認才往下' },
-    { id: 's35', unit: 3, slide: 35, title: '第一步：先讓 AI 問清楚', actions: [{ file: '00_備料間/衛福部_醫療機構應用生成式人工智慧指引_20260529.pdf', label: '下載練習教材：衛福部指引 PDF' }, { copyText: 'https://afu.tw/1044', label: '複製福哥文章網址' }, { open: 'notebook' }] },
-    { id: 's36', unit: 3, slide: 36, title: '訪談提示詞', note: '打開 Gemini Notebook 後，回到您剛才建立的那本筆記本，再貼上提示詞。', actions: [{ copy: '3-1' }, { open: 'notebook' }] },
-    { id: 's37', unit: 3, slide: 37, title: '第二步：課程大綱', actions: [{ copy: '3-2' }] },
-    { id: 's38', unit: 3, slide: 38, title: '課綱的五項檢查', actions: [{ drawer: '3.3', label: '看講義：課綱五項檢查' }] },
-    { id: 's39', unit: 3, slide: 39, title: '第三步：把課綱變成簡報', actions: [{ copy: '3-3' }] },
-    { slide: 40, id: '3-unlock', unit: 3, title: '解鎖！技能卡 03＋04', unlock: [3, 4],
+    // ── 單元三（簡報 v4.19 第 29–40 頁）──
+    { id: '3-cover', unit: 3, slide: 30, title: '單元三封面' },
+    { id: '3-addie', unit: 3, slide: 31, title: '用 ADDIE 當骨架，備課就有路徑' },
+    { id: '3-map', unit: 3, slide: 32, title: '這一單元，把一份教材逐步變成一堂課' },
+    { slide: 33, id: '3-topic', unit: 3, title: '先選一個主題，才能開始規劃課程', sub: '你可以跟著講師的 AI 指引案例，或從下面三題選一題。教材素材的網址就在每張卡上，直接開或直接複製。',
       blocks: [
-        { type: 'takeaway', items: [['讓 AI 反問你', '需求說不完整時，請 AI 一次問一題，五題內收成設定卡。'], ['讓來源帶你走', '把方法文章放進 Notebook，請 AI 照文章的做法引導你。'], ['AI 加速，人負責判斷', 'AI 協助整理與生成；你決定教什麼、怎麼教，以及內容能不能使用。']] },
-        { type: 'callout', dark: true, text: '下一單元不學新方法——把技能卡拿出來再用一次，做一張您單位用得到的衛教單張。' },
+        { type: 'topics', key: 'topic3', hint: '按「我要做這個主題」，下一步就會把素材網址帶過去。用自己的教材也可以——記得先去識別化。',
+          items: [
+            { tag: 'A', title: '新人教育訓練：一般病房洗手五時機', who: '新進護理人員、臨床教師、新人訓練負責人', src: '疾管署《一般病房之洗手五時機》教材', url: 'https://www.cdc.gov.tw/Category/MPage/XaVuiDGwyPDuz1FEifEeJw' },
+            { tag: 'B', title: '新政策流程導入：流感防治與疫苗接種政策', who: '護理主管、教育訓練承辦人、感染管制人員', src: '疾管署《2026 年流感防治與疫苗接種政策簡報》', url: 'https://www.cdc.gov.tw/File/Get/4a3d6yG3FCqpTXXRc5_b7A' },
+            { tag: 'C', title: '專業護理技術：降低導尿管相關泌尿道感染', who: '病房護理人員、臨床教師、感染管制人員', src: '疾管署《降低導尿管相關泌尿道感染組合式每日照護措施》', url: 'https://www.cdc.gov.tw/Category/ListContent/K20wqCzSTz_eSz3Yyk0m9w?uaid=GHz5IKGph6GaG0i3mDe18w' },
+          ],
+          demo: { title: '護理人員如何安全且正確的使用 AI', who: '全院護理同仁', src: '衛福部《醫療機構應用生成式人工智慧指引》', url: 'https://www.mohw.gov.tw/dl-100614-c7d35394-0a6b-448e-9d90-295294596d98.html' } },
       ] },
-    { id: 's41', unit: 4, slide: 41, title: '單元四封面' },
-    { id: 's42', unit: 4, slide: 42, title: '說得清楚，做得好看' },
-    { id: 's43', unit: 4, slide: 43, title: '拆成兩條線' },
-    { id: 's44', unit: 4, slide: 44, title: '技能卡 1：寫文案', note: '有衛教資料就一起給 AI（先去識別化）；沒有也可以，提示詞會請 AI 搜尋官方資料並附上來源網址。4-7 會帶您一步步完成。' },
-    { id: 's45', unit: 4, slide: 45, title: '技能卡 2：挑風格', actions: [{ file: '03_課程簡報/簡報建置腳本_v4/assets/style_1.jpg', label: '下載範本①可愛風' }, { file: '03_課程簡報/簡報建置腳本_v4/assets/style_2.jpg', label: '②親和感' }, { file: '03_課程簡報/簡報建置腳本_v4/assets/style_3.jpg', label: '③專業醫療感' }] },
-    { id: 's46', unit: 4, slide: 46, title: '現成的風格樣板庫', actions: [{ link: 'https://furoku.github.io/bananaX/projects/infographic-evaluation/zh/#designs', label: '開啟 Banana X 風格圖鑑' }] },
-    { slide: 47, id: 's47', unit: 4, title: '換你做①：寫文案', sub: '想主題、選尺寸、回答三個問題，提示詞 4-1 會自動組好，再貼到 Gemini。請勿輸入病人或同仁的個人資料。',
+    { id: '3-card3', unit: 3, slide: 34, title: '技能卡 03：AI 訪談釐清法' },
+    { slide: 35, id: '3-ask', unit: 3, title: '第一步：讓 AI 反問你，收成課程設定卡', sub: '在 Gemini Notebook 裡做。五題問完就有一張設定卡，後面兩步都靠它。',
+      blocks: [
+        { type: 'chosen', key: 'topic3', back: '3-topic', label: '這一步要用的主題：' },
+        { type: 'openers', tools: ['notebook'], label: '① 開啟 Gemini Notebook，建一本新筆記本' },
+        { type: 'prompt', ref: '3-1', copyOnly: true, note: '② 把上面的素材網址加成來源，③ 再貼這段提示詞送出，照著它的問題回答。' },
+        { type: 'checklist', key: 'u3-setup', items: ['五題都回答完了，AI 產出了【課程設定卡】', '設定卡的內容我看過，該改的已經請它改', '把設定卡「存成筆記」', '再把那則筆記「轉成來源」——這一步不做，下一步 AI 讀不到'] },
+        { type: 'standby', ref: '3-A', label: '課程設定卡範例（講師示範主題）', title: '跟不上？直接用這張設定卡接上', text: '訪談跑偏、或來不及問完五題都沒關係。複製這一張貼回對話，就能直接做下一步。' },
+      ] },
+    { id: '3-card4', unit: 3, slide: 36, title: '技能卡 04：AI 隨身教練' },
+    { slide: 37, id: '3-src', unit: 3, title: '今天的方法，改成三份來源', sub: '主文給流程，補強文讓分析和課綱更穩；專業內容仍要另外餵教材。',
+      blocks: [
+        { type: 'urls', items: [
+          ['主方法文　ADDIE model', 'A、D、D 三步完整，最適合當教練骨架', 'https://teaching-and-learning-collection.sites.uu.nl/toolbox/addie-model/'],
+          ['分析補強　Analysis: Planning Your Instruction', '把第一步拆成 why／what／who／where', 'https://ecampus.uconn.edu/analysis/'],
+          ['課綱補強　Design: Using a Course Design Plan', '把目標、評量、活動與教材對齊', 'https://ecampus.uconn.edu/design/'],
+        ] },
+        { type: 'callout', text: '三條網址都加進同一本筆記本，和你的教材、設定卡放在一起。' },
+      ] },
+    { slide: 38, id: '3-outline', unit: 3, title: '第二步：換 AI 帶你走，產出課程大綱', sub: '同一本筆記本、同一個對話。一次只做一個步驟，做完停下來等你確認。',
+      blocks: [
+        { type: 'prompt', ref: '3-2', copyOnly: true, note: '開始前先看一眼：來源勾選了哪幾份？設定卡那則筆記有沒有轉成來源？' },
+        { type: 'checkref', ref: '3.3', title: '課綱出來後，用這五項檢查一次' },
+        { type: 'standby', ref: '3-B', label: '課程大綱範例（講師示範主題）', title: '課綱歪掉？直接用這一份接上', text: '複製這份課綱貼回對話，就能直接做第三步的簡報。' },
+      ] },
+    { slide: 39, id: '3-deck', unit: 3, title: '第三步：把課綱變成簡報', sub: '骨架與內文一次生成。先講好頁數上限，它才不會愈寫愈多。',
+      blocks: [
+        { type: 'prompt', ref: '3-3', copyOnly: true, note: '先看它建議的頁數合不合理，再讓它往下寫。' },
+        { type: 'checklist', key: 'u3-deck', items: ['它先給了頁數建議，而且說得出理由', '頁數配得上課程時間與互動安排', '沒有我說「開始生成簡報」之前，它沒有自己用 Studio 產檔'] },
+      ] },
+    { id: '3-banana', unit: 3, slide: 40, title: '視覺優化工具：Banana X 風格圖鑑',
+      actions: [{ link: 'https://furoku.github.io/bananaX/projects/infographic-evaluation/zh/', label: '開啟中文版風格圖鑑' }] },
+    { slide: 41, id: '3-unlock', unit: 3, title: '解鎖！技能卡 03＋04', unlock: [3, 4],
+      blocks: [
+        { type: 'takeaway', items: [['讓 AI 反問你', '需求說不完整時，請 AI 一次問一題，五題內收成設定卡。'], ['讓來源帶你做', '把方法文章放進 Notebook，請 AI 照文章的做法引導你。'], ['AI 加速，人負責判斷', 'AI 協助整理與生成；你決定教什麼、怎麼教，以及內容能不能使用。']] },
+        { type: 'callout', dark: true, text: '下一單元不學新方法——把技能卡拿出來再用一次，做一張你單位用得到的衛教單張。' },
+      ] },
+
+    // ── 單元四（簡報 v4.19 第 41–48 頁）──
+    { id: '4-cover', unit: 4, slide: 42, title: '單元四封面' },
+    { id: '4-two', unit: 4, slide: 43, title: '衛教單張難在兩件事：說得清楚，做得好看' },
+    { id: '4-split', unit: 4, slide: 44, title: '把衛教拆成兩條線：內容一條，設計一條' },
+    { id: '4-card1', unit: 4, slide: 45, title: '技能卡 1：一段 PTCF，文案就有了',
+      actions: [{ drawer: '4.2', label: '看講義：提示詞 4-1 全文' }] },
+    { slide: 46, id: '4-plan', unit: 4, title: '延續同一個主題，先做好圖卡設定', sub: '不急著生圖：先選尺寸，再回答對象、困擾與行動。填完提示詞 4-1 會自動組好。請勿輸入病人或同仁的個人資料。',
       blocks: [{ type: 'cardplan' }] },
-    { id: '4-do', unit: 4, title: '換你做②：選風格，生成文宣', sub: '回到 4-7 那個 Gemini 對話繼續做，不要開新對話。',
+    { id: '4-card2', unit: 4, slide: 47, title: '技能卡 2：給 AI 一張你喜歡的圖，讓它學風格',
+      actions: [{ file: '03_課程簡報/簡報建置腳本_v4/assets/style_1.jpg', label: '下載範本①可愛風' }, { file: '03_課程簡報/簡報建置腳本_v4/assets/style_2.jpg', label: '②親和感' }, { file: '03_課程簡報/簡報建置腳本_v4/assets/style_3.jpg', label: '③專業醫療感' }] },
+    { id: '4-make', unit: 4, title: '換你做：選風格，生成文宣', sub: '回到剛才那個 Gemini 對話繼續做，不要開新對話。',
       blocks: [{ type: 'cardgo',
         google: 'https://www.google.com/search?q=%E8%A1%9B%E6%95%99%E6%96%87%E5%AE%A3&udm=2',
         banana: 'https://furoku.github.io/bananaX/projects/infographic-evaluation/zh/#designs', bananaThumbs: ['https://furoku.github.io/bananaX/projects/infographic-evaluation/assets/images/general-v2-thumb/ja/nano_97.webp', 'https://furoku.github.io/bananaX/projects/infographic-evaluation/assets/images/general-v2-thumb/ja/nano_93.webp', 'https://furoku.github.io/bananaX/projects/infographic-evaluation/assets/images/general-v2-thumb/ja/nano_279.webp', 'https://furoku.github.io/bananaX/projects/infographic-evaluation/assets/images/general-v2-thumb/ja/nano_178.webp'],
         files: ['03_課程簡報/簡報建置腳本_v4/assets/style_1.jpg', '03_課程簡報/簡報建置腳本_v4/assets/style_2.jpg', '03_課程簡報/簡報建置腳本_v4/assets/style_3.jpg'], names: ['可愛風', '親和感', '專業醫療感'] }] },
-    { id: 's48', unit: 4, slide: 48, title: '內容與視覺兩種檢查', actions: [{ drawer: '4.4', label: '看講義：衛教圖卡檢查清單' }] },
-    { id: 's49', unit: 4, slide: 49, title: '技能卡 01＋02 再出場' },
-    { id: 's50', unit: 5, slide: 50, title: '課程總結封面' },
-    { slide: 51, id: '5-cards', unit: 5, title: '四張技能卡，今天全部解鎖', sub: '點每張卡，翻面看今天在哪裡用過。', blocks: [{ type: 'cards', show: [1, 2, 3, 4], all: true, used: ['單元一寫指令、單元四寫文案', '單元二萃取會議紀錄、單元四挑風格', '單元三課程設定', '單元三讓 AI 照文章帶您'] }] },
-    { id: 's52', unit: 5, slide: 52, title: '阿長的四個煩惱都有解了' },
-    { id: 's53', unit: 5, slide: 53, title: 'AI 是草稿，簽章是承諾' },
-    { id: '5-review', unit: 5, title: '總複習', sub: '五題，輕鬆作答。', quiz: ['R1', 'R2', 'R3', 'R4', 'R5'] },
-    { id: 's54', unit: 5, slide: 54, title: '帶走的，留下的', note: '講義、Padlet、問卷的連結會在課程當天開放。', actions: [{ mine: true, label: '打開我的成果' }] },
+    { id: '4-check', unit: 4, slide: 48, title: '做完後，分成內容與視覺兩部分檢查', actions: [{ drawer: '4.4', label: '看講義：衛教圖卡檢查清單' }] },
+    { id: '4-again', unit: 4, slide: 49, title: '技能卡 01＋02 再出場' },
+
+    // ── 課程總結（簡報 v4.19 第 49–53 頁）──
+    { id: '5-cover', unit: 5, slide: 50, title: '課程總結封面' },
+    { slide: 51, id: '5-cards', unit: 5, title: '四張技能卡，今天全部解鎖', sub: '點每張卡，翻面看今天在哪裡用過。',
+      blocks: [{ type: 'cards', show: [1, 2, 3, 4], all: true, used: ['單元一寫指令、單元四寫文案', '單元二萃取會議紀錄、單元四挑風格', '單元三課程設定', '單元三讓 AI 照方法文帶你'] }] },
+    { id: '5-worry', unit: 5, slide: 52, title: '阿長的四個煩惱，今天都有解了' },
+    { id: '5-redline', unit: 5, slide: 53, title: 'AI 是草稿，簽章是承諾' },
+    { id: '5-review', unit: 5, title: '總複習', sub: '四題，一個單元一題。', quiz: ['R1', 'R2', 'R3', 'R4'] },
+    { id: '5-end', unit: 5, slide: 54, title: '讓 AI 成為你工作最強助手', note: '作品展牆收單元四衛教圖卡；單元三簡報可以加分分享。講義與課後問卷連結會在課程當天開放。', actions: [{ link: 'https://padlet.com/kangtinyou/ai-9-29-s023r2keqg66h58abnfl', label: '上傳衛教圖卡作品' }, { mine: true, label: '打開我的成果' }] },
   ],
 
   // 側欄短標題
-  nav: {"s1": "課程封面", "0-1": "開始之前", "s2": "講師介紹", "s3": "相關課程", "s4": "阿長的四個煩惱", "s5": "兩種工具", "0-cards": "四張技能卡", "s7": "單元封面", "s8": "別人的提示詞", "s9": "一個框架", "1-2": "PTCF 四要素", "1-3": "拆解好提示詞", "1-4": "從哪一格改", "1-Q1": "小測驗", "1-5": "換您寫 PTCF", "s13": "衛福部指引", "1-6a": "AI 能協助什麼", "1-6b": "輸入前檢查", "1-6c": "輸出後檢查", "1-6d": "資訊透明", "s18": "人要留在流程裡", "1-Q2": "小測驗", "1-7": "解鎖技能卡 01", "s20": "單元封面", "2-1": "哪件工作先試", "s22": "留下怎麼完成", "s23": "系統提示詞", "s24": "P＋T", "s25": "C＋F", "s26": "帶得走的方法", "2-do1": "動手①萃取", "2-do2": "動手②套用", "s27": "停兩次", "2-gates": "兩個 Gate", "2-6": "您的文件", "2-7": "解鎖技能卡 02", "s31": "單元封面", "s32": "ADDIE 骨架", "s33": "方法來源", "s34": "三份成果", "s35": "第一步：設定", "s36": "訪談提示詞", "s37": "第二步：課綱", "s38": "課綱五項檢查", "s39": "第三步：簡報", "3-unlock": "解鎖 03＋04", "s41": "單元封面", "s42": "說清楚、做好看", "s43": "拆成兩條線", "s44": "技能卡 1 文案", "s45": "技能卡 2 風格", "s46": "風格樣板庫", "s47": "換你做①文案", "4-do": "換你做②風格", "s48": "兩種檢查", "s49": "01＋02 再出場", "s50": "總結封面", "5-cards": "四卡全亮", "s52": "四個煩惱有解", "s53": "資料紅線", "5-review": "總複習", "s54": "帶走的"},
+  nav: {"s1": "課程封面", "0-1": "開始之前", "s2": "講師介紹", "s3": "相關課程", "s4": "阿長的四個煩惱", "s5": "兩種工具", "0-cards": "四張技能卡", "s7": "單元封面", "s8": "別人的提示詞", "s9": "一個框架", "1-2": "PTCF 四要素", "1-3": "拆解好提示詞", "1-4": "從哪一格改", "1-guide": "使用時要注意什麼", "1-6a": "AI 能協助什麼", "1-6b": "輸入前檢查", "1-6c": "輸出後檢查", "1-6d": "資訊透明", "s18": "人要留在流程裡", "1-check": "單元小測驗", "1-7": "解鎖技能卡 01", "s20": "單元封面", "2-1": "哪件工作先試", "s23": "技能卡 02", "s24": "四大要素", "2-gem": "Gem 助手", "s25": "流程與 Gate", "2-do1": "動手①萃取", "2-do2": "動手②套用", "2-6": "你的文件", "2-7": "解鎖技能卡 02", "3-cover": "單元封面", "3-addie": "ADDIE 骨架", "3-map": "教材變成一堂課", "3-topic": "先選一個主題", "3-card3": "技能卡 03", "3-ask": "第一步：設定卡", "3-card4": "技能卡 04", "3-src": "三份方法來源", "3-outline": "第二步：課綱", "3-deck": "第三步：簡報", "3-banana": "風格圖鑑", "3-unlock": "解鎖 03＋04", "4-cover": "單元封面", "4-two": "說清楚、做好看", "4-split": "拆成兩條線", "4-plan": "先做圖卡設定", "4-card1": "技能卡 1 文案", "4-card2": "技能卡 2 風格", "4-make": "換你做：生成", "4-check": "兩種檢查", "4-again": "01＋02 再出場", "5-cover": "總結封面", "5-cards": "四卡全亮", "5-worry": "四個煩惱有解", "5-redline": "資料紅線", "5-review": "總複習", "5-end": "帶走的"},
 
   quiz: {
     A1: { q: 'PTCF 的 T 是什麼？', o: ['設定 AI 應扮演的角色、職位或身分', '明確指出希望 AI 執行的具體工作', '提供背景細節、參考資料或情境', '指定輸出的形式或呈現方式'], a: 1, e: 'T＝任務：提示詞中最重要的部分，務必包含明確的動詞（撰寫、總結、改變語氣）。' },
@@ -682,11 +855,10 @@ window.CONTENT = {
     B2: { q: '「資料已經把姓名拿掉了，所以可以放心交給 AI。」這句話對嗎？', o: ['對', '不對'], a: 1, e: '去識別化只是其中一步；仍要確認工具、用途、授權與院內規範。' },
     B3: { q: 'AI 寫的衛教單內容都正確，但這位病人正在禁食，單張卻提醒他多喝水。這是哪一項沒檢查到？', o: ['AI 說的重點找得到出處嗎？', '有沒有編出來或寫錯的地方？', '適不適合這位病人、我們單位的流程和現在的情況？', '最後由誰確認負責？有沒有告訴民眾這是 AI？'], a: 2, e: '內容正確還不夠，也要適合眼前這位病人和現在的情況。' },
     B4: { q: '要錄音錄影，病人或家屬明確拒絕時，應該怎麼做？', o: ['說明用途後繼續錄', '停止錄製', '錄完再刪除', '請主管決定'], a: 1, e: '病人或家屬明確拒絕時，應停止錄製。' },
-    R1: { q: '要依據來源、不能亂編的時候，今天建議用哪一種工具？', o: ['一般聊天 AI（ChatGPT、Claude、Gemini）', 'Gemini Notebook（放入來源再問）'], a: 1, e: '來源型工具（Gemini Notebook），用在要依據來源、不能亂編的時候。' },
-    R2: { q: '會議紀錄每週都寫、格式一樣，卻總是從空白開始。最適合哪張技能卡？', o: ['01 PTCF 溝通框架', '02 範例萃取法', '03 AI 訪談釐清法', '04 AI 隨身教練'], a: 1, e: '給 AI 一份好文件，它幫你找出規則。' },
-    R3: { q: '知道大概要做什麼，但一時說不完整。最適合哪張技能卡？', o: ['01 PTCF 溝通框架', '02 範例萃取法', '03 AI 訪談釐清法', '04 AI 隨身教練'], a: 2, e: '說不清楚？讓 AI 一題一題問你。' },
-    R4: { q: '衛教圖卡做完，要先確認什麼？', o: ['畫面好不好看', '內容正不正確'], a: 1, e: '內容先過關，再確認畫面有沒有把正確的事情說清楚。' },
-    R5: { q: '下列哪一項資料「不應該」輸入 AI？', o: ['衛福部公開指引', '病人姓名、病歷號、床號', '公開的衛教單張', '自己寫的課程大綱'], a: 1, e: '資料紅線：病人姓名、病歷號、床號不進 AI。' },
+    R1: { q: '網路上存的「超好用提示詞」，換到自己手上常常沒那麼好用。主要原因是什麼？', o: ['提示詞寫得不夠長', '他的工作和你的工作不一樣', '要用付費版才有效', '要換一個 AI 工具'], a: 1, e: '對象、背景、完成標準都不同。提示詞可以參考，但不能代替你說明自己的需求——這就是要用 PTCF 的理由。' },
+    R2: { q: '「範例萃取法」是請 AI 從一份做好的文件裡，找出什麼？', o: ['這份文件的重點摘要', '完成這份文件的結構、欄位與寫作規則', '文件裡的錯字與格式問題', '可以拿來搜尋的關鍵字'], a: 1, e: '不是把舊文件的文字刪掉，而是把「完成這份文件的方法」留下來，下一份才複製得動。' },
+    R3: { q: '需求自己都還沒想清楚的時候，比較有效的做法是？', o: ['把提示詞寫得更長更詳細', '請 AI 一次問一題，把條件問出來', '先讓它做做看再說', '多開幾個對話比較答案'], a: 1, e: '還沒想清楚時，長提示詞只會讓 AI 猜更多。讓它在框架下一題一題問，答案才會是你的。' },
+    R4: { q: '做衛教圖卡時，為什麼要把「內容」和「設計」分成兩條線？', o: ['因為 AI 一次只能處理一件事', '因為內容正不正確、畫面好不好讀，是兩種要分開做的檢查', '因為要用兩個不同的 AI 工具'], a: 1, e: '說得清楚交給技能卡 1，做得好看交給技能卡 2；內容先過關，再確認畫面有沒有把正確的事情說清楚。' },
   },
 
   tools: {
@@ -755,6 +927,18 @@ window.CONTENT = {
   const fileBtn = (rel, label, cls) => D.files && D.files[rel] ? el('a', { class: cls, href: D.files[rel].url, download: D.files[rel].name }, label) : el('span', { class: 'hint' }, '（檔案待補）');
   const privacy = () => el('div', { class: 'privacy', role: 'note' }, '⚠️ 請勿輸入病人姓名、病歷號、床號、可辨識的同仁資料或未公開的院內資訊。');
 
+
+  // 投影片文字層：疊在圖上、看不見，但可以反白、複製、Ctrl+F 搜尋。
+  // 座標與字級在建置時從 PDF 換算成百分比，所以跟著圖一起縮放。
+  function slideText(n) {
+    const lines = (D.slideText || {})[String(n)];
+    if (!lines || !lines.length) return null;
+    return el('div', { class: 'slide-txt', 'aria-hidden': 'true' },
+      lines.map(([x, y, w, fs, txt]) => el('span', {
+        style: `left:${x}%;top:${y}%;width:${w}%;font-size:${fs}cqw`,
+      }, txt)));
+  }
+
   function promptBox(pid, title, opt = {}) {
     const p = D.prompts[pid]; if (!p) return el('div', { class: 'wip' }, `找不到提示詞 ${pid}`);
     const pre = el('pre', {}, p.text);
@@ -782,7 +966,9 @@ window.CONTENT = {
     const ptcf = get('builder:ptcf1');
     if (ptcf) items.push(['我的 PTCF 提示詞', composePTCF(ptcf, true)]);
     if (get('pick:first-fill')) items.push(['提示詞要從哪一格開始改', get('pick:first-fill')]);
-    const fit = get('score:fit'); if (fit || get('task:fit')) items.push(['最值得先交給 AI 的工作', `${get('task:fit', '（未填）')}（符合 ${(fit || []).filter(Boolean).length} / 5 項）`]);
+    const aiTasks = get('taskpair:ai-tasks');
+    if (aiTasks && aiTasks.some((x) => (x || '').trim())) items.push(['我最想交給 AI 的兩個任務', aiTasks.filter((x) => (x || '').trim()).join('\n')]);
+    const topic3 = get('choose:topic3'); if (topic3 && topic3.title) items.push(['單元三：我選的課程主題', topic3.title + '\n素材：' + topic3.url]);
     const card = get('card'); if (card && ['主題', '對象', '困擾', '行動', 'size'].some((k) => (card[k] || '').trim())) items.push(['我的衛教文宣提示詞（4-1）', cardText(card)]);
     const docs = get('scenario:docs'); if (docs) docs.forEach((d, i) => (d[0] || d[1]) && items.push([`適合這套方法的文件 ${i + 1}`, [d[0], d[1]].filter(Boolean).join('：')]));
     const un = Object.keys(b).filter((k) => get('unlock:' + k)).map((k) => `技能卡 ${b[k].n} ${b[k].name}`);
@@ -802,8 +988,14 @@ window.CONTENT = {
   $('#mineBtn').onclick = mine;
 
   // ── PTCF 組合 ──
-  function composePTCF(v, plain) {
-    return ['P', 'T', 'C', 'F'].map((k) => (v[k] || '').trim()).filter(Boolean).join('\n');
+  function composePTCF(v) { // 我的成果：把填空的答案組回四行
+    const tpl = (C.ptcf || []);
+    return tpl.map(([L, , sent]) => sent.split(/(［[^］]+］)/).filter(Boolean)
+      .map((s) => { const k = (s.match(/^［(.+)］$/) || [])[1]; return k ? (v[L + ':' + k] || '').trim() : s; }).join(''))
+      .filter((line, i) => tpl[i] && sent_has(tpl[i], v)).join('\n');
+  }
+  function sent_has([L, , sent], v) {
+    return (sent.match(/［([^］]+)］/g) || []).some((s) => (v[L + ':' + s.slice(1, -1)] || '').trim());
   }
 
   // ── 單元四衛教文宣：講義提示詞 4-1 的［ ］換成 4-7 的答案（4-8、我的成果共用）──
@@ -846,7 +1038,58 @@ window.CONTENT = {
     steps: (b) => el('div', { class: 'steps' }, b.items.map((x) => el('div', {}, el('b', {}, x[0]), x[1]))),
     redline: () => { const d = el('div', { class: 'checks redline', html: (D.sections['0.2'] || '').replace(/<h2>.*?<\/h2>/, '<h3 class="rl">資料紅線</h3>').replace(/☐/g, '•') }); return d; },
     drawer: (b) => el('button', { class: 'drawer-link', type: 'button', onclick: () => openDrawer(b.section, b.label) }, b.label),
-    openers: (b) => el('div', { class: 'btns' }, b.tools.map((id) => el('button', { class: 'btn' + (id === 'gem' ? ' dark' : ''), type: 'button', onclick: () => openTool(id) }, (id === 'gem' ? '🔗 ' : '') + '開啟 ' + C.tools[id].name))),
+    // 單元三課程主題：四張卡直接看得到，素材網址就是卡上的超連結；點卡＝選它，下一步會帶著走
+    topics: (b) => {
+      const cards = [];
+      const items = b.items.concat(b.demo ? [Object.assign({ demo: true }, b.demo)] : []);
+      const paint = () => { const cur = get('choose:' + b.key) || {}; cards.forEach((c, i) => c.classList.toggle('on', cur.title === items[i].title)); };
+      const wrap = el('div', { class: 'topics' }, items.map((it) => {
+        const card = el('div', { class: 'tp' + (it.demo ? ' demo' : '') },
+          el('div', { class: 'tp-hd' }, el('span', { class: 'tp-tag' }, it.demo ? '講師示範' : it.tag), el('b', {}, it.title)),
+          el('div', { class: 'tp-who' }, '適用學員：' + it.who),
+          el('div', { class: 'tp-src' }, el('b', {}, '教材素材與網址'), it.src),
+          el('div', { class: 'btns' },
+            el('a', { class: 'btn', href: it.url, target: '_blank', rel: 'noopener' }, '開啟教材素材 ↗'),
+            el('button', { class: 'btn ghost', type: 'button', onclick: () => copy(it.url, null, '已複製網址！到 Notebook 按「新增來源 → 網站」貼上') }, '📋 複製網址'),
+            el('button', { class: 'btn ghost', type: 'button', onclick: () => { set('choose:' + b.key, it); paint(); toast('這堂課就用：' + it.title); } }, '我要做這個主題')));
+        cards.push(card); return card;
+      }));
+      paint();
+      return el('div', {}, wrap, b.hint ? el('p', { class: 'hint' }, b.hint) : null);
+    },
+    // 帶著上一頁選的主題走：操作頁直接把素材網址遞到手上，不用翻回去找
+    chosen: (b) => {
+      const it = get('choose:' + b.key);
+      if (!it) return el('div', { class: 'cm-status warn' }, '還沒選主題　',
+        el('button', { class: 'btn ghost', type: 'button', onclick: () => { const i = SEG.findIndex((s) => s.id === b.back); if (i >= 0) go(i); } }, '回上一頁選一個'));
+      return el('div', { class: 'cm-status' }, b.label || '你選的主題：', el('mark', {}, it.title),
+        el('div', { class: 'btns' },
+          el('button', { class: 'btn', type: 'button', onclick: () => copy(it.url, null, '已複製素材網址！在 Notebook 按「新增來源 → 網站」貼上') }, '📋 複製素材網址'),
+          el('a', { class: 'btn ghost', href: it.url, target: '_blank', rel: 'noopener' }, '開啟素材 ↗'),
+          el('button', { class: 'link', type: 'button', onclick: () => { const i = SEG.findIndex((s) => s.id === b.back); if (i >= 0) go(i); } }, '換一個')));
+    },
+    // 一組參考網址：每一條都能單獨複製（Notebook 要一條一條貼）
+    urls: (b) => el('div', { class: 'urls' }, b.items.map((x) => el('div', { class: 'url-row' },
+      el('div', {}, el('b', {}, x[0]), el('span', { class: 'hint' }, x[1]), el('code', {}, x[2])),
+      el('div', { class: 'btns' },
+        el('button', { class: 'btn ghost', type: 'button', onclick: () => copy(x[2], null, '已複製！在 Notebook 按「新增來源 → 網站」貼上') }, '📋 複製網址'),
+        el('a', { class: 'btn ghost', href: x[2], target: '_blank', rel: 'noopener' }, '開啟 ↗'))))),
+    // 保底素材：跟不上的人直接複製一份完成品，接回主線（內容真源在單元三保底素材 md）
+    standby: (b) => el('details', { class: 'standby' },
+      el('summary', {}, '🛟 ' + (b.title || '跟不上？直接用這一份')),
+      b.text ? el('p', { class: 'hint' }, b.text) : null,
+      promptBox(b.ref, b.label, { copyOnly: b.copyOnly !== false })),
+    resource: (b) => el('div', { class: 'resource' },
+      el('div', { class: 'res-ico', 'aria-hidden': 'true' }, '✦'),
+      el('div', { class: 'res-body' },
+        el('b', {}, b.title),
+        b.text ? el('p', {}, b.text) : null,
+        el('div', { class: 'btns' },
+          b.section ? el('button', { class: 'btn ghost', type: 'button', onclick: () => openDrawer(b.section, b.label || b.title) }, b.label || '打開參考') : null,
+          b.file ? fileBtn(b.file, '⬇ ' + (b.fileLabel || '下載資料'), 'btn ghost') : null,
+          b.link ? el('a', { class: 'btn ghost', href: b.link, target: '_blank', rel: 'noopener' }, b.linkLabel || '開啟連結') : null,
+          b.copy ? el('button', { class: 'btn ghost', type: 'button', onclick: () => copy(D.prompts[b.copy].text) }, b.copyLabel || '📋 複製內容') : null))),
+    openers: (b) => el('div', { class: 'btns' }, b.tools.map((id) => el('button', { class: 'btn' + (id === 'gem' ? ' dark' : ''), type: 'button', onclick: () => openTool(id) }, b.tools.length === 1 && b.label ? b.label : (id === 'gem' ? '🔗 ' : '') + '開啟 ' + C.tools[id].name))),
     prompt: (b) => {
       const box = promptBox(b.ref, b.title, b);
       if (b.afterPick && !get('pick:' + b.afterPick)) { box.hidden = true; box.dataset.wait = b.afterPick; }
@@ -902,33 +1145,68 @@ window.CONTENT = {
       } }, o)));
       return el('div', {}, w, msg);
     },
+    // PTCF 填空器：句子由系統寫好，學員只填［　］裡的內容（含／的欄位直接給選項按鈕）
     builder: (b) => {
       const v = get('builder:' + b.key, {});
       const pre = el('pre', {}); const warn = el('div', { class: 'warn' });
+      // 把「你是一位［產業或單位］的［職位或身分］。」拆成固定文字與空格
+      const tpl = b.tpl === 'ptcf' ? C.ptcf : b.tpl;
+      const parsed = tpl.map(([L, name, sent]) => [L, name, sent.split(/(［[^］]+］)/).filter(Boolean).map((s) => {
+        const k = (s.match(/^［(.+)］$/) || [])[1];
+        return k ? { slot: k, opts: k.includes('／') ? k.split('／') : null } : { t: s };
+      })]);
+      const slots = parsed.flatMap(([L, , ps]) => ps.filter((x) => x.slot).map((x) => [L, x]));
+      const val = (L, s) => (v[L + ':' + s] || '').trim();
+      const lineText = (L, ps) => ps.map((x) => (x.t ? x.t : val(L, x.slot))).join('');
+      const filled = (L, ps) => ps.every((x) => x.t || val(L, x.slot));
+      const text = () => {
+        const ls = parsed.filter(([L, , ps]) => ps.some((x) => x.slot && val(L, x.slot))).map(([L, , ps]) => lineText(L, ps));
+        const t0 = ls.join('\n');
+        return t0 && b.append ? t0 + '\n\n' + b.append : t0;
+      };
       const update = () => {
         pre.innerHTML = '';
-        b.fields.forEach((f) => { const t = (v[f[0]] || '').trim(); pre.append(t ? document.createTextNode(t + '\n') : el('span', { class: 'empty' }, f[2] + '\n')); });
+        parsed.forEach(([L, , ps]) => {
+          if (!ps.some((x) => x.slot && val(L, x.slot))) { pre.append(el('span', { class: 'empty' }, `（${L} 還沒填）\n`)); return; }
+          ps.forEach((x) => pre.append(x.t ? document.createTextNode(x.t) : (val(L, x.slot) ? el('mark', {}, val(L, x.slot)) : el('span', { class: 'empty' }, `［${x.slot}］`))));
+          pre.append(document.createTextNode('\n'));
+        });
         if (b.append) pre.append(el('span', { class: 'app' }, '\n' + b.append));
-        const miss = b.fields.filter((f) => !(v[f[0]] || '').trim()).map((f) => f[0]);
-        warn.textContent = miss.length && miss.length < 4 ? `還沒填：${miss.join('、')}（可以先複製，但補齊效果更好）` : '';
+        const miss = parsed.filter(([L, , ps]) => !filled(L, ps)).map(([L]) => L);
+        warn.textContent = miss.length && miss.length < 4 ? `還沒填完：${miss.join('、')}（可以先複製，但補齊效果更好）` : '';
       };
-      const fields = b.fields.map((f) => {
-        const ta = el('textarea', { id: `f-${b.key}-${f[0]}`, rows: f[0] === 'C' ? 2 : 1, placeholder: f[2] }); ta.value = v[f[0]] || '';
-        ta.oninput = () => { v[f[0]] = ta.value; set('builder:' + b.key, v); update(); };
-        return el('div', { class: 'field' },
-          el('label', { for: `f-${b.key}-${f[0]}` }, el('span', { class: 'lt' }, f[0]), f[1]), ta,
-          f[3] ? el('div', { class: 'ex' }, f[3]) : null);
+      const put = (L, s, value) => { v[L + ':' + s] = value; set('builder:' + b.key, v); update(); };
+      // 每一格＝一行句子，空格就長在句子裡
+      const repaints = [];
+      const rows = parsed.map(([L, name, ps]) => {
+        const line = el('div', { class: 'bl-sent' });
+        ps.forEach((x) => {
+          if (x.t) { line.append(el('span', { class: 'bl-fix' }, x.t)); return; }
+          if (x.opts) {
+            const chips = el('span', { class: 'bl-chips' });
+            const paintChips = () => chips.querySelectorAll('.chip').forEach((c) => { const on = val(L, x.slot) === c.textContent; c.classList.toggle('on', on); c.setAttribute('aria-pressed', String(on)); });
+            x.opts.forEach((o) => chips.append(el('button', { class: 'chip', type: 'button', onclick: () => { put(L, x.slot, o); paintChips(); } }, o)));
+            paintChips(); repaints.push(paintChips);
+            line.append(chips); return;
+          }
+          const i = el('input', { type: 'text', class: 'bl-in', placeholder: x.slot, 'aria-label': `${name}：${x.slot}`, size: String(Math.max(6, x.slot.length + 2)) });
+          i.value = val(L, x.slot);
+          i.oninput = () => put(L, x.slot, i.value);
+          repaints.push(() => { i.value = val(L, x.slot); });
+          line.append(i);
+        });
+        return el('div', { class: 'bl-row' }, el('span', { class: 'lt' }, L), el('div', {}, el('b', {}, name), line));
       });
-      const text = () => { const t = composePTCF(v); return t && b.append ? t + '\n\n' + b.append : t; };
       const ctip = () => (b.append ? '已複製提示詞和課程資訊！到 Gemini 按 Ctrl＋V（Mac 按 ⌘＋V）貼上後送出' : undefined);
       const guard = async (fn) => { if (!text()) { toast('先填至少一格'); return; } await fn(); };
       update();
-      const model = b.model ? el('div', { class: 'model', hidden: true }, el('b', {}, '建議寫法（對照看看，您的寫法不必一模一樣）'),
-        b.fields.map((f, i) => el('div', { class: 'mrow' }, el('span', { class: 'lt' }, f[0]), el('span', {}, b.model[i]))),
-        el('div', { class: 'btns' }, el('button', { class: 'btn ghost', type: 'button', onclick: () => { b.fields.forEach((f, i) => { const t = document.getElementById(`f-${b.key}-${f[0]}`); if (!t.value.trim()) { t.value = b.model[i]; t.oninput(); } }); toast('已把建議寫法帶入空白的格子'); } }, '把建議寫法帶入空白格'))) : null;
-      const modelBtn = b.model ? el('button', { class: 'btn ghost', type: 'button', onclick: () => { model.hidden = !model.hidden; modelBtn.textContent = model.hidden ? '💡 寫完了？看建議寫法' : '收起建議寫法'; } }, '💡 寫完了？看建議寫法') : null;
-      return el('div', {}, privacy(), el('div', { class: 'builder' }, el('div', {}, fields),
-        el('div', { class: 'preview' }, modelBtn, model, el('div', { class: 'pbox-ui' }, el('div', { class: 'ph' }, el('b', {}, '您的完整提示詞'), el('button', { class: 'btn', type: 'button', onclick: () => guard(() => copy(text(), pre, ctip())) }, '📋 複製')), el('div', { class: 'pnote' }, b.append ? '灰字是還沒填的格，不會被複製；最下面的課程資訊會一起複製' : '灰字是還沒填的格，不會被複製'), pre,
+      const modelBtn = b.model ? el('button', { class: 'btn ghost', type: 'button', onclick: () => {
+        slots.forEach(([L, x]) => { if (!val(L, x.slot) && b.model[x.slot]) v[L + ':' + x.slot] = b.model[x.slot]; });
+        set('builder:' + b.key, v); repaints.forEach((f) => f()); update();
+        toast('已把建議寫法帶入空白的格子');
+      } }, '💡 想不到怎麼填？帶入建議寫法') : null;
+      return el('div', {}, b.privacy === false ? null : privacy(), el('div', { class: 'builder' }, el('div', { class: 'bl' }, rows, modelBtn),
+        el('div', { class: 'preview' }, el('div', { class: 'pbox-ui' }, el('div', { class: 'ph' }, el('b', {}, '你的完整提示詞'), el('button', { class: 'btn', type: 'button', onclick: () => guard(() => copy(text(), pre, ctip())) }, '📋 複製')), el('div', { class: 'pnote' }, b.append ? '句子由系統寫好，你只要填底線的部分；最下面的課程資訊會一起複製' : '句子由系統寫好，你只要填底線的部分'), pre,
           el('div', { class: 'openers' }, ...openerBtns(text, ['gemini', 'chatgpt', 'claude'], false, () => pre, ctip))), warn)));
     },
     jump: (b) => el('div', { class: 'jump' }, b.items.map((x, i) => el('button', { type: 'button', class: get('seen:' + x[0]) ? 'seen' : '', onclick: () => go(SEG.findIndex((s) => s.id === x[0])) }, el('span', { class: 'num' }, String(i + 1)), x[1], get('seen:' + x[0]) ? ' ✓' : ''))),
@@ -952,6 +1230,17 @@ window.CONTENT = {
         return el('label', {}, cb, el('span', {}, el('b', {}, x[0]), '　', el('span', { class: 'hint' }, x[1])));
       }), el('div', { class: 'meter' }, bar), res);
       upd(); return box;
+    },
+    taskpair: (b) => {
+      const v = get('taskpair:' + b.key, ['', '']);
+      const status = el('div', { class: 'saved' });
+      const fields = [0, 1].map((i) => {
+        const input = el('input', { type: 'text', placeholder: b.placeholders ? b.placeholders[i] : `我最想交給 AI 的任務 ${i + 1}`, 'aria-label': `我最想交給 AI 的任務 ${i + 1}` });
+        input.value = v[i] || '';
+        input.oninput = () => { v[i] = input.value; set('taskpair:' + b.key, v); status.textContent = '已存在這台電腦 ✓'; };
+        return el('div', {}, el('label', {}, `我最想交給 AI 的任務 ${i + 1}`), input);
+      });
+      return el('div', { class: 'scen taskpair' }, fields, b.hint ? el('p', { class: 'hint' }, b.hint) : null, status);
     },
     scenario: (b) => {
       const v = get('scenario:' + b.key, Array.from({ length: b.rows }, () => ['', '']));
@@ -1007,11 +1296,11 @@ window.CONTENT = {
     // 4-8：選風格（Google 圖片／Banana X 預覽卡）→ 4-2 → 4-3，沿用 4-7 的答案
     cardgo: (b) => {
       const a = get('card', {}); const m = cardMissing(a); const s = cardSize(a);
-      const back = () => { const i = SEG.findIndex((x) => x.id === 's47'); if (i >= 0) go(i); };
+      const back = () => { const i = SEG.findIndex((x) => x.id === '4-plan'); if (i >= 0) go(i); };
       const status = m.length
-        ? el('div', { class: 'cm-status warn' }, `4-7 還沒填：${m.join('、')}　`, el('button', { class: 'btn ghost', type: 'button', onclick: back }, '回 4-7 寫文案'))
+        ? el('div', { class: 'cm-status warn' }, `還沒填：${m.join('、')}　`, el('button', { class: 'btn ghost', type: 'button', onclick: back }, '回上一頁填寫'))
         : el('div', { class: 'cm-status' }, '你的文宣：', el('mark', {}, a['主題'].trim()), '｜', el('mark', {}, s.name), '｜給', el('mark', {}, a['對象'].trim()), el('button', { class: 'link', type: 'button', onclick: back }, '修改'));
-      const need = (fn) => async () => { if (cardMissing(get('card', {})).length) { toast('先回 4-7 填好主題、尺寸和三個問題'); return; } await fn(); };
+      const need = (fn) => async () => { if (cardMissing(get('card', {})).length) { toast('先回上一頁填好主題、尺寸和三個問題'); return; } await fn(); };
       const thumbs = (srcs, alt) => el('div', { class: 'sty-th' }, srcs.map((src) => el('img', { src, alt })));
       const pick = (href, name, how, srcs, alt, go2) => el('a', { class: 'sty-card', href, target: '_blank', rel: 'noopener' }, el('div', { class: 'sty-hd' }, el('b', {}, name), el('span', { class: 'sty-go' }, go2)), el('span', { class: 'hint' }, how), thumbs(srcs, alt));
       const ours = b.files.filter((f) => D.files && D.files[f]).map((f) => D.files[f].url);
@@ -1050,13 +1339,15 @@ window.CONTENT = {
   }
 
   // ── 測驗 ──
-  function quiz(seg, onChange) {
+  function quiz(seg, onChange, extra) { // extra = [節點, 標題]，接在選擇題後面當最後一題
     const ans = get('quiz:' + seg.id, {});
     const score = el('div', { class: 'score' });
     const upd = () => {
       const n = seg.quiz.filter((q) => q in ans).length, r = seg.quiz.filter((q) => ans[q] === C.quiz[q].a).length;
-      score.textContent = n < seg.quiz.length ? `已作答 ${n} / ${seg.quiz.length}，全部作答後才能到下一段` : r === seg.quiz.length ? `全對！${r} / ${seg.quiz.length} 題，可以進入下一段了。` : `答對 ${r} / ${seg.quiz.length} 題。答錯的題目看一下解說，再往下。`;
-      onChange(n === seg.quiz.length);
+      score.textContent = seg.optionalQuiz
+        ? (n < seg.quiz.length ? `已作答 ${n} / ${seg.quiz.length}。這是隨堂確認，可直接往下。` : r === seg.quiz.length ? `全對！${r} / ${seg.quiz.length} 題。` : `答對 ${r} / ${seg.quiz.length} 題。看一下解說，再往下。`)
+        : (n < seg.quiz.length ? `已作答 ${n} / ${seg.quiz.length}，全部作答後才能到下一段` : r === seg.quiz.length ? `全對！${r} / ${seg.quiz.length} 題，可以進入下一段了。` : `答對 ${r} / ${seg.quiz.length} 題。答錯的題目看一下解說，再往下。`);
+      onChange(seg.optionalQuiz || n === seg.quiz.length);
     };
     const qs = seg.quiz.map((qid, qi) => {
       const Q = C.quiz[qid]; const exp = el('div', { class: 'exp', 'aria-live': 'polite' });
@@ -1070,17 +1361,21 @@ window.CONTENT = {
       return el('div', { class: 'q' }, Q.ctx ? el('pre', { class: 'qctx' }, Q.ctx) : null, el('h3', {}, `第 ${qi + 1} 題　${Q.q}`), opts, exp);
     });
     const retry = el('button', { class: 'btn ghost', type: 'button', onclick: () => { set('quiz:' + seg.id, {}); render(); } }, '重新作答');
-    let cur = Math.max(0, seg.quiz.findIndex((q) => !(q in ans))); if (seg.quiz.every((q) => q in ans)) cur = seg.quiz.length - 1;
+    let cur = Math.max(0, seg.quiz.findIndex((q) => !(q in ans)));
     const prevQ = el('button', { class: 'btn ghost', type: 'button' }, '‹ 上一題'), nextQ = el('button', { class: 'btn', type: 'button' }, '下一題 ›');
     const stepper = el('div', { class: 'qstep' });
+    const steps = extra ? qs.concat([el('div', { class: 'qextra' }, el('h3', {}, extra[1]), extra[0])]) : qs;
     const show = () => {
-      qs.forEach((q, i) => { q.hidden = i !== cur; });
-      stepper.innerHTML = ''; seg.quiz.forEach((q, i) => stepper.append(el('span', { class: (i === cur ? 'on ' : '') + (q in ans ? (ans[q] === C.quiz[q].a ? 'ok' : 'no') : '') }, String(i + 1))));
-      prevQ.disabled = cur === 0; nextQ.disabled = cur === seg.quiz.length - 1 || !(seg.quiz[cur] in ans);
+      steps.forEach((q, i) => { q.hidden = i !== cur; });
+      stepper.innerHTML = ''; steps.forEach((_, i) => {
+        const q = seg.quiz[i];
+        stepper.append(el('span', { class: (i === cur ? 'on ' : '') + (q && q in ans ? (ans[q] === C.quiz[q].a ? 'ok' : 'no') : '') }, String(i + 1)));
+      });
+      prevQ.disabled = cur === 0; nextQ.disabled = cur === steps.length - 1 || (!!seg.quiz[cur] && !(seg.quiz[cur] in ans));
     };
     prevQ.onclick = () => { cur--; show(); }; nextQ.onclick = () => { cur++; show(); };
     qs.forEach((q) => q.addEventListener('click', () => setTimeout(show, 0)));
-    const w = el('div', { class: 'quiz' }, stepper, qs, el('div', { class: 'btns' }, prevQ, nextQ, score, retry));
+    const w = el('div', { class: 'quiz' }, stepper, steps, el('div', { class: 'btns' }, prevQ, nextQ, score, retry));
     show(); upd(); return w;
   }
 
@@ -1091,14 +1386,15 @@ window.CONTENT = {
     if (s.quiz) return ['測驗', ICON.測驗];
     if (s.unlock) return ['解鎖', ICON.解鎖];
     const t = (s.blocks || []).map((b) => b.type + (b.task ? '+task' : ''));
-    if (t.some((x) => /^(builder|scenario|score\+task|cardplan)/.test(x))) return ['填寫', ICON.填寫];
-    if (t.some((x) => /^(think|pick|highlight)/.test(x))) return ['思考', ICON.思考];
-    if (t.some((x) => /^(prompt|download|openers|checklist|gates|cardgo)/.test(x))) return ['動手', ICON.動手];
+    if (t.some((x) => /^(builder|scenario|score\+task|taskpair|cardplan)/.test(x))) return ['填寫', ICON.填寫];
+    if (t.some((x) => /^(think|pick|highlight|topics)/.test(x))) return ['思考', ICON.思考];
+    if (t.some((x) => /^(prompt|download|openers|checklist|gates|cardgo|chosen|urls|standby)/.test(x))) return ['動手', ICON.動手];
     if (t.some((x) => /^(flip|cards|expand)/.test(x))) return ['點開', ICON.點開];
     if ((s.actions || []).some((a) => a.copy)) return ['複製', ICON.複製];
     return null;
   }
-  // 段落碼：單元-頁序（與側欄編號一致）
+  // 段落碼：單元-頁序（與側欄編號一致）。講師靠它報進度（「現在到三之六」）。
+  // 插頁會整批位移 → 改動頁數後要重跑手冊 Part D 的對照表指令。
   SEG.forEach((s) => { s.n = SEG.filter((x) => x.unit === s.unit).indexOf(s) + 1; s.code = `${s.unit}-${s.n}`; });
   function unitDone(u) { const ss = SEG.filter((s) => s.unit === u); return ss.length && ss.every((s) => get('seen:' + s.id)); }
   function renderNav() {
@@ -1139,7 +1435,9 @@ window.CONTENT = {
       st.classList.toggle('has-note', !!seg.note);
       if (seg.note) st.append(el('div', { class: 'pnote slide-note' }, '👉 ' + seg.note));
       const src = `slides/${String(seg.slide).padStart(2, '0')}.jpg`;
-      st.append(el('figure', { class: 'slide' }, el('img', { src, alt: `投影片 ${seg.slide}：${seg.title}`, title: '點一下放大', onclick: () => { const z = el('div', { class: 'zoom', onclick: () => z.remove() }, el('img', { src, alt: '' }), el('span', {}, '點任何地方關閉')); document.body.append(z); } })));
+      const zoom = () => { const z = el('div', { class: 'zoom', onclick: () => z.remove() }, el('img', { src, alt: '' }), el('span', {}, '點任何地方關閉')); document.body.append(z); };
+      const img = el('img', { src, alt: `投影片 ${seg.slide}：${seg.title}`, title: '在空白處點一下放大；文字可以直接反白複製', onclick: zoom });
+      st.append(el('figure', { class: 'slide' }, img, slideText(seg.slide)));
       set('seen:' + seg.id, true); $('#presentCode').textContent = seg.code; renderNav(); return;
     }
     st.append(el('div', { class: 'seg-head' }, el('span', { class: 'seg-code' }, seg.code, el('span', { class: 'u' }, `${unit.label}${seg.unit && seg.unit < 5 ? '　' + unit.title : ''}`)), el('h1', {}, seg.title), seg.sub ? el('p', { class: 'sub' }, seg.sub) : null));
@@ -1156,19 +1454,24 @@ window.CONTENT = {
       seg.blocks.slice(1).forEach((b) => st.append(el('div', { class: 'block' }, R[b.type](b, seg, st))));
     } else {
       const mk = (b) => el('div', { class: 'block' }, R[b.type] ? R[b.type](b, seg, st) : el('div', { class: 'wip' }, '未知區塊 ' + b.type));
-      if (seg.layout === 'split') st.append(el('div', { class: 'split' }, el('div', {}, mk(seg.blocks[0])), el('div', {}, seg.blocks.slice(1).map(mk))));
-      else (seg.blocks || []).forEach((b) => st.append(mk(b)));
+      const body = seg.layout === 'split'
+        ? [el('div', { class: 'split' }, el('div', {}, mk(seg.blocks[0])), el('div', {}, seg.blocks.slice(1).map(mk)))]
+        : (seg.blocks || []).map(mk);
+      if (seg.quiz && seg.quizFirst) { // 選擇題和應用題排成同一串，用上一題／下一題切換
+        canNext = !!seg.optionalQuiz;
+        st.append(el('div', { class: 'block' }, quiz(seg, (ok) => { canNext = ok; renderNav(); }, [body, seg.extraTitle || '應用題'])));
+      } else body.forEach((n) => st.append(n));
     }
-    if (seg.quiz) { canNext = false; st.append(el('div', { class: 'block' }, quiz(seg, (ok) => { canNext = ok; renderNav(); }))); }
+    if (seg.quiz && !seg.quizFirst) { canNext = !!seg.optionalQuiz; st.append(el('div', { class: 'block' }, quiz(seg, (ok) => { canNext = ok; renderNav(); }))); }
     set('seen:' + seg.id, true);
     $('#presentCode').textContent = seg.code;
     renderNav();
   }
-  function quizDone(s) { const a = get('quiz:' + s.id, {}); return s.quiz.every((q) => q in a); }
+  function quizDone(s) { if (s.optionalQuiz) return true; const a = get('quiz:' + s.id, {}); return s.quiz.every((q) => q in a); }
   function go(i) {
     if (i < 0 || i >= SEG.length) return;
     if (i > idx) { const block = SEG.findIndex((s, k) => k >= idx && k < i && s.quiz && !quizDone(s)); if (block >= 0) { if (block !== idx) setTimeout(() => toast('先完成小測驗，才能往後跳'), 50); else { toast('先完成這一段的小測驗'); return; } i = block; } }
-    closeDrawer(); document.querySelectorAll('.zoom').forEach((z) => z.remove()); $('#toast').classList.remove('on'); idx = i; history.replaceState(null, '', '#' + SEG[i].code); render();
+    closeDrawer(); document.querySelectorAll('.zoom').forEach((z) => z.remove()); $('#toast').classList.remove('on'); idx = i; history.replaceState(null, '', '#' + SEG[i].id); render();
     window.scrollTo({ top: 0 }); $('#stage').focus({ preventScroll: true });
   }
   $('#prev').onclick = () => go(idx - 1);
@@ -1181,6 +1484,10 @@ window.CONTENT = {
     if (e.key === 'ArrowLeft') go(idx - 1);
   });
   $('#tocBtn').onclick = () => $('#side').classList.toggle('open');
+  window.addEventListener('hashchange', () => {
+    const target = SEG.findIndex((s) => '#' + s.id === location.hash || '#' + s.code === location.hash);
+    if (target >= 0 && target !== idx) { idx = target; render(); window.scrollTo({ top: 0 }); }
+  });
   const start = SEG.findIndex((s) => '#' + s.id === location.hash || '#' + s.code === location.hash);
   idx = start >= 0 ? start : 0;
   render();
