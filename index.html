@@ -441,24 +441,24 @@ figure.slide img { cursor: zoom-in; }
 .slide-note { padding: 6px 14px; font-size: 15px; }
 
 /* 單元四 4-7／4-8 衛教文宣（2026-09-19） */
-.cm-q { background: var(--off); border-radius: var(--radius); padding: 14px 16px; }
-.cm-line { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+.cm-q { background: var(--off); border-radius: var(--radius); padding: 20px 20px 16px; }
+.cm-line { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
 .cm-line > b { color: var(--tealDark); font-size: 17px; }
 .cm-line input { flex: 0 1 240px; font: inherit; font-size: 16px; border: 1.5px solid var(--line); border-radius: 10px; padding: 6px 10px; }
 .cm-line input:focus, .cm-q .fl input:focus { border-color: var(--teal); outline: none; }
 .chip { border: 1.5px solid var(--teal); background: var(--white); color: var(--tealDark); border-radius: 999px; padding: 4px 14px; font: inherit; font-size: 15px; font-weight: 700; cursor: pointer; }
 .chip.on { background: var(--teal); color: var(--white); }
-.cm-three { display: grid; grid-template-columns: auto repeat(3, 1fr); gap: 14px; align-items: end; }
+.cm-three { display: grid; grid-template-columns: auto repeat(3, 1fr); gap: 18px; align-items: end; padding-top: 4px; }
 .cm-three > b { color: var(--tealDark); font-size: 17px; padding-bottom: 8px; }
-.cm-out { margin-top: 14px; }
+.cm-out { margin-top: 20px; }
 .cm-out h3 { margin: 0 0 6px; font-size: 18px; color: var(--tealDark); }
 .cm-prompt { background: var(--white); border: 2px solid var(--teal); border-radius: var(--radius); padding: 8px 14px; }
-.cm-row { display: grid; grid-template-columns: 30px 150px 1fr; gap: 12px; align-items: center; padding: 9px 0; }
+.cm-row { display: grid; grid-template-columns: 30px 150px 1fr; gap: 14px; align-items: center; padding: 13px 0; }
 .cm-row + .cm-row { border-top: 1px dashed var(--line); }
 .cm-row .lt { width: 30px; height: 30px; border-radius: 8px; background: var(--navy); color: var(--mint2); display: grid; place-items: center; font-weight: 700; font-size: 16px; }
 .cm-lab b { font-size: 16px; margin-right: 6px; }
 .cm-lab small { color: var(--grey); font-size: 14px; }
-.cm-body { font-size: 16px; line-height: 1.85; }
+.cm-body { font-size: 16px; line-height: 2; }
 .cm-body mark, .cm-status mark { background: var(--mint2); color: var(--ink); font-weight: 700; border-radius: 4px; padding: 0 4px; }
 .cm-miss { color: var(--coral); font-weight: 700; }
 .cm-out .btns { margin-top: 8px; align-items: center; }
@@ -656,13 +656,48 @@ figure.slide { position: relative; container-type: inline-size; }
 .gv-url { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; background: var(--off); border-radius: 10px; padding: 8px 12px; }
 .gv-url code { font-size: 13px; color: var(--navy); word-break: break-all; }
 @media (max-width: 900px) { .gv-two { grid-template-columns: 1fr; } .gv-doc { max-height: 220px; } }
+
+/* ── 頂部兩顆按鈕（KT 2026-09-21）── */
+.top-acts { display: flex; gap: 8px; align-items: center; }
+@media (max-width: 760px) { .top-acts { gap: 6px; } .top-acts .mine-btn { padding: 4px 10px; font-size: 14px; } }
+
+/* ── 我的技能卡抽屜 ── */
+.kc { background: var(--off); border-radius: 10px; padding: 10px 14px; margin-bottom: 10px; }
+.kc > b { color: var(--navy); font-size: 17px; display: block; }
+.kc-tag { color: var(--tealDark); font-weight: 700; margin: 2px 0 8px; }
+.kc-pw { display: grid; grid-template-columns: 72px auto; gap: 6px 0; align-items: start; }
+.kc-pw .btn { justify-self: start; min-height: 32px; padding: 3px 10px; font-size: 14px; }
+.kc-p { grid-column: 1 / -1; margin: 4px 0 0; padding: 10px 12px; background: var(--white); border: 1px solid var(--line); border-radius: 8px; white-space: pre-wrap; font-size: 14px; line-height: 1.7; }
+.kc-r { margin-bottom: 5px; line-height: 1.7; }
+.kc-r > span { display: inline-block; min-width: 72px; color: var(--tealDark); font-weight: 700; }
+
+/* ── 2-5 系統提示詞就地展開 ── */
+.sp h3 { margin: 0 0 6px; font-size: 18px; color: var(--tealDark); }
+.sp-in { margin: 0 0 10px; font-size: 15px; line-height: 1.7; }
+.sp-box { margin-top: 10px; border: 2px solid var(--teal); border-radius: 12px; overflow: hidden; }
+.sp-pre { margin: 0; padding: 12px 14px; max-height: 46vh; overflow: auto; white-space: pre-wrap; font-size: 14px; line-height: 1.7; background: var(--white); }
+
+/* ── 投影片下方的三欄複製鈕與連結列（4-6）── */
+.strow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px; }
+.strow .btn { display: flex; flex-direction: column; gap: 2px; padding: 8px 10px; min-height: 52px; }
+.strow .btn b { font-size: 16px; }
+.strow .btn span { font-size: 13px; opacity: .85; }
+.lkrow { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; justify-content: center; }
+@media (max-width: 760px) { .strow { grid-template-columns: 1fr; } }
+
+/* 投影片下方有按鈕列時，圖要讓出空間，否則會被浮動的翻頁鈕蓋住 */
+.stage.has-rows figure.slide img { max-height: calc(100vh - 56px - 72px - 128px - 132px); }
+.stage.has-rows { padding-bottom: 92px; }
 </style>
 </head>
 <body>
 <header class="top">
   <div class="brand">AI 職場應用實作工作坊</div>
   <nav class="units" id="units" aria-label="單元"></nav>
-  <button class="mine-btn" id="mineBtn" type="button">我的帶走包</button>
+  <div class="top-acts">
+    <button class="mine-btn" id="wallBtn" type="button">作品展示牆</button>
+    <button class="mine-btn" id="mineBtn" type="button">我的技能卡</button>
+  </div>
 </header>
 <div class="layout">
   <nav class="side" id="side" aria-label="本單元頁面"></nav>
@@ -790,25 +825,20 @@ window.CONTENT = {
     { id: 's24', unit: 2, slide: 24, title: '萃取範本的四大要素' },
     { slide: 25, id: '2-gem', unit: 2, title: '我們把萃取法，先做成一個 Gem 助手', sub: '簡報只看摘要；完整系統提示詞可以在這裡展開。',
       blocks: [
-        { type: 'resource', title: '輔助參考｜文件格式萃取與複用助手', text: 'Gem 打不開時，可以把完整系統提示詞貼進 Gemini、ChatGPT 或 Claude，一樣用「萃取格式 → 確認模板 → 套用新素材」的流程。', section: 'A', label: '展開完整系統提示詞', copy: 'A', copyLabel: '📋 複製完整系統提示詞' },
-        { type: 'openers', tools: ['gem'], label: '開啟 Gem' },
-        { type: 'takeaway', items: [['它會先判斷模式', '你現在要萃取格式，還是套用模板？不清楚時，它會先問。'], ['它會萃取可複用要件', '文件結構、標題層級、固定欄位、替換欄位、寫作規則與查核標準。'], ['它會分成兩階段', '萃取完成後停下來，不會自動套用；你確認後才放新素材。']] },
+        { type: 'sysprompt', ref: 'A', title: '文件格式萃取與複用助手（完整系統提示詞）',
+          intro: 'Gem 打不開時，把下面整段貼進 Gemini、ChatGPT 或 Claude 的新對話，再上傳文件，流程一樣：萃取格式 → 確認模板 → 套用新素材。',
+          gem: 'gem' },
       ] },
     { id: 's25', unit: 2, slide: 26, title: '萃取復用完整流程，與 2 個 Gate 查核點' },
-    { id: '2-do1', unit: 2, slide: 27, title: '隨堂練習：讓 AI 萃取格式，再套用到新素材', sub: '網頁提供範本與新素材下載／連結。全程在同一個 Gem 對話裡完成，不要開新對話。',
-      blocks: [
-        { type: 'privacyNote', text: '請用課堂範本或已去識別化的文件；不要上傳含病人或同仁資料的檔案。' },
-        { type: 'download', file: '00_備料間/單元二_格式萃取與模板生成_教學素材/講師示範_Demo/疾管署_性別平等工作小組113年第2次會議紀錄_精簡範例.pdf', label: '① 下載課堂範本（會議紀錄 PDF）', note: '檔案會存到電腦的「下載」資料夾。' },
-        { type: 'openers', tools: ['gem'], label: '② 開啟 Gem' },
-        { type: 'prompt', ref: '2-1', copyOnly: true, note: '③ 在 Gem 上傳範本，貼上這句送出。' },
-        { type: 'fallback', title: 'Gem 打不開？', text: '複製完整系統提示詞，貼進 Gemini、ChatGPT 或 Claude 的新對話，再上傳文件，流程一樣。', ref: 'A', tools: ['gemini', 'chatgpt', 'claude'] },
-      ] },
-    { id: '2-do2', unit: 2, title: '動手②：套用模板', sub: '先檢查模板，再在「同一個 Gem 對話」給新素材。',
-      blocks: [
-        { type: 'checkref', ref: 'Gate 1', title: '④ 先檢查：模板抓得準不準？（Gate 1）' },
-        { type: 'copytext', label: '⑤ 複製這段，貼給 Gem 送出', text: '這是新素材：https://www.youtube.com/watch?v=XQRrkNJoMao\n請只使用影片 14:30–25:00 這一段，套用到剛才的模板。', note: '這段已經包含提示詞 2-2，貼一次就好。' },
-        { type: 'links', items: [['開啟公聽會影片', 'https://www.youtube.com/watch?v=XQRrkNJoMao']] },
-        { type: 'checkref', ref: 'Gate 2', title: '⑥ 再檢查：內容對不對、能不能用？（Gate 2）' },
+    { id: '2-do', unit: 2, slide: 27, title: '隨堂練習：讓 AI 萃取格式，再套用到新素材',
+      note: '全程在同一個 Gem 對話裡完成：先範本，再新素材，不要開新對話。兩個 Gate 在上一頁。',
+      actions: [
+        { file: '00_備料間/單元二_格式萃取與模板生成_教學素材/講師示範_Demo/疾管署_性別平等工作小組113年第2次會議紀錄_精簡範例.pdf', label: '① 下載課堂範本（會議紀錄 PDF）' },
+        { open: 'gem' },
+        { copy: '2-1', label: '② 複製提示詞 2-1（萃取格式）' },
+        { copyText: '這是新素材：https://www.youtube.com/watch?v=XQRrkNJoMao\n請只使用影片 14:30–25:00 這一段，套用到剛才的模板。', label: '③ 複製新素材（已含提示詞 2-2）' },
+        { link: 'https://www.youtube.com/watch?v=XQRrkNJoMao', label: '開啟公聽會影片' },
+        { copy: 'A', label: 'Gem 打不開？複製完整系統提示詞' },
       ] },
     { slide: 28, id: '2-6', unit: 2, title: '想一想：你有哪些文件，適合用這套方法？', sub: '寫下一到兩份。只存在你的電腦，不會上傳。',
       blocks: [
@@ -887,13 +917,9 @@ window.CONTENT = {
     { slide: 46, id: '4-plan', unit: 4, title: '延續同一個主題，先做好圖卡設定', sub: '不急著生圖：先選尺寸，再回答對象、困擾與行動。填完提示詞 4-1 會自動組好。請勿輸入病人或同仁的個人資料。',
       blocks: [{ type: 'cardplan' }] },
     { id: '4-card2', unit: 4, slide: 47, title: '技能卡 2：給 AI 一張你喜歡的圖，讓它學風格',
-      actions: [
-        { copy: '4-2A', label: '複製可愛風視覺提示詞' },
-        { copy: '4-2B', label: '複製親和感視覺提示詞' },
-        { copy: '4-2C', label: '複製專業醫療感視覺提示詞' },
-        { link: 'https://pse.is/9mpy9e', label: '看更多衛教圖卡風格' },
-        { link: 'https://furoku.github.io/bananaX/projects/infographic-evaluation/zh/#designs', label: 'BananaX 風格圖鑑' },
-      ] },
+      // 按鈕放在投影片下方、三欄對齊圖上的三張範本，學員不用猜哪顆對哪張（KT 2026-09-21）
+      styleRow: [['可愛風', '4-2A'], ['親和感', '4-2B'], ['專業醫療感', '4-2C']],
+      linkRow: [['看更多衛教圖卡風格', 'https://pse.is/9mpy9e'], ['BananaX 風格圖鑑', 'https://furoku.github.io/bananaX/projects/infographic-evaluation/zh/#designs']] },
     // WEB-21：原本是投影片原圖、兩欄只能看不能勾 → 改成互動頁，兩欄都可勾選。
     // 題目沿用講義 4.4，不另寫一份（講義是真源，改講義這裡就跟著動）。
     { id: '4-check', unit: 4, title: '做完後，分成內容與視覺兩部分檢查', sub: '兩邊都過了，圖卡才算能用。圖卡仍是草稿；通過內容與視覺檢查，才能正式使用。',
@@ -911,7 +937,8 @@ window.CONTENT = {
     { id: '5-worry', unit: 5, slide: 52, title: '阿長的四個煩惱，今天都有解了' },
     { id: '5-redline', unit: 5, slide: 53, title: 'AI 是草稿，簽章是承諾' },
     { id: '5-review', unit: 5, title: '總複習', sub: '四題，一個單元一題。', quiz: ['R1', 'R2', 'R3', 'R4'] },
-    { id: '5-end', unit: 5, slide: 54, title: '讓 AI 成為你工作最強助手', note: '講義與課程簡報都在展牆的「講義與簡報」欄；衛教圖卡貼「單元四」欄，單元三簡報可以加分分享。', actions: [{ link: 'https://padlet.com/kangtinyou/ai-9-29-s023r2keqg66h58abnfl', label: '上傳衛教圖卡作品' }, { mine: true, label: '打開我的帶走包' }] },
+    { id: '5-end', unit: 5, slide: 54, title: '讓 AI 成為你工作最強助手', note: '作品展示牆與技能卡都在最上面那一排，隨時可以打開。',
+      actions: [{ survey: true, label: '填課後問卷' }] },
     { id: '5-wall', unit: 5, title: '作品展牆：把你今天做的東西貼上去', sub: '你的衛教圖卡貼「單元四｜衛教圖卡」那一欄；單元三做的簡報可以貼「加分分享」那一欄。「講義與簡報」那一欄是老師放課程檔案的地方。不用註冊、不用登入。',
       blocks: [
         { type: 'embed', src: 'https://padlet.com/embed/s023r2keqg66h58abnfl', open: 'https://padlet.com/kangtinyou/ai-9-29-s023r2keqg66h58abnfl',
@@ -920,7 +947,7 @@ window.CONTENT = {
   ],
 
   // 側欄短標題
-  nav: {"s1": "課程封面", "0-1": "開始之前", "s2": "講師介紹", "s3": "相關課程", "s4": "阿長的四個煩惱", "s5": "兩種工具", "0-cards": "四張技能卡", "s7": "單元封面", "s8": "別人的提示詞", "s9": "一個框架", "1-2": "PTCF 四要素", "1-3": "拆解好提示詞", "1-4": "從哪一格改", "1-guide": "使用時要注意什麼", "1-6a": "AI 能協助什麼", "1-6b": "輸入前檢查", "1-6c": "輸出後檢查", "1-6d": "資訊透明", "s18": "人要留在流程裡", "1-check": "單元小測驗", "1-7": "解鎖技能卡 01", "s20": "單元封面", "2-1": "哪件工作先試", "s23": "技能卡 02", "s24": "四大要素", "2-gem": "Gem 助手", "s25": "流程與 Gate", "2-do1": "動手①萃取", "2-do2": "動手②套用", "2-6": "你的文件", "2-7": "解鎖技能卡 02", "3-cover": "單元封面", "3-addie": "ADDIE 骨架", "3-map": "教材變成一堂課", "3-topic": "先選一個主題", "3-card3": "技能卡 03", "3-ask": "第一步：設定卡", "3-card4": "技能卡 04", "3-src": "三份方法來源", "3-outline": "第二步：課綱", "3-deck": "第三步：簡報", "3-banana": "風格圖鑑", "3-unlock": "解鎖 03＋04", "4-cover": "單元封面", "4-two": "說清楚、做好看", "4-split": "拆成兩條線", "4-plan": "先做圖卡設定", "4-card1": "技能卡 1 文案", "4-card2": "技能卡 2 風格", "4-check": "兩種檢查", "4-again": "01＋02 再出場", "5-cover": "總結封面", "5-cards": "四卡全亮", "5-worry": "四個煩惱有解", "5-redline": "資料紅線", "5-review": "總複習", "5-end": "帶走的", "5-wall": "作品展牆"},
+  nav: {"s1": "課程封面", "0-1": "開始之前", "s2": "講師介紹", "s3": "相關課程", "s4": "阿長的四個煩惱", "s5": "兩種工具", "0-cards": "四張技能卡", "s7": "單元封面", "s8": "別人的提示詞", "s9": "一個框架", "1-2": "PTCF 四要素", "1-3": "拆解好提示詞", "1-4": "從哪一格改", "1-guide": "使用時要注意什麼", "1-6a": "AI 能協助什麼", "1-6b": "輸入前檢查", "1-6c": "輸出後檢查", "1-6d": "資訊透明", "s18": "人要留在流程裡", "1-check": "單元小測驗", "1-7": "解鎖技能卡 01", "s20": "單元封面", "2-1": "哪件工作先試", "s23": "技能卡 02", "s24": "四大要素", "2-gem": "Gem 助手", "s25": "流程與 Gate", "2-do": "隨堂練習", "2-6": "你的文件", "2-7": "解鎖技能卡 02", "3-cover": "單元封面", "3-addie": "ADDIE 骨架", "3-map": "教材變成一堂課", "3-topic": "先選一個主題", "3-card3": "技能卡 03", "3-ask": "第一步：設定卡", "3-card4": "技能卡 04", "3-src": "三份方法來源", "3-outline": "第二步：課綱", "3-deck": "第三步：簡報", "3-banana": "風格圖鑑", "3-unlock": "解鎖 03＋04", "4-cover": "單元封面", "4-two": "說清楚、做好看", "4-split": "拆成兩條線", "4-plan": "先做圖卡設定", "4-card1": "技能卡 1 文案", "4-card2": "技能卡 2 風格", "4-check": "兩種檢查", "4-again": "01＋02 再出場", "5-cover": "總結封面", "5-cards": "四卡全亮", "5-worry": "四個煩惱有解", "5-redline": "資料紅線", "5-review": "總複習", "5-end": "帶走的", "5-wall": "作品展牆"},
 
   quiz: {
     A1: { q: 'PTCF 的 T 是什麼？', o: ['設定 AI 應扮演的角色、職位或身分', '明確指出希望 AI 執行的具體工作', '提供背景細節、參考資料或情境', '指定輸出的形式或呈現方式'], a: 1, e: 'T＝任務：提示詞中最重要的部分，務必包含明確的動詞（撰寫、總結、改變語氣）。' },
@@ -936,7 +963,9 @@ window.CONTENT = {
     R4: { q: '做衛教圖卡時，為什麼要把「內容」和「設計」分成兩條線？', o: ['因為 AI 一次只能處理一件事', '因為內容正不正確、畫面好不好讀，是兩種要分開做的檢查', '因為要用兩個不同的 AI 工具'], a: 1, e: '說得清楚交給技能卡 1，做得好看交給技能卡 2；內容先過關，再確認畫面有沒有把正確的事情說清楚。' },
   },
 
-  // 作品展牆（Padlet）：5-end、5-wall、帶走包 C 區共用同一條網址
+  // ⚠️ 課後問卷網址 KT 尚未提供。填進來就自動生效（5-6 的按鈕吃這個值）。
+  survey: '',
+  // 作品展牆（Padlet）：頂部按鈕與 5-wall 共用同一條網址
   wall: 'https://padlet.com/kangtinyou/ai-9-29-s023r2keqg66h58abnfl',
   tools: {
     gemini: { name: 'Gemini', url: 'https://gemini.google.com/app' },
@@ -1045,98 +1074,62 @@ window.CONTENT = {
   function closeDrawer() { $('#drawer').classList.remove('open'); $('#drawer').setAttribute('aria-hidden', 'true'); $('#scrim').classList.remove('on'); }
   $('#drawerClose').onclick = closeDrawer; $('#scrim').onclick = closeDrawer;
 
-  // ── 帶走包（WEB-23）──
-  // A 技能卡與 D 課程檔案是固定內容，所以帶走包永遠不會是空的；
-  // 沒動互動的人也帶得走一份完整工具包，填過的人多出 B 和 C。
-  function mineData() {
-    const b = D.cards;
-    const A = Object.keys(b).map((k) => b[k]);
-    const B = [];
-    const ptcf = get('builder:ptcf1');
-    if (ptcf) B.push(['我的 PTCF 提示詞', composePTCF(ptcf, true)]);
-    if (get('pick:first-fill')) B.push(['提示詞要從哪一格開始改', get('pick:first-fill')]);
-    const aiTasks = get('taskpair:ai-tasks');
-    if (aiTasks && aiTasks.some((x) => (x || '').trim())) B.push(['我最想交給 AI 的兩個任務', aiTasks.filter((x) => (x || '').trim()).join('\n')]);
-    const topic3 = get('choose:topic3'); if (topic3 && topic3.title) B.push(['單元三：我選的課程主題', topic3.title + '\n素材：' + topic3.url]);
-    const card = get('card'); if (card && ['主題', '對象', '困擾', '行動', 'size'].some((k) => (card[k] || '').trim())) B.push(['我的衛教文宣提示詞（4-1）', cardText(card)]);
-    const docs = get('scenario:docs'); if (docs) docs.forEach((d, i) => (d[0] || d[1]) && B.push([`適合這套方法的文件 ${i + 1}`, [d[0], d[1]].filter(Boolean).join('：')]));
-    const un = Object.keys(b).filter((k) => get('unlock:' + k)).map((k) => `技能卡 ${b[k].n} ${b[k].name}`);
-    if (un.length) B.push(['已解鎖的技能卡', un.join('\n')]);
-    return { A, B, C: get('mylinks', {}), wall: C.wall };
-  }
-  const LINKF = [['notebook', 'NotebookLM 筆記本網址', 'https://notebooklm.google.com/notebook/…'],
-    ['gemini', 'Gemini 對話網址', 'https://gemini.google.com/app/…'],
-    ['work', '我的作品連結（圖卡或簡報）', '貼上你放在雲端或展牆的連結']];
+  // ── 我的技能卡（KT 2026-09-21：只留技能卡，B/C/D 三區移除）──
+  // 內容直接讀 D.cards（真源在 簡報建置腳本_v4/part1.js 的 CARDS），
+  // 技能卡改版 v2 定稿後這裡不必再改，換掉 CARDS 就會跟著動。
+  // 五點（KT 2026-09-21）：一句／情境／操作／關鍵提示詞／痛點。
+  // `prompt` 欄位要等技能卡 v2 定稿後加進 CARDS；還沒有的時候這一列自動不出現。
+  const CARDF = [['一句', 'tag'], ['情境', 'when'], ['操作', 'how'], ['痛點', 'unlock']];
 
-  function mineText() {
-    const d = mineData();
-    const A = d.A.map((c) => `技能卡 ${c.n} ${c.name}\n　什麼時候用：${c.when}\n　怎麼用：${c.how}`).join('\n\n');
-    const B = d.B.length ? d.B.map((x) => `【${x[0]}】\n${x[1]}`).join('\n\n') : '（今天沒有填寫紀錄）';
-    const Cx = LINKF.map(([k, lab]) => `${lab}：${(d.C[k] || '').trim() || '（未填）'}`).join('\n');
-    return `AI 職場應用實作工作坊 2026.09.29｜我的帶走包\n\n── A 我的四張技能卡 ──\n${A}\n\n── B 我今天寫出來的 ──\n${B}\n\n── C 我的作品連結 ──\n${Cx}\n作品展牆：${d.wall}\n\n── D 下次要用的 ──\n講義與課程簡報都放在作品展牆的「講義與簡報」欄：${d.wall}\n`;
-  }
-
-  function minePage() { // 單頁 HTML，瀏覽器直接列印或另存 PDF
-    const d = mineData();
+  function cardsPage() { // 四張卡的單頁 HTML，瀏覽器直接列印或另存 PDF
     const esc = (t) => String(t == null ? '' : t).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-    const nl = (t) => esc(t).replace(/\n/g, '<br>');
-    const A = d.A.map((c) => `<div class="c"><b>技能卡 ${esc(c.n)}　${esc(c.name)}</b><div class="w">什麼時候用：${esc(c.when)}</div><div>${esc(c.how)}</div></div>`).join('');
-    const B = d.B.length ? d.B.map((x) => `<div class="c"><b>${esc(x[0])}</b><div class="pre">${nl(x[1])}</div></div>`).join('')
-      : '<div class="c muted">今天沒有填寫紀錄。四張技能卡和課程檔案一樣帶得走。</div>';
-    const Cx = LINKF.map(([k, lab]) => { const v = (d.C[k] || '').trim();
-      return `<div class="c"><b>${esc(lab)}</b><div>${v ? `<a href="${esc(v)}">${esc(v)}</a>` : '<span class="muted">（未填）</span>'}</div></div>`; }).join('');
+    const body = Object.keys(D.cards).map((k) => { const c = D.cards[k];
+      return `<div class="c"><b>技能卡 ${esc(c.n)}　${esc(c.name)}</b>`
+        + CARDF.map(([lab, key]) => c[key] ? `<div class="r"><span>${esc(lab)}</span>${esc(c[key])}</div>` : '').join('')
+        + (c.prompt ? `<div class="r"><span>關鍵提示詞</span></div><pre>${esc(c.prompt)}</pre>` : '')
+        + '</div>'; }).join('');
     return `<!doctype html><html lang="zh-Hant"><meta charset="utf-8">
-<title>我的帶走包｜AI 職場應用實作工作坊 2026.09.29</title>
+<title>我的技能卡｜AI 職場應用實作工作坊 2026.09.29</title>
 <style>
 body{font:16px/1.75 -apple-system,"PingFang TC","Noto Sans TC",sans-serif;color:#17202e;max-width:760px;margin:32px auto;padding:0 20px}
-h1{font-size:24px;margin:0 0 4px}h2{font-size:18px;color:#0f5f56;border-bottom:2px solid #9fe0d2;padding-bottom:4px;margin:26px 0 10px}
-.sub{color:#6b7684;margin:0 0 8px}.c{border:1px solid #dfe4ea;border-radius:10px;padding:10px 14px;margin-bottom:8px}
-.c b{color:#17304f}.w{color:#0f5f56;font-weight:700}.pre{white-space:pre-wrap}.muted{color:#8b95a3}
-a{color:#0f5f56}@media print{body{margin:0}.c{break-inside:avoid}}
+h1{font-size:24px;margin:0 0 4px}.sub{color:#6b7684;margin:0 0 20px}
+.c{border:1px solid #dfe4ea;border-radius:12px;padding:12px 16px;margin-bottom:12px}
+.c b{color:#17304f;font-size:18px}.tag{color:#0f5f56;font-weight:700;margin:2px 0 8px}
+.r{margin-bottom:6px}.r span{display:inline-block;min-width:76px;color:#0f5f56;font-weight:700}
+pre{background:#f5f7f8;border-radius:8px;padding:10px 12px;white-space:pre-wrap;font-size:14px;line-height:1.7;margin:4px 0 0}
+@media print{body{margin:0}.c{break-inside:avoid}}
 </style>
-<h1>我的帶走包</h1>
+<h1>我的技能卡</h1>
 <p class="sub">AI 職場應用實作工作坊　2026.09.29　私立醫療院所協會</p>
-<h2>A　我的四張技能卡</h2>${A}
-<h2>B　我今天寫出來的</h2>${B}
-<h2>C　我的作品連結</h2>${Cx}
-<div class="c"><b>作品展牆</b><div><a href="${esc(d.wall)}">${esc(d.wall)}</a></div></div>
-<h2>D　下次要用的</h2>
-<div class="c"><b>學員講義 ＋ 課程簡報</b><div>兩份都放在作品展牆的「講義與簡報」欄：<a href="${esc(d.wall)}">${esc(d.wall)}</a></div></div>
+${body}
 </html>`;
   }
 
   function mine() {
-    const d = mineData();
     const body = $('#drawerBody'); body.innerHTML = '';
-    const sec = (t, ...kids) => el('div', { class: 'mine-sec' }, el('h3', {}, t), ...kids);
-    const cardRows = d.A.map((c) => el('div', { class: 'item' }, el('b', {}, `技能卡 ${c.n}　${c.name}`), el('div', { class: 'when' }, '什麼時候用：' + c.when), el('div', {}, c.how)));
-    const links = get('mylinks', {});
-    const linkRows = LINKF.map(([k, lab, ph]) => {
-      const i = el('input', { type: 'url', placeholder: ph, 'aria-label': lab }); i.value = links[k] || '';
-      i.oninput = () => { links[k] = i.value; set('mylinks', links); };
-      return el('label', { class: 'fl' }, el('b', {}, lab), i);
+    const rows = Object.keys(D.cards).map((k) => { const c = D.cards[k];
+      const pre = c.prompt ? el('pre', { class: 'kc-p' }, c.prompt) : null;
+      return el('div', { class: 'kc' },
+        el('b', {}, `技能卡 ${c.n}　${c.name}`),
+        CARDF.map(([lab, key]) => c[key] ? el('div', { class: 'kc-r' }, el('span', {}, lab), c[key]) : null),
+        pre ? el('div', { class: 'kc-r kc-pw' }, el('span', {}, '關鍵提示詞'),
+          el('button', { class: 'btn ghost', type: 'button', onclick: () => copy(c.prompt, pre, '已複製！把 { } 裡的字換成你的再送出') }, '📋 複製'), pre) : null);
     });
     body.append(el('div', { class: 'mine' },
-      el('p', { class: 'hint' }, '⚠️ 填寫只存在這台電腦的瀏覽器，換裝置或清快取就沒了——請在今天課堂上就把帶走包存下來。'),
-      sec('A　我的四張技能卡', cardRows),
-      sec('B　我今天寫出來的', d.B.length ? d.B.map((x) => el('div', { class: 'item' }, el('b', {}, x[0]), x[1]))
-        : el('p', { class: 'muted' }, '今天沒有填寫紀錄。A、C、D 一樣帶得走。')),
-      sec('C　我的作品連結', linkRows,
-        el('div', { class: 'btns' }, el('a', { class: 'btn', href: C.wall, target: '_blank', rel: 'noopener' }, '貼到作品展牆 ↗'))),
-      sec('D　下次要用的',
-        el('div', { class: 'item' }, el('b', {}, '學員講義 ＋ 課程簡報'), '兩份都放在作品展牆的「講義與簡報」欄。'),
-        el('div', { class: 'btns' }, el('a', { class: 'btn ghost', href: C.wall, target: '_blank', rel: 'noopener' }, '開啟展牆拿檔案 ↗'))),
+      el('p', { class: 'hint' }, '四張卡是今天真正要帶走的東西。每張寫清楚三件事：什麼時候用、怎麼操作、解決你哪個痛點。'),
+      rows,
       el('div', { class: 'btns mine-act' },
         el('button', { class: 'btn', type: 'button', onclick: () => {
-          const a = el('a', { href: URL.createObjectURL(new Blob([minePage()], { type: 'text/html' })), download: 'AI工作坊_我的帶走包.html' });
-          a.click(); toast('已下載帶走包！打開後按列印就能存成 PDF');
-        } }, '⬇ 下載帶走包（可列印）'),
-        el('button', { class: 'btn ghost', type: 'button', onclick: () => copy(mineText()) }, '全部複製'),
+          const a = el('a', { href: URL.createObjectURL(new Blob([cardsPage()], { type: 'text/html' })), download: 'AI工作坊_我的技能卡.html' });
+          a.click(); toast('已下載技能卡！打開後按列印就能存成 PDF');
+        } }, '⬇ 下載四張技能卡（可列印）'),
         el('button', { class: 'btn ghost', type: 'button', onclick: () => { if (confirm('清除這台電腦上所有填寫與進度？')) { S = {}; save(); closeDrawer(); render(); toast('已清除'); } } }, '清除我的資料'))));
-    $('#drawerTitle').textContent = '我的帶走包';
+    $('#drawerTitle').textContent = '我的技能卡';
     $('#drawer').classList.add('open'); $('#drawer').setAttribute('aria-hidden', 'false'); $('#scrim').classList.add('on');
   }
   $('#mineBtn').onclick = mine;
+  const wallBtn = $('#wallBtn');
+  if (wallBtn) wallBtn.onclick = () => { const i = SEG.findIndex((x) => x.id === '5-wall'); if (i >= 0) go(i); };
 
   // ── PTCF 組合 ──
   function composePTCF(v) { // 我的成果：把填空的答案組回四行
@@ -1527,6 +1520,23 @@ a{color:#0f5f56}@media print{body{margin:0}.c{break-inside:avoid}}
           el('code', {}, b.url),
           el('button', { class: 'btn ghost', type: 'button', onclick: () => copy(b.url, null, '已複製指引網址！') }, '📋 複製網址')));
     },
+    // 2-5：完整系統提示詞就地展開，不走側邊抽屜（KT 2026-09-21，比照指引概覽頁）
+    sysprompt: (b) => {
+      const text = (D.prompts[b.ref] || {}).text || '';
+      const pre = el('pre', { class: 'sp-pre' }, text);
+      const box = el('div', { class: 'sp-box', hidden: true }, pre);
+      const toggle = el('button', { class: 'btn', type: 'button', onclick: () => {
+        box.hidden = !box.hidden;
+        toggle.textContent = box.hidden ? '📖 展開完整系統提示詞' : '收合系統提示詞';
+      } }, '📖 展開完整系統提示詞');
+      return el('div', { class: 'sp' },
+        el('h3', {}, b.title),
+        b.intro ? el('p', { class: 'sp-in' }, b.intro) : null,
+        el('div', { class: 'btns' }, toggle,
+          el('button', { class: 'btn ghost', type: 'button', onclick: () => copy(text, pre, '已複製完整系統提示詞！貼進新對話送出，再上傳文件') }, '📋 複製提示詞'),
+          b.gem ? el('button', { class: 'btn dark', type: 'button', onclick: () => openTool(b.gem) }, '👉 點我進入 Gem') : null),
+        box);
+    },
     links: (b) => el('div', { class: 'btns' }, b.items.map((x) => el('a', { class: 'btn ghost', href: x[1], target: '_blank', rel: 'noopener' }, x[0]))),
     // 嵌入外部看板（Padlet）。醫院／協會網路常擋第三方 iframe，
     // 所以「在新分頁開啟」是永遠看得到的備援，不是 iframe 失敗才出現。
@@ -1646,6 +1656,9 @@ a{color:#0f5f56}@media print{body{margin:0}.c{break-inside:avoid}}
         if (a.mine) return el('button', { class: 'btn', type: 'button', onclick: mine }, a.label);
         if (a.copyText) return el('button', { class: 'btn ghost', type: 'button', onclick: () => copy(a.copyText) }, '📋 ' + a.label);
         if (a.file) return fileBtn(a.file, '⬇ ' + a.label, 'btn ghost');
+        if (a.survey) return C.survey
+          ? el('a', { class: 'btn', href: C.survey, target: '_blank', rel: 'noopener' }, '📝 ' + a.label)
+          : el('span', { class: 'hint' }, '（課後問卷網址待補）');
       });
       st.append(el('div', { class: 'slide-bar' }, el('span', { class: 'seg-code' }, seg.code), el('span', { class: 'slide-t' }, seg.title), el('div', { class: 'btns' }, acts)));
       st.classList.toggle('has-note', !!seg.note);
@@ -1654,6 +1667,12 @@ a{color:#0f5f56}@media print{body{margin:0}.c{break-inside:avoid}}
       const zoom = () => { const z = el('div', { class: 'zoom', onclick: () => z.remove() }, el('img', { src, alt: '' }), el('span', {}, '點任何地方關閉')); document.body.append(z); };
       const img = el('img', { src, alt: `投影片 ${seg.slide}：${seg.title}`, title: '在空白處點一下放大；文字可以直接反白複製', onclick: zoom });
       st.append(el('figure', { class: 'slide' }, img, slideText(seg.slide)));
+      if (seg.styleRow || seg.linkRow) st.classList.add('has-rows');
+      if (seg.styleRow) st.append(el('div', { class: 'strow' }, seg.styleRow.map(([label, ref]) =>
+        el('button', { class: 'btn', type: 'button', onclick: () => copy(D.prompts[ref].text, null, `已複製${label}視覺提示詞！上傳你挑的圖，再貼上送出`) },
+          el('b', {}, label), el('span', {}, '📋 複製提示詞')))));
+      if (seg.linkRow) st.append(el('div', { class: 'lkrow' }, seg.linkRow.map(([label, href]) =>
+        el('a', { class: 'btn ghost', href, target: '_blank', rel: 'noopener' }, label + ' ↗'))));
       set('seen:' + seg.id, true); $('#presentCode').textContent = seg.code; renderNav(); return;
     }
     st.append(el('div', { class: 'seg-head' }, el('span', { class: 'seg-code' }, seg.code, el('span', { class: 'u' }, `${unit.label}${seg.unit && seg.unit < 5 ? '　' + unit.title : ''}`)), el('h1', {}, seg.title), seg.sub ? el('p', { class: 'sub' }, seg.sub) : null));
