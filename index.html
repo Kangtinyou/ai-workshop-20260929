@@ -1524,17 +1524,19 @@ ${body}
     sysprompt: (b) => {
       const text = (D.prompts[b.ref] || {}).text || '';
       const pre = el('pre', { class: 'sp-pre' }, text);
-      const box = el('div', { class: 'sp-box', hidden: true }, pre);
-      const toggle = el('button', { class: 'btn', type: 'button', onclick: () => {
+      // 預設展開、點一下收起（KT 2026-09-22，比照 3-6 的預設狀態）
+      const box = el('div', { class: 'sp-box' }, pre);
+      const toggle = el('button', { class: 'btn ghost', type: 'button', onclick: () => {
         box.hidden = !box.hidden;
-        toggle.textContent = box.hidden ? '📖 展開完整系統提示詞' : '收合系統提示詞';
-      } }, '📖 展開完整系統提示詞');
+        toggle.textContent = box.hidden ? '📖 展開系統提示詞' : '▾ 收合系統提示詞';
+      } }, '▾ 收合系統提示詞');
       return el('div', { class: 'sp' },
         el('h3', {}, b.title),
         b.intro ? el('p', { class: 'sp-in' }, b.intro) : null,
-        el('div', { class: 'btns' }, toggle,
-          el('button', { class: 'btn ghost', type: 'button', onclick: () => copy(text, pre, '已複製完整系統提示詞！貼進新對話送出，再上傳文件') }, '📋 複製提示詞'),
-          b.gem ? el('button', { class: 'btn dark', type: 'button', onclick: () => openTool(b.gem) }, '👉 點我進入 Gem') : null),
+        el('div', { class: 'btns' },
+          el('button', { class: 'btn', type: 'button', onclick: () => copy(text, pre, '已複製完整系統提示詞！貼進新對話送出，再上傳文件') }, '📋 複製提示詞'),
+          b.gem ? el('button', { class: 'btn dark', type: 'button', onclick: () => openTool(b.gem) }, '👉 點我進入 Gem') : null,
+          toggle),
         box);
     },
     links: (b) => el('div', { class: 'btns' }, b.items.map((x) => el('a', { class: 'btn ghost', href: x[1], target: '_blank', rel: 'noopener' }, x[0]))),
