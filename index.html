@@ -1572,7 +1572,7 @@ ${body}
       const n = seg.quiz.filter((q) => q in ans).length, r = seg.quiz.filter((q) => ans[q] === C.quiz[q].a).length;
       score.textContent = seg.optionalQuiz
         ? (n < seg.quiz.length ? `已作答 ${n} / ${seg.quiz.length}。這是隨堂確認，可直接往下。` : r === seg.quiz.length ? `全對！${r} / ${seg.quiz.length} 題。` : `答對 ${r} / ${seg.quiz.length} 題。看一下解說，再往下。`)
-        : (n < seg.quiz.length ? `已作答 ${n} / ${seg.quiz.length}，全部作答後才能到下一段` : r === seg.quiz.length ? `全對！${r} / ${seg.quiz.length} 題，可以進入下一段了。` : `答對 ${r} / ${seg.quiz.length} 題。答錯的題目看一下解說，再往下。`);
+        : (n < seg.quiz.length ? `已作答 ${n} / ${seg.quiz.length} 題。想直接往下也可以。` : r === seg.quiz.length ? `全對！${r} / ${seg.quiz.length} 題。` : `答對 ${r} / ${seg.quiz.length} 題。答錯的看一下解說。`);
       onChange(seg.optionalQuiz || n === seg.quiz.length);
     };
     const qs = seg.quiz.map((qid, qi) => {
@@ -1606,7 +1606,7 @@ ${body}
   }
 
   // ── 導覽 ──
-  let idx = 0, canNext = true;
+  let idx = 0;
   const ICON = { 填寫: '✏️', 思考: '❓', 測驗: '🎯', 動手: '🛠️', 點開: '👆', 解鎖: '🔓', 複製: '📋' };
   function iconOf(s) {
     if (s.quiz) return ['測驗', ICON.測驗];
@@ -1637,13 +1637,11 @@ ${body}
     $('#bar').style.width = (cur.n / list.length * 100) + '%';
     $('#pos').textContent = `${unit.label}　第 ${cur.n} 頁／共 ${list.length} 頁`;
     $('#prev').disabled = idx === 0;
-    $('#next').disabled = idx === SEG.length - 1 || !canNext;
-    $('#next').title = canNext ? '' : '先完成這一段的小測驗';
+    $('#next').disabled = idx === SEG.length - 1;
   }
   function render() {
     const seg = SEG[idx]; const st = $('#stage'); st.innerHTML = '';
     const unit = C.units.find((u) => u.id === seg.unit);
-    canNext = true;
     st.classList.toggle('is-slide', !!seg.slide && !seg.blocks && !seg.quiz);
     const ul = seg.unlock ? [].concat(seg.unlock) : [];
     ul.forEach((n) => set('unlock:' + n, true));
@@ -1693,29 +1691,26 @@ ${body}
         ? [el('div', { class: 'split' }, el('div', {}, mk(seg.blocks[0])), el('div', {}, seg.blocks.slice(1).map(mk)))]
         : (seg.blocks || []).map(mk);
       if (seg.quiz && seg.quizFirst) { // 選擇題和應用題排成同一串，用上一題／下一題切換
-        canNext = !!seg.optionalQuiz;
-        st.append(el('div', { class: 'block' }, quiz(seg, (ok) => { canNext = ok; renderNav(); }, [body, seg.extraTitle || '應用題'])));
+        st.append(el('div', { class: 'block' }, quiz(seg, () => renderNav(), [body, seg.extraTitle || '應用題'])));
       } else body.forEach((n) => st.append(n));
     }
-    if (seg.quiz && !seg.quizFirst) { canNext = !!seg.optionalQuiz; st.append(el('div', { class: 'block' }, quiz(seg, (ok) => { canNext = ok; renderNav(); }))); }
+    if (seg.quiz && !seg.quizFirst) { st.append(el('div', { class: 'block' }, quiz(seg, () => renderNav()))); }
     set('seen:' + seg.id, true);
     $('#presentCode').textContent = seg.code;
     renderNav();
   }
-  function quizDone(s) { if (s.optionalQuiz) return true; const a = get('quiz:' + s.id, {}); return s.quiz.every((q) => q in a); }
   function go(i) {
     if (i < 0 || i >= SEG.length) return;
-    if (i > idx) { const block = SEG.findIndex((s, k) => k >= idx && k < i && s.quiz && !quizDone(s)); if (block >= 0) { if (block !== idx) setTimeout(() => toast('先完成小測驗，才能往後跳'), 50); else { toast('先完成這一段的小測驗'); return; } i = block; } }
     closeDrawer(); document.querySelectorAll('.zoom').forEach((z) => z.remove()); $('#toast').classList.remove('on'); idx = i; history.replaceState(null, '', '#' + SEG[i].id); render();
     window.scrollTo({ top: 0 }); $('#stage').focus({ preventScroll: true });
   }
   $('#prev').onclick = () => go(idx - 1);
-  $('#next').onclick = () => canNext && go(idx + 1);
+  $('#next').onclick = () => go(idx + 1);
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') { document.querySelectorAll('.zoom').forEach((z) => z.remove()); return closeDrawer(); }
     if (document.querySelector('.zoom')) return;
     if (/INPUT|TEXTAREA/.test(document.activeElement.tagName) || $('#drawer').classList.contains('open')) return;
-    if (e.key === 'ArrowRight' && canNext) go(idx + 1);
+    if (e.key === 'ArrowRight') go(idx + 1);
     if (e.key === 'ArrowLeft') go(idx - 1);
   });
   $('#tocBtn').onclick = () => $('#side').classList.toggle('open');
