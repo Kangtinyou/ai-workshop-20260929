@@ -688,6 +688,18 @@ figure.slide { position: relative; container-type: inline-size; }
 /* 投影片下方有按鈕列時，圖要讓出空間，否則會被浮動的翻頁鈕蓋住 */
 .stage.has-rows figure.slide img { max-height: calc(100vh - 56px - 72px - 128px - 132px); }
 .stage.has-rows { padding-bottom: 92px; }
+
+/* ── 投影片下方的三步按鈕列（2-7 隨堂練習，KT 2026-09-22）── */
+.steprow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px; }
+.stepc { background: var(--off); border: 1px solid var(--line); border-radius: 12px; padding: 8px 12px 10px; }
+.stepc-h { display: flex; align-items: center; gap: 8px; font-weight: 700; color: var(--navy); font-size: 15px; margin-bottom: 8px; }
+.stepc-n { width: 22px; height: 22px; border-radius: 50%; background: var(--navy); color: var(--mint2); display: grid; place-items: center; font-size: 13px; }
+.stepc-b { display: flex; flex-wrap: wrap; gap: 8px; }
+.stepc-b .btn { min-height: 38px; padding: 6px 12px; font-size: 15px; }
+@media (max-width: 900px) { .steprow { grid-template-columns: 1fr; } }
+
+.stage.has-steps figure.slide img { max-height: calc(100vh - 56px - 72px - 128px - 232px); }
+.stage.has-steps { padding-bottom: 96px; }
 </style>
 </head>
 <body>
@@ -832,14 +844,18 @@ window.CONTENT = {
     { id: 's25', unit: 2, slide: 26, title: '萃取復用完整流程，與 2 個 Gate 查核點' },
     { id: '2-do', unit: 2, slide: 27, title: '隨堂練習：讓 AI 萃取格式，再套用到新素材',
       note: '全程在同一個 Gem 對話裡完成：先範本，再新素材，不要開新對話。兩個 Gate 在上一頁。',
-      actions: [
-        { file: '00_備料間/單元二_格式萃取與模板生成_教學素材/講師示範_Demo/疾管署_性別平等工作小組113年第2次會議紀錄_精簡範例.pdf', label: '① 下載課堂範本（會議紀錄 PDF）' },
-        { open: 'gem' },
-        { copy: '2-1', label: '② 複製提示詞 2-1（萃取格式）' },
-        { copyText: '這是新素材：https://www.youtube.com/watch?v=XQRrkNJoMao\n請只使用影片 14:30–25:00 這一段，套用到剛才的模板。', label: '③ 複製新素材（已含提示詞 2-2）' },
-        { link: 'https://www.youtube.com/watch?v=XQRrkNJoMao', label: '開啟公聽會影片' },
-        { copy: 'A', label: 'Gem 打不開？複製完整系統提示詞' },
-      ] },
+      // 按鈕放在投影片下方、三欄對齊圖上的三張步驟卡，不在上排重複一次（KT 2026-09-22）
+      stepRow: [
+        { n: '1', label: '下載範本文件', acts: [
+          { file: '00_備料間/單元二_格式萃取與模板生成_教學素材/講師示範_Demo/疾管署_性別平等工作小組113年第2次會議紀錄_精簡範例.pdf', label: '下載會議紀錄 PDF' }] },
+        { n: '2', label: '萃取格式', acts: [
+          { open: 'gem', label: '開啟 Gem' },
+          { copy: '2-1', label: '複製提示詞 2-1' }] },
+        { n: '3', label: '套用新素材', acts: [
+          { copyText: '這是新素材：https://www.youtube.com/watch?v=XQRrkNJoMao\n請只使用影片 14:30–25:00 這一段，套用到剛才的模板。', label: '複製新素材（含 2-2）' },
+          { link: 'https://www.youtube.com/watch?v=XQRrkNJoMao', label: '開啟公聽會影片' }] },
+      ],
+      footRow: [{ copy: 'A', label: 'Gem 打不開？複製完整系統提示詞' }] },
     { slide: 28, id: '2-6', unit: 2, title: '想一想：你有哪些文件，適合用這套方法？', sub: '寫下一到兩份。只存在你的電腦，不會上傳。',
       blocks: [
         { type: 'task', text: '寫下 1～2 份你單位裡「每次格式都差不多」的文件，以及為什麼值得交給 AI。' },
@@ -1667,7 +1683,20 @@ ${body}
       const zoom = () => { const z = el('div', { class: 'zoom', onclick: () => z.remove() }, el('img', { src, alt: '' }), el('span', {}, '點任何地方關閉')); document.body.append(z); };
       const img = el('img', { src, alt: `投影片 ${seg.slide}：${seg.title}`, title: '在空白處點一下放大；文字可以直接反白複製', onclick: zoom });
       st.append(el('figure', { class: 'slide' }, img, slideText(seg.slide)));
-      if (seg.styleRow || seg.linkRow) st.classList.add('has-rows');
+      if (seg.styleRow || seg.linkRow || seg.stepRow || seg.footRow) st.classList.add('has-rows');
+      if (seg.stepRow) st.classList.add('has-steps'); // 三欄步驟卡比單排按鈕高，圖要再讓一點
+      // 依投影片上的步驟卡，把按鈕分欄排在圖下方（KT：不要在上排重複一次）
+      const oneAct = (a) => {
+        if (a.file) return fileBtn(a.file, '⬇ ' + a.label, 'btn ghost');
+        if (a.open) return el('button', { class: 'btn dark', type: 'button', onclick: () => openTool(a.open) }, a.label);
+        if (a.copy) return el('button', { class: 'btn', type: 'button', onclick: () => copy(D.prompts[a.copy].text) }, '📋 ' + a.label);
+        if (a.copyText) return el('button', { class: 'btn', type: 'button', onclick: () => copy(a.copyText) }, '📋 ' + a.label);
+        if (a.link) return el('a', { class: 'btn ghost', href: a.link, target: '_blank', rel: 'noopener' }, a.label + ' ↗');
+      };
+      if (seg.stepRow) st.append(el('div', { class: 'steprow' }, seg.stepRow.map((c) =>
+        el('div', { class: 'stepc' }, el('div', { class: 'stepc-h' }, el('span', { class: 'stepc-n' }, c.n), c.label),
+          el('div', { class: 'stepc-b' }, c.acts.map(oneAct))))));
+      if (seg.footRow) st.append(el('div', { class: 'lkrow' }, seg.footRow.map(oneAct)));
       if (seg.styleRow) st.append(el('div', { class: 'strow' }, seg.styleRow.map(([label, ref]) =>
         el('button', { class: 'btn', type: 'button', onclick: () => copy(D.prompts[ref].text, null, `已複製${label}視覺提示詞！上傳你挑的圖，再貼上送出`) },
           el('b', {}, label), el('span', {}, '📋 複製提示詞')))));
