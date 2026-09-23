@@ -679,6 +679,11 @@ figure.slide { position: relative; }
 .kc-p { grid-column: 1 / -1; margin: 4px 0 0; padding: 10px 12px; background: var(--white); border: 1px solid var(--line); border-radius: 8px; white-space: pre-wrap; font-size: 14px; line-height: 1.7; }
 .kc-r { margin-bottom: 5px; line-height: 1.7; }
 .kc-r > span { display: inline-block; min-width: 72px; color: var(--tealDark); font-weight: 700; }
+.kc-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 2px; }
+.kc-head b { margin: 0; }
+.kc-chip { font-size: 13px; font-weight: 700; padding: 2px 10px; border-radius: 999px; background: #5B6B80; color: var(--white); white-space: nowrap; }
+.kc-chip.on { background: var(--teal); color: var(--white); }
+.kc-locked { opacity: .55; }
 
 /* ── 2-5 系統提示詞就地展開 ── */
 .sp h3 { margin: 0 0 6px; font-size: 18px; color: var(--tealDark); }
@@ -1231,9 +1236,12 @@ ${body}
 </html>`;
   }
 
+  const UNLOCK_UNIT = { 1: '單元一', 2: '單元二', 3: '單元三', 4: '單元三' };
+
   function mine() {
     const body = $('#drawerBody'); body.innerHTML = '';
     const rows = Object.keys(D.cards).map((k) => { const c = D.cards[k];
+      const unlocked = !!get('unlock:' + k);
       // 技能卡 02 是兩段式：兩顆獨立的複製鈕，不能讓學員整段貼下去，
       // 否則 AI 一次做完，跳過中間的模板檢查（KT 2026-09-22）
       const steps = [c.prompt, c.prompt2].filter(Boolean);
@@ -1244,8 +1252,11 @@ ${body}
         return el('div', { class: 'kc-r kc-pw' }, el('span', {}, lab),
           el('button', { class: 'btn ghost', type: 'button', onclick: () => copy(txt, pre, '已複製！把 { } 裡的字換成你的再送出') }, '📋 複製'), pre);
       });
-      return el('div', { class: 'kc' },
-        el('b', {}, `技能卡 ${c.n}　${c.name}`),
+      // 內容永遠都在（不擋學員找內容），只用顏色深淺＋圖示標出解鎖前後的差異（KT 2026-09-23）
+      return el('div', { class: 'kc' + (unlocked ? '' : ' kc-locked') },
+        el('div', { class: 'kc-head' },
+          el('b', {}, `技能卡 ${c.n}　${c.name}`),
+          el('span', { class: 'kc-chip' + (unlocked ? ' on' : '') }, unlocked ? '✓ 已解鎖' : '🔒 未解鎖')),
         CARDF.map(([lab, key]) => c[key] ? el('div', { class: 'kc-r' }, el('span', {}, lab), c[key]) : null),
         promptRows,
         two ? el('div', { class: 'kc-note' }, '⚠️ 兩段要分開送：先送 ①，看過模板確認抓對了，再送 ②。') : null);
@@ -1301,7 +1312,7 @@ ${body}
         el('div', { class: 'f' }, el('span', { class: 'chip' }, unlocked ? '已解鎖' : '未解鎖'), el('div', { class: 'big' }, k.n), el('div', { class: 'nm' }, k.name), el('div', { class: 'tg' }, k.tag), el('span', { class: 'tap' }, unlocked ? '點我翻面' : '')),
         el('div', { class: 'b' }, opts.used ? el('p', {}, el('b', {}, '今天在哪裡用過'), opts.used) : el('p', {}, el('b', {}, '怎麼用'), k.how), el('p', {}, el('b', {}, '解鎖了什麼'), k.unlock))));
     card.onclick = () => {
-      if (!(get('unlock:' + n) || opts.forceOpen)) { card.classList.remove('shake'); void card.offsetWidth; card.classList.add('shake'); toast(`完成${{ 1: '單元一', 2: '單元二', 3: '單元三', 4: '單元三' }[n]}，技能卡 ${k.n} 就會解鎖`); return; }
+      if (!(get('unlock:' + n) || opts.forceOpen)) { card.classList.remove('shake'); void card.offsetWidth; card.classList.add('shake'); toast(`完成${UNLOCK_UNIT[n]}，技能卡 ${k.n} 就會解鎖`); return; }
       card.classList.toggle('on');
     };
     return card;
