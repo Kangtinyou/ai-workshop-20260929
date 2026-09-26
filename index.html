@@ -700,6 +700,9 @@ figure.slide { position: relative; }
 @media (max-width: 760px) { .strow { grid-template-columns: 1fr; } }
 
 /* 投影片下方有按鈕列時，圖要讓出空間，否則會被浮動的翻頁鈕蓋住 */
+/* 限高時寬度一定要 auto，否則前面那條 width:100% 會把圖壓扁（2026-09-27） */
+.stage.has-rows figure.slide, .stage.has-steps figure.slide { display: flex; justify-content: center; }
+.stage.has-rows figure.slide img, .stage.has-steps figure.slide img { width: auto; }
 .stage.has-rows figure.slide img { max-height: calc(100vh - 56px - 72px - 128px - 132px); }
 .stage.has-rows { padding-bottom: 92px; }
 
@@ -1825,8 +1828,9 @@ ${body}
       const stxt = slideText(seg.slide);
       if (stxt) { fig.append(stxt); syncSlideText(fig, img, stxt); }
       st.append(fig);
-      if (seg.styleRow || seg.linkRow || seg.stepRow || seg.footRow) st.classList.add('has-rows');
-      if (seg.stepRow) st.classList.add('has-steps'); // 三欄步驟卡比單排按鈕高，圖要再讓一點
+      // 用 toggle 不用 add：舊寫法翻過 2-7 之後 class 一直留著，後面的投影片頁被壓扁（KT 2026-09-27 回報 2-6 變形）
+      st.classList.toggle('has-rows', !!(seg.styleRow || seg.linkRow || seg.stepRow || seg.footRow));
+      st.classList.toggle('has-steps', !!seg.stepRow); // 三欄步驟卡比單排按鈕高，圖要再讓一點
       // 依投影片上的步驟卡，把按鈕分欄排在圖下方（KT：不要在上排重複一次）
       const oneAct = (a) => {
         if (a.file) return fileBtn(a.file, '⬇ ' + a.label, 'btn ghost');
