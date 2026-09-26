@@ -1351,7 +1351,11 @@ ${body}
     },
     // 帶著上一頁選的主題走：操作頁直接把素材網址遞到手上，不用翻回去找
     chosen: (b) => {
-      const it = get('choose:' + b.key);
+      // 瀏覽器只記「選了哪個主題」；網址每次從 content.js 重新對一次，素材網址改過也不會拿到舊的（2026-09-26）
+      const saved = get('choose:' + b.key);
+      const fresh = saved && SEG.flatMap((s) => s.blocks || []).filter((x) => x.type === 'topics' && x.key === b.key)
+        .flatMap((x) => (x.demo ? [x.demo] : []).concat(x.items)).find((x) => x.title === saved.title);
+      const it = saved && (fresh ? Object.assign({}, saved, fresh) : saved);
       if (!it) return el('div', { class: 'cm-status warn' }, '還沒選主題　',
         el('button', { class: 'btn ghost', type: 'button', onclick: () => { const i = SEG.findIndex((s) => s.id === b.back); if (i >= 0) go(i); } }, '回上一頁選一個'));
       return el('div', { class: 'cm-status' }, b.label || '你選的主題：', el('mark', {}, it.title),
