@@ -905,10 +905,11 @@ window.CONTENT = {
     { id: '3-map', unit: 3, slide: 32, title: '這一單元，把一份教材逐步變成一堂課' },
     { slide: 33, id: '3-topic', unit: 3, title: '先選一個主題，才能開始規劃課程', sub: '你可以跟著講師的 AI 指引案例，或從下面三題選一題。教材素材的網址就在每張卡上，直接開或直接複製。',
       blocks: [
+        // 素材一律用 PDF 直連：疾管署的教材總表頁／File/Get 下載頁，NotebookLM 只讀得到標題（KT 2026-09-26）
         { type: 'topics', key: 'topic3', hint: '按「我要做這個主題」，下一步就會把素材網址帶過去。用自己的教材也可以——記得先去識別化。',
           items: [
-            { tag: 'A', title: '新人教育訓練：一般病房洗手五時機', who: '新進護理人員、臨床教師、新人訓練負責人', src: '疾管署《一般病房之洗手五時機》教材', url: 'https://www.cdc.gov.tw/Category/MPage/XaVuiDGwyPDuz1FEifEeJw' },
-            { tag: 'B', title: '新政策流程導入：流感防治與疫苗接種政策', who: '護理主管、教育訓練承辦人、感染管制人員', src: '疾管署《2026 年流感防治與疫苗接種政策簡報》', url: 'https://www.cdc.gov.tw/File/Get/4a3d6yG3FCqpTXXRc5_b7A' },
+            { tag: 'A', title: '新人教育訓練：一般病房洗手五時機', who: '新進護理人員、臨床教師、新人訓練負責人', src: '疾管署《醫療照護實務：一般病房之洗手五時機》（台大醫院分享，26 頁）', url: 'https://www.cdc.gov.tw/Uploads/files/201212/d75ece24-19ee-4cb7-8dbe-7de4020c13cd.pdf' },
+            { tag: 'B', title: '新政策流程導入：流感防治與疫苗接種政策', who: '護理主管、教育訓練承辦人、感染管制人員', src: '疾管署《2026 年流感防治與疫苗接種政策簡報》', url: 'https://www.cdc.gov.tw/Uploads/80f221bc-70c1-4d1a-97f0-8bc7790f4e1d.pdf' },
             { tag: 'C', title: '專業護理技術：降低導尿管相關泌尿道感染', who: '病房護理人員、臨床教師、感染管制人員', src: '疾管署《降低導尿管相關泌尿道感染組合式每日照護措施》', url: 'https://www.cdc.gov.tw/Category/ListContent/K20wqCzSTz_eSz3Yyk0m9w?uaid=GHz5IKGph6GaG0i3mDe18w' },
           ],
           demo: { title: '護理人員如何安全且正確的使用 AI', who: '全院護理同仁', src: '衛福部《醫療機構應用生成式人工智慧指引》', url: 'https://www.mohw.gov.tw/dl-100614-c7d35394-0a6b-448e-9d90-295294596d98.html' } },
