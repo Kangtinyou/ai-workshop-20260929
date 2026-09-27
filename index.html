@@ -56,6 +56,7 @@ h1 { font-size: 30px; line-height: 1.35; margin: 0 0 6px; }
 .rows > div { display: grid; grid-template-columns: 44px 220px 1fr; align-items: center; gap: 12px; }
 .num { width: 36px; height: 36px; border-radius: 9px; background: var(--teal); color: var(--white); font-weight: 700; display: grid; place-items: center; font-size: 16px; }
 .rows b { font-size: 19px; }
+.rows > h3 { margin: 10px 0 0; font-size: 19px; color: var(--tealDark); } /* 跟 .checks h3 同樣式（0-2 兩段標題並列） */
 .rows span { color: var(--grey); }
 .rows span.num { color: var(--white); }
 .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; counter-reset: s; }
@@ -795,12 +796,18 @@ window.CONTENT = {
   ],
   segments: [
     { id: 's1', unit: 0, slide: 1, title: '課程封面' },
-    { id: '0-1', unit: 0, title: '開始之前：先做三件事', sub: '開著這個網頁上課，投影幕看不清楚時，看自己的螢幕就好。',
+    { id: '0-1', unit: 0, title: '開始之前：工具檢查與網頁用法', sub: '開著這個網頁上課，投影幕看不清楚時，看自己的螢幕就好。',
+      // KT 2026-09-27：課前提醒拿掉；工具檢查先講付費 AI，再講課堂用 Gemini＋個人帳號；網頁用法簡單列
       blocks: [
-        { type: 'howto', items: ['講師會報段落的名稱（例如「現在到『選課程主題』」）：對照左側目錄找同名那一列', '上方選單可以跳到任何單元；按「看講義」會從右側打開講義，看完關掉即可', '你填寫的內容只存在這台電腦的瀏覽器，不會上傳'] },
-        { type: 'checklist', key: 'setup', items: ['用 Google 個人帳號登入（公司或學校帳號可能被停用 AI 功能）', '打開 Gemini，確認可以對話', '打開 Gemini Notebook，確認可以建立筆記本'] },
+        { type: 'checklist', key: 'setup', title: '① 工具檢查', items: ['有付費版 AI 就優先用：Gemini、ChatGPT、Claude 都可以', '課堂示範以 Gemini 為主，請用 Google 個人帳號登入（公司或學校帳號可能被停用 AI 功能）', '打開 Gemini，確認可以對話', '打開 Gemini Notebook，確認可以建立筆記本'] },
         { type: 'openers', tools: ['gemini', 'notebook'], label: '開啟工具' },
-        { type: 'callout', warn: true, text: '資料紅線：病人姓名、病歷號、床號、可辨識的同仁資料、未公開的院內資訊，都不進 AI。' },
+        { type: 'rows', title: '② 這個網頁怎麼用', items: [
+          ['四個單元', '上方選單切換：AI 觀念建立、內容產出力、教學設計力、衛教宣導力'],
+          ['左側頁面', '這個單元的每一頁。講師說「現在到 2-7」，就是單元二第 7 頁'],
+          ['頁面圖示', '✏️ 填寫　❓ 思考　🎯 測驗　🛠️ 動手：有圖示的頁要動手做，其他跟著聽'],
+          ['我的技能卡', '右上角。每上完一個單元解鎖一張，最後可以下載列印帶走'],
+          ['作品展示牆', '右上角。下載簡報與講義，也上傳你在單元三、單元四做的作品'],
+        ] },
       ] },
     { id: 's2', unit: 0, slide: 2, title: '講師介紹' },
     { id: 's3', unit: 0, slide: 3, title: 'KT × 醫護行政相關課程' },
@@ -1325,7 +1332,7 @@ ${body}
     source: (b) => el('div', { class: 'source' }, b.text),
     howto: (b) => el('ul', { class: 'howto' }, b.items.map((t) => el('li', {}, t))),
     two: (b) => el('div', { class: 'two' }, b.items.map((x) => el('div', {}, el('h3', {}, x[0]), el('p', {}, x[1])))),
-    rows: (b) => el('div', { class: 'rows' }, b.items.map((x, i) => el('div', {}, el('span', { class: 'num' }, String(i + 1).padStart(2, '0')), el('b', {}, x[0]), el('span', {}, x[1])))),
+    rows: (b) => el('div', { class: 'rows' }, b.title ? el('h3', {}, b.title) : null, b.items.map((x, i) => el('div', {}, el('span', { class: 'num' }, String(i + 1).padStart(2, '0')), el('b', {}, x[0]), el('span', {}, x[1])))),
     steps: (b) => el('div', { class: 'steps' }, b.items.map((x) => el('div', {}, el('b', {}, x[0]), x[1]))),
     redline: () => { const d = el('div', { class: 'checks redline', html: (D.sections['0.2'] || '').replace(/<h2>.*?<\/h2>/, '<h3 class="rl">資料紅線</h3>').replace(/☐/g, '•') }); return d; },
     drawer: (b) => el('button', { class: 'drawer-link', type: 'button', onclick: () => openDrawer(b.section, b.label) }, b.label),
