@@ -700,10 +700,8 @@ figure.slide { position: relative; }
 @media (max-width: 760px) { .strow { grid-template-columns: 1fr; } }
 
 /* 投影片下方有按鈕列時，圖要讓出空間，否則會被浮動的翻頁鈕蓋住 */
-/* 限高時寬度一定要 auto，否則前面那條 width:100% 會把圖壓扁（2026-09-27） */
-.stage.has-rows figure.slide, .stage.has-steps figure.slide { display: flex; justify-content: center; }
-.stage.has-rows figure.slide img, .stage.has-steps figure.slide img { width: auto; }
-.stage.has-rows figure.slide img { max-height: calc(100vh - 56px - 72px - 128px - 132px); }
+/* 有按鈕列的頁（2-7、4-6）跟一般投影片頁一樣撐滿欄寬，不再限高縮圖；
+   放不下就往下捲，padding-bottom 讓最下面的按鈕捲得出翻頁列（KT 2026-09-27：縮小不正常） */
 .stage.has-rows { padding-bottom: 92px; }
 
 /* ── 投影片下方的三步按鈕列（2-7 隨堂練習，KT 2026-09-22）── */
@@ -730,7 +728,6 @@ figure.slide { position: relative; }
 .stepc-b .btn { min-height: 38px; padding: 6px 12px; font-size: 15px; }
 @media (max-width: 900px) { .steprow { grid-template-columns: 1fr; } .stepc-b { justify-content: flex-start; } }
 
-.stage.has-steps figure.slide img { max-height: calc(100vh - 56px - 72px - 128px - 232px); }
 .stage.has-steps { padding-bottom: 96px; }
 
 .kc-note { margin-top: 6px; font-size: 14px; color: var(--coral); font-weight: 700; }
