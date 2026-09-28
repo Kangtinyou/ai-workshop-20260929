@@ -733,7 +733,7 @@ figure.slide { position: relative; }
 .stage.has-steps { padding-bottom: 96px; }
 
 .kc-note { margin-top: 6px; font-size: 14px; color: var(--coral); font-weight: 700; }
-.quiz-done { margin-bottom: 14px; }
+.quiz-done { margin-top: 14px; }
 </style>
 </head>
 <body>
@@ -1738,7 +1738,11 @@ ${body}
     const done = seg.doneNote ? el('div', { class: 'callout quiz-done' }, seg.doneNote) : null;
     const upd = () => {
       const n = seg.quiz.filter((q) => q in ans).length, r = seg.quiz.filter((q) => ans[q] === C.quiz[q].a).length;
-      if (done) done.hidden = n < seg.quiz.length;
+      if (done) {
+        const was = done.hidden; done.hidden = n < seg.quiz.length;
+        // 剛答完最後一題才出現：捲到看得見（不然會被翻頁列擋住）
+        if (was && !done.hidden && done.isConnected) requestAnimationFrame(() => done.scrollIntoView({ behavior: 'smooth', block: 'center' }));
+      }
       score.textContent = seg.optionalQuiz
         ? (n < seg.quiz.length ? `已作答 ${n} / ${seg.quiz.length}。這是隨堂確認，可直接往下。` : r === seg.quiz.length ? `全對！${r} / ${seg.quiz.length} 題。` : `答對 ${r} / ${seg.quiz.length} 題。看一下解說，再往下。`)
         : (n < seg.quiz.length ? `已作答 ${n} / ${seg.quiz.length} 題。想直接往下也可以。` : r === seg.quiz.length ? `全對！${r} / ${seg.quiz.length} 題。` : `答對 ${r} / ${seg.quiz.length} 題。答錯的看一下解說。`);
@@ -1753,7 +1757,8 @@ ${body}
       };
       Q.o.forEach((o, i) => opts.append(el('button', { type: 'button', onclick: () => { ans[qid] = i; set('quiz:' + seg.id, ans); mark(i); upd(); } }, `${'ABCD'[i]}. ${o}`)));
       if (qid in ans) mark(ans[qid]);
-      return el('div', { class: 'q' }, Q.ctx ? el('pre', { class: 'qctx' }, Q.ctx) : null, el('h3', {}, `第 ${qi + 1} 題　${Q.q}`), opts, exp);
+      // 完成提醒放在最後一題的最下方（KT 2026-09-28）
+      return el('div', { class: 'q' }, Q.ctx ? el('pre', { class: 'qctx' }, Q.ctx) : null, el('h3', {}, `第 ${qi + 1} 題　${Q.q}`), opts, exp, qi === seg.quiz.length - 1 ? done : null);
     });
     const retry = el('button', { class: 'btn ghost', type: 'button', onclick: () => { set('quiz:' + seg.id, {}); render(); } }, '重新作答');
     let cur = Math.max(0, seg.quiz.findIndex((q) => !(q in ans)));
@@ -1774,7 +1779,7 @@ ${body}
     };
     prevQ.onclick = () => { cur--; show(); }; nextQ.onclick = () => { cur++; show(); };
     qs.forEach((q) => q.addEventListener('click', () => setTimeout(show, 0)));
-    const w = el('div', { class: 'quiz' }, done, stepper, steps, el('div', { class: 'btns' }, prevQ, nextQ, score, retry));
+    const w = el('div', { class: 'quiz' }, stepper, steps, el('div', { class: 'btns' }, prevQ, nextQ, score, retry));
     show(); upd(); return w;
   }
 
